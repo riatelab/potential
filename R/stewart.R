@@ -66,19 +66,15 @@
 #' @export
 stewart <- function(x, y, d, var, fun = "e", span, beta, res, mask, 
                     bypassctrl = FALSE, longlat = TRUE){
-  res <- prepdata(knownpts = x, unknownpts = y, 
-                  matdist = d, bypassctrl = bypassctrl, longlat = longlat,
-                  mask = mask, resolution = res) 
-  matdens <- ComputeInteractDensity(matdist = res$matdist, typefct = fun,
-                                    beta = beta, span = span)
-  matopport <- ComputeOpportunity(knownpts = res$knownpts, matdens = matdens, 
-                                  varname = var)
-  unknownpts <- ComputePotentials(unknownpts = res$unknownpts, 
-                                  matopport = matopport)
-  return(unknownpts)
+  res <- prepdata(x = x, y = y, d = d, bypassctrl = bypassctrl, 
+                  longlat = longlat, mask = mask, res = res) 
+  matdens <- ComputeInteractDensity(d = res$d, fun = fun, beta = beta, 
+                                    span = span)
+  matopport <- ComputeOpportunity(x = res$x, matdens = matdens, var = var)
+  y <- ComputePotentials(y = res$y, matopport = matopport)
+  return(y)
 }
 
 
 
-stewart_to_sf
 

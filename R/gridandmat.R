@@ -1,18 +1,17 @@
 #' @title Create a Regularly Spaced Points Grid
-#' @name CreateGrid
+#' @name create_grid
 #' @description This function creates a regular grid of points 
 #' from the extent of a given spatial object and a given resolution.
-#' @param w sf object; the spatial extent of this object is used to 
+#' @param x sf object; the spatial extent of this object is used to 
 #' create the regular grid.
-#' @param resolution numeric; resolution of the grid (in map units). If 
+#' @param res numeric; resolution of the grid (in map units). If 
 #' resolution is not set, the grid will contain around 5000 points. (optional)
 #' @return The output of the function is an sf object of  regularly spaced 
 #' points with the extent of \code{w}.
-#' @seealso \link{CreateDistMatrix}
+#' @seealso \link{create_matrix}
 #' @examples
 #' # Create a grid of paris extent and 200 meters
 #' # resolution
-#' library(SpatialPosition)
 #' library(sf)
 #' data(hospital)
 #' mygrid <- CreateGrid(w = paris, resolution = 200)
@@ -21,9 +20,9 @@
 #' @importFrom sf st_as_sf st_crs st_bbox
 #' @importFrom methods is
 #' @export
-CreateGrid <- function (w, resolution)
+create_grid <- function (x, resolution)
 {
-  bb <- st_bbox(w)
+  bb <- st_bbox(x)
   if(missing(resolution)){
     k <- 5000
     s <- (bb[3] - bb[1]) / (bb[4] - bb[2])
@@ -49,18 +48,18 @@ CreateGrid <- function (w, resolution)
                          COORDX = spatGrid[, 1], 
                          COORDY = spatGrid[, 2])
   spatGrid <- st_as_sf(spatGrid, coords = c("COORDX", "COORDY"),
-                       crs = st_crs(w), remove = FALSE)
+                       crs = st_crs(x), remove = FALSE)
   
   return(spatGrid)
 }
 
 
 #' @title Create a Distance Matrix Between Two Spatial Objects
-#' @name CreateDistMatrix
+#' @name create_matrix
 #' @description This function creates a distance matrix between two 
 #' spatial objects.
-#' @param knownpts sf object; rows of the distance matrix.
-#' @param unknownpts sf object; columns of the distance matrix.
+#' @param x sf object; rows of the distance matrix.
+#' @param y sf object; columns of the distance matrix.
 #' @param bypassctrl logical; bypass the distance matrix size control (see Details).
 #' @param longlat	logical; if FALSE, Euclidean distance, if TRUE Great Circle 
 #' (WGS84 ellipsoid) distance.
@@ -85,14 +84,11 @@ CreateGrid <- function (w, resolution)
 #' st_distance st_transform st_is
 #' @importFrom methods is
 #' @export
-CreateDistMatrix  <- function(knownpts, 
-                              unknownpts, 
-                              bypassctrl = FALSE, 
-                              longlat = TRUE)
+create_matrix  <- function(x, y, bypassctrl = FALSE, longlat = TRUE)
 {
   if (bypassctrl == FALSE){
-    nk <- nrow(knownpts)
-    nu <- nrow(unknownpts)
+    nk <- nrow(x)
+    nu <- nrow(y)
     if(nk * nu > 100000000 | nu > 10000000 | nk > 10000000){
       if (interactive()){
         cat("Do you really want to this distance matrix (from", nk , 
@@ -116,26 +112,26 @@ CreateDistMatrix  <- function(knownpts,
     }
 }
   # polygon mngmnt
-  if(!is(st_geometry(knownpts), "sfc_POINT")){
-    st_geometry(knownpts) <- st_centroid(st_geometry(knownpts), 
+  if(!is(st_geometry(x), "sfc_POINT")){
+    st_geometry(x) <- st_centroid(st_geometry(x), 
                                          of_largest_polygon = all(
-                                           st_is(knownpts, "MULTIPOLYGON")))
+                                           st_is(x, "MULTIPOLYGON")))
   }
-  if(!is(st_geometry(unknownpts), "sfc_POINT")){
-    st_geometry(unknownpts) <- st_centroid(st_geometry(unknownpts), 
+  if(!is(st_geometry(y), "sfc_POINT")){
+    st_geometry(y) <- st_centroid(st_geometry(y), 
                                            of_largest_polygon = all(
-                                             st_is(unknownpts, "MULTIPOLYGON")))
+                                             st_is(y, "MULTIPOLYGON")))
   }
   
-  if(!st_is_longlat(knownpts)){
+  if(!st_is_longlat(x)){
     if(longlat){
-      knownpts <- st_transform(knownpts, 4326)
-      unknownpts <- st_transform(unknownpts, 4326)
+      x <- st_transform(x, 4326)
+      y <- st_transform(y, 4326)
     }
   }
-  x <- st_distance(knownpts, unknownpts)
-  mat = as.vector(x)
-  dim(mat) = dim(x)
-  dimnames(mat) <- list(row.names(knownpts), row.names(unknownpts))
+  d <- st_distance(x, y)
+  mat = as.vector(d)
+  dim(mat) = dim(d)
+  dimnames(mat) <- list(row.names(x), row.names(y))
   return(round(mat, digits = 2))
 }

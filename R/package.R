@@ -1,9 +1,7 @@
-#' @title Spatial Position Package
-#' @name SpatialPosition
+#' @title stewart
+#' @name spatpos
 #' @description Computes spatial position models: \itemize{
-#' \item{Stewart potentials,}
-#' \item{Reilly catchment areas,} 
-#' \item{Huff catchment areas.}
+#' \item{Stewart potentials}
 #' }
 #' An introduction to the package conceptual background and usage: \cr
 #'  - \code{vignette(topic = "SpatialPosition")}\cr

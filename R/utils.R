@@ -1,83 +1,59 @@
 # Internal functions
 
-prepdata <- function(knownpts, unknownpts, matdist, bypassctrl, longlat, mask, 
-                     resolution){
-  if (!missing(unknownpts)){  
-    if (!missing(matdist)){
-      matdist <- UseDistMatrix(matdist = matdist, knownpts = knownpts, 
-                               unknownpts =  unknownpts) 
+prepdata <- function(x, y, d, bypassctrl, longlat, mask, 
+                     res){
+  if (!missing(y)){  
+    if (!missing(d)){
+      d <- use_matrix(d = d, x = x, y =  y) 
     }else{
-      matdist <- CreateDistMatrix(knownpts = knownpts, unknownpts = unknownpts, 
-                                  bypassctrl = bypassctrl, longlat = longlat)
+      d <- create_matrix(x = x, y = y, bypassctrl = bypassctrl, longlat = longlat)
     }
   }else{
     if(missing(mask)){
-      mask <- knownpts
+      mask <- x
     } 
-    unknownpts <- CreateGrid(w = mask, resolution = resolution) 
-    matdist <- CreateDistMatrix(knownpts = knownpts, unknownpts = unknownpts, 
-                                bypassctrl = bypassctrl, longlat = longlat) 
+    y <- create_grid(x = mask, resolution = res) 
+    d <- create_matrix(x = x, y = y, bypassctrl = bypassctrl, 
+                       longlat = longlat) 
   }
-  return(list(knownpts=knownpts, unknownpts = unknownpts, matdist = matdist))
+  return(list(x = x, y = y, d = d))
 }
 
 
-UseDistMatrix <- function(matdist, knownpts, unknownpts){
-  i <- factor(row.names(knownpts), levels = row.names(knownpts))
-  j <- factor(row.names(unknownpts), levels = row.names(unknownpts))
-  matdist <- matdist[levels(i), levels(j)]
-  return(round(matdist, digits = 8))
+use_matrix <- function(d, x, y){
+  i <- factor(row.names(x), levels = row.names(x))
+  j <- factor(row.names(y), levels = row.names(y))
+  d <- d[levels(i), levels(j)]
+  return(round(d, digits = 8))
 }
 
-ComputeInteractDensity <- function(matdist, typefct, beta, span)
+ComputeInteractDensity <- function(d, fun, beta, span)
 {
-  if(typefct == "p") {
+  if(fun == "p") {
     alpha  <- (2 ^ (1 / beta) - 1) / span
-    matDens <- (1 + alpha * matdist) ^ (-beta)
-  } else if(typefct == "e") {
+    matDens <- (1 + alpha * d) ^ (-beta)
+  } else if(fun == "e") {
     alpha  <- log(2) / span ^ beta
-    matDens <- exp(- alpha * matdist ^ beta)
+    matDens <- exp(- alpha * d ^ beta)
   } else {
-    stop("Please choose a valid interaction function argument (typefct)")
+    stop("Please choose a valid interaction function argument (fun)")
   }
   matDens <- round(matDens, digits = 8)
   return(matDens)
 }
 
-ComputeOpportunity <- function(knownpts, matdens, varname = varname)
+ComputeOpportunity <- function(x, matdens, var)
 {
-  matOpport <- knownpts[[varname]] * matdens
+  matOpport <- x[[var]] * matdens
   return(round(matOpport, digits = 8))
 }
 
-ComputePotentials <- function(unknownpts, matopport)
+ComputePotentials <- function(y, matopport)
 {
-  unknownpts$OUTPUT <- apply(matopport, 2, sum, na.rm = TRUE)
-  return(unknownpts)
+  y$OUTPUT <- apply(matopport, 2, sum, na.rm = TRUE)
+  return(y)
 }
 
-ComputeReilly <- function(unknownpts, matopport)
-{
-  unknownpts$OUTPUT <- row.names(matopport)[apply(matopport, 2, which.max)]
-  return(unknownpts)
-}
-
-ComputeHuff <- function(unknownpts, matopport)
-{
-  sumCol <- colSums(x = matopport, na.rm = TRUE)
-  matOpportPct <- 100 * t(t(matopport) / sumCol)
-  matOpportPct[is.na(matOpportPct) | is.infinite(matOpportPct)] <- 0
-  unknownpts$OUTPUT <- apply(matOpportPct, 2, max, na.rm = TRUE)
-  return(unknownpts)
-}
-
-
-ComputeSmooth<- function(unknownpts, matopport, matdens)
-{
-  unknownpts$OUTPUT <- apply(matopport, 2, sum, na.rm = TRUE) / 
-    colSums(matdens, na.rm = TRUE)
-  return(unknownpts)
-}
 
 
 

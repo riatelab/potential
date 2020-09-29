@@ -56,27 +56,5 @@ Stewart potentials with a cutoff distance and parallel computation.
 \examples{
 \dontrun{
 # The dataset is in cartography package
-library(SpatialPosition)
-require(cartography)
-library(sf)
-
-# known points
-nuts3.spdf@data <- nuts3.df
-kpts <- st_centroid(st_as_sf(nuts3.spdf), of_largest_polygon = TRUE)
-# unknownpts
-upts <- st_sf(geom = st_make_grid(x = st_as_sfc(st_bbox(kpts)), 
-                                  cellsize = 20000, what = "centers"))
-# compute potentials
-pot <- fstewart(x = kpts, y = upts, var = "pop2008",
-                fun = "e", span = 100000, beta = 3)
-
-potsf <- cbind(upts, st_coordinates(upts), OUTPUT = pot)
-
-
-isopot <- isopoly(x = potsf, xcoords = "X", ycoords = "Y", 
-                  var = "OUTPUT", 
-                  mask = st_buffer(st_as_sf(nuts0.spdf),1))
-
-plot(isopot['center'])
 }
 }

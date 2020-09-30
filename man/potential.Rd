@@ -19,22 +19,22 @@ potential(
 )
 }
 \arguments{
-\item{x}{sf object; this is the set of known observations to 
+\item{x}{an sf object, this is the set of known observations to
 estimate the potentials from.}
 
-\item{y}{sf object; this is the set of unknown units for which 
-the function computes the estimates. Not used when \code{res} is set 
-up. (optional)}
+\item{y}{an sf object, this is the set of unknown units for which
+the function computes the estimates. Not used when \code{res} is set
+up.}
 
-\item{d}{matrix; distance matrix between known observations and unknown 
-units for which the function computes the estimates. Row names match the row 
-names of \code{x} and column names match the row names of 
-\code{y}. \code{d} can contain any distance metric (time 
-distance or euclidean distance for example). If \code{matdist} is missing, the distance 
-matrix is built with \code{\link{create_matrix}}. (optional)}
+\item{d}{a distance matrix between known observations and unknown
+units for which the function computes the estimates. Row names match the row
+names of \code{x} and column names match the row names of
+\code{y}. \code{d} can contain any distance metric (time
+distance or euclidean distance for example). If \code{d} is missing, 
+the distance matrix is built with \code{\link{create_matrix}}.}
 
-\item{var}{character; name of the variable in the \code{x} dataframe 
-from which potentials are computed. Quantitative variable with no negative values.}
+\item{var}{name of the variable in \code{x} from which potentials are 
+computed. Use only quantitative variable with no negative values.}
 
 \item{fun}{spatial interaction function. Options are "p"
 (pareto, power law) or "e" (exponential).
@@ -44,51 +44,56 @@ exp(- alpha * mDistance ^ beta).
 The alpha parameter is computed from parameters given by the user
 (\code{beta} and \code{span}).}
 
-\item{span}{numeric; distance where the density of probability of the spatial 
+\item{span}{distance where the density of probability of the spatial
 interaction function equals 0.5.}
 
-\item{beta}{numeric; impedance factor for the spatial interaction function.}
+\item{beta}{impedance factor for the spatial interaction function.}
 
-\item{res}{numeric; resolution of the output grid (in map units). 
-If resolution is not set, the grid will contain around 7250 points. (optional)}
+\item{res}{resolution of the output grid (in map units).
+If \code{res} is not set, the grid will contain around 5000 points.}
 
-\item{mask}{sf object; the spatial extent of this object is used to 
-create the regularly spaced points output. (optional)}
+\item{mask}{an sf object, the spatial extent of this object is used to
+create the regularly spaced points output if \code{y} is not set.}
 
-\item{bypassctrl}{logical; bypass the distance matrix size control (see 
-\code{\link{create_matrix}} Details).}
+\item{bypassctrl}{if TRUE, bypass the distance matrix size control 
+(see Details).}
 
-\item{longlat}{logical; if FALSE, Euclidean distance, if TRUE Great Circle 
-(WGS84 ellipsoid) distance.}
+\item{longlat}{if FALSE, the Euclidean distance is used, if TRUE Great Circle
+(WGS84 ellipsoid) distance is used.}
 }
 \value{
-Point object with the computed potentials in a new field 
+sf object with the computed potentials in a new field
 named \code{OUTPUT}.
 }
 \description{
-This function computes the potentials as defined by J.Q. Stewart (1941).
+This function computes potentials as defined 
+by J.Q. Stewart (1941).
 }
 \examples{
 # Create a grid of paris extent and 200 meters resolution
 data(hospital)
 g <- create_grid(x = paris, res = 200)
 
-# Create a distance matrix between known points (hospital) and points 
+# Create a distance matrix between known points (hospital) and points
 # of the grid
 d <- create_matrix(x = hospital, y = g)
 
 # Compute Stewart potentials from known points (hospital) on a given
 # grid (g) using a given distance matrix (d)
-pot <- potential(x = hospital, y = g,
-                 d = d, var = "capacity",
-                 fun = "e", span = 1000,
-                 beta = 3, mask = paris)
+pot <- potential(
+  x = hospital, y = g,
+  d = d, var = "capacity",
+  fun = "e", span = 1250,
+  beta = 3, mask = paris
+)
 
 # Compute Stewart potentials from known points (hospital) on a
 # grid defined by its resolution
-pot2 <- potential(x = hospital, var = "capacity",
-                  fun = "e", span = 1250, beta = 3,
-                  res = 200, mask = paris)
+pot2 <- potential(
+  x = hospital, var = "capacity",
+  fun = "e", span = 1250, beta = 3,
+  res = 200, mask = paris
+)
 
 # The two methods have the same result
 identical(pot, pot2)
@@ -98,5 +103,7 @@ class(pot)
 summary(pot$OUTPUT)
 }
 \references{
-STEWART J.Q. (1942) "Measure of the influence of a population at a distance", Sociometry, 5(1): 63-71.
+STEWART, JOHN Q. 1941. "An Inverse Distance Variation for Certain Social 
+Influences." \emph{Science} 93 (2404): 89–90. 
+\url{https://doi.org/10.1126/science.93.2404.89}.
 }

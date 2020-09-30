@@ -21,7 +21,8 @@ mcpotential(
 
 \item{y}{set of points for which the potentials are computed, sf points.}
 
-\item{var}{names of the variables in \code{x} from which potentials are computed.
+\item{var}{names of the variables in \code{x} from which potentials are 
+computed.
 Quantitative variables with no negative values.}
 
 \item{fun}{spatial interaction function. Options are "p"
@@ -51,7 +52,8 @@ If only one variable is computed a vector is returned, if more than
 one variable is computed a matrix is returned.
 }
 \description{
-Stewart potentials with a cutoff distance and parallel computation.
+Stewart potentials with a cutoff distance and parallel 
+computation.
 }
 \examples{
 \dontrun{

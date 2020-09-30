@@ -5,6 +5,6 @@
 \alias{hospital}
 \title{Public Hospitals}
 \description{
-An sf POINT data frame of 18 public hospitals with their capacity 
-("capacity" = number of beds).
+An sf POINT data frame of 18 public hospitals with their 
+capacity ("capacity" = number of beds).
 }

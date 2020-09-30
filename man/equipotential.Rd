@@ -15,41 +15,45 @@ equipotential(
 )
 }
 \arguments{
-\item{x}{sf POINT data.frame; must contain X, Y and OUTPUT fields.}
+\item{x}{an sf object of regularly spaced points. It must contain "X", "Y" 
+and "OUTPUT" fields.}
 
-\item{nclass}{numeric; a number of class.}
+\item{nclass}{a number of class.}
 
-\item{breaks}{numeric; a vector of break values.}
+\item{breaks}{a vector of break values.}
 
-\item{mask}{sf POLYGON data.frame; mask used to 
-clip contour shapes.}
+\item{mask}{an sf object of polygons or multipolygons. /code{mask} is  used 
+to clip polygons of contours equipotential.}
 
-\item{xcoords}{character; name of the X coordinates field in x.}
+\item{xcoords}{name of the X coordinates field in \code{x}.}
 
-\item{ycoords}{character; name of the Y coordinates field in x.}
+\item{ycoords}{name of the Y coordinates field in \code{x}.}
 
-\item{var}{character; name of the OUTPUT field in x.}
+\item{var}{name of the OUTPUT field in \code{x}.}
 }
 \value{
-The output is an sf POLYGON data.frame.
-The data frame contains four fields: 
-id (id of each polygon), min and max (minimum and maximum breaks of the polygon), 
-center (central values of classes).
+The output is an sf object of polygons. The data frame contains four 
+fields: id (id of each polygon), min and max (minimum and maximum breaks of 
+the polygon) and center (central values of classes).
 }
 \description{
-This function creates spatial polygons of contours equipotential from 
+This function creates spatial polygons of contours equipotential from
 a potential points layer
 }
 \examples{
+library(sf)
 # Create a grid of paris extent and 200 meters resolution
 data(hospital)
 # Compute Stewart potentials from known points (hospital) on a
 # grid defined by its resolution (200 m)
-pot2 <- potential(x = hospital, var = "capacity",
-                  fun = "e", span = 1250, beta = 3,
-                  res = 200, mask = paris)
+pot <- potential(
+  x = hospital, var = "capacity",
+  fun = "e", span = 1250, beta = 3,
+  res = 150, mask = paris
+)
 
 equipot <- equipotential(pot, mask = paris)
 
-plot(equipot)
+plot(st_geometry(equipot), 
+     col = hcl.colors(nrow(equipot), "cividis"))
 }

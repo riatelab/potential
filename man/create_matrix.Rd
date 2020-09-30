@@ -17,8 +17,8 @@ create_matrix(x, y, bypassctrl = FALSE, longlat = TRUE)
 (WGS84 ellipsoid) distance.}
 }
 \value{
-A distance matrix, row names are \code{knownpts} row names, column 
-names are \code{unknownpts} row names.
+A distance matrix, row names are \code{x} row names, column 
+names are \code{y} row names.
 }
 \description{
 This function creates a distance matrix between two 
@@ -36,11 +36,8 @@ Use \code{bypassctrl} = TRUE to skip this control.
 # Create a grid of paris extent and 200 meters
 # resolution
 data(hospital)
-mygrid <- CreateGrid(w = paris, resolution = 200)
+mygrid <- create_grid(x = paris, res = 200)
 # Create a distance matrix between known hospital and mygrid
-mymat <- CreateDistMatrix(knownpts = hospital, unknownpts = mygrid)
+mymat <- create_matrix(x = hospital, y = mygrid)
 mymat[1:5,1:5]
-}
-\seealso{
-\link{CreateGrid}
 }

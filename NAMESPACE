@@ -2,10 +2,10 @@
 
 export(create_grid)
 export(create_matrix)
-export(fstewart)
+export(equipotential)
+export(mcpotential)
+export(potential)
 export(probInterPlot)
-export(stewart)
-export(stewart_to_sf)
 import(graphics)
 importFrom(isoband,iso_to_sfg)
 importFrom(isoband,isobands)

@@ -14,43 +14,39 @@
 #' # resolution
 #' library(sf)
 #' data(hospital)
-#' mygrid <- CreateGrid(w = paris, resolution = 200)
+#' mygrid <- create_grid(x = paris, res = 200)
 #' plot(st_geometry(mygrid), cex = 0.1, pch = ".")
 #' plot(st_geometry(paris), border="red", lwd = 2, add = TRUE)
 #' @importFrom sf st_as_sf st_crs st_bbox
 #' @importFrom methods is
 #' @export
-create_grid <- function (x, resolution)
+create_grid <- function (x, res)
 {
   bb <- st_bbox(x)
-  if(missing(resolution)){
+  if(missing(res)){
     k <- 5000
     s <- (bb[3] - bb[1]) / (bb[4] - bb[2])
     ny <- sqrt(k/s)
     nx <- s * ny
     gx <- seq(bb[1], bb[3], length.out = nx)  
     gy <- seq(bb[2], bb[4], length.out = ny)  
-    resolution <- (mean(c(gx[2] - gx[1], gy[2] - gy[1])))
+    res <- (mean(c(gx[2] - gx[1], gy[2] - gy[1])))
   }
-
-  rounder <- bb %% resolution
+  
+  rounder <- bb %% res
   bb[1:2] <- bb[1:2] - rounder[1:2]
-  bb[3:4] <- bb[3:4] + resolution - rounder[3:4]
-  boxCoordX <- seq(from = bb[1] , 
-                   to = bb[3] , 
-                   by = resolution)
-  boxCoordY <- seq(from = bb[2], 
-                   to = bb[4] , 
-                   by = resolution)
+  bb[3:4] <- bb[3:4] + res - rounder[3:4]
+  cx <- seq(from = bb[1], to = bb[3], by = res)
+  cy <- seq(from = bb[2], to = bb[4], by = res)
   
-  spatGrid <- expand.grid(boxCoordX, boxCoordY)
-  spatGrid <- data.frame(ID = 1:nrow(spatGrid),
-                         COORDX = spatGrid[, 1], 
-                         COORDY = spatGrid[, 2])
-  spatGrid <- st_as_sf(spatGrid, coords = c("COORDX", "COORDY"),
-                       crs = st_crs(x), remove = FALSE)
+  g <- expand.grid(cx, cy)
+  g <- data.frame(ID = 1:nrow(g),
+                  COORDX = g[, 1], 
+                  COORDY = g[, 2])
+  g <- st_as_sf(g, coords = c("COORDX", "COORDY"),
+                crs = st_crs(x), remove = FALSE)
   
-  return(spatGrid)
+  return(g)
 }
 
 
@@ -69,16 +65,15 @@ create_grid <- function (x, resolution)
 #' the function sends a confirmation message to warn users about the amount of 
 #' RAM mobilized. 
 #' Use \code{bypassctrl} = TRUE to skip this control.
-#' @return A distance matrix, row names are \code{knownpts} row names, column 
-#' names are \code{unknownpts} row names.
-#' @seealso \link{CreateGrid}
+#' @return A distance matrix, row names are \code{x} row names, column 
+#' names are \code{y} row names.
 #' @examples
 #' # Create a grid of paris extent and 200 meters
 #' # resolution
 #' data(hospital)
-#' mygrid <- CreateGrid(w = paris, resolution = 200)
+#' mygrid <- create_grid(x = paris, res = 200)
 #' # Create a distance matrix between known hospital and mygrid
-#' mymat <- CreateDistMatrix(knownpts = hospital, unknownpts = mygrid)
+#' mymat <- create_matrix(x = hospital, y = mygrid)
 #' mymat[1:5,1:5]
 #' @importFrom sf st_centroid st_geometry st_geometry<- st_as_sf st_is_longlat 
 #' st_distance st_transform st_is
@@ -110,17 +105,17 @@ create_matrix  <- function(x, y, bypassctrl = FALSE, longlat = TRUE)
              call. = F)
       }
     }
-}
+  }
   # polygon mngmnt
   if(!is(st_geometry(x), "sfc_POINT")){
     st_geometry(x) <- st_centroid(st_geometry(x), 
-                                         of_largest_polygon = all(
-                                           st_is(x, "MULTIPOLYGON")))
+                                  of_largest_polygon = all(
+                                    st_is(x, "MULTIPOLYGON")))
   }
   if(!is(st_geometry(y), "sfc_POINT")){
     st_geometry(y) <- st_centroid(st_geometry(y), 
-                                           of_largest_polygon = all(
-                                             st_is(y, "MULTIPOLYGON")))
+                                  of_largest_polygon = all(
+                                    st_is(y, "MULTIPOLYGON")))
   }
   
   if(!st_is_longlat(x)){

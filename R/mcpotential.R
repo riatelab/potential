@@ -1,4 +1,4 @@
-#' @title Fast Stewart Potentials
+#' @title Compute Potentials using Parallelization
 #' @description Stewart potentials with a cutoff distance and parallel computation.
 #' @param x set of points to compute the potentials from, sf points.
 #' @param y set of points for which the potentials are computed, sf points.
@@ -28,9 +28,10 @@
 #' \dontrun{
 #' # The dataset is in cartography package
 #' }
-fstewart <- function(x, y, var = "v", fun = "e",
+mcpotential <- function(x, y, var = "v", fun = "e",
                      span = 2000, beta = 2,
-                     limit = 3 * span, ncl = 3, size = 500){
+                     limit = 3 * span, 
+                     ncl = 3, size = 500){
   # launch multiple cores
   if (missing(ncl)){
     ncl <- parallel::detectCores(all.tests = FALSE, logical = FALSE) - 1 

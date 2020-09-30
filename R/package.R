@@ -1,15 +1,11 @@
-#' @title stewart
-#' @name spatpos
-#' @description Computes spatial position models: \itemize{
-#' \item{Stewart potentials}
-#' }
-#' An introduction to the package conceptual background and usage: \cr
-#'  - \code{vignette(topic = "SpatialPosition")}\cr
-#' A Stewart potentials use case:\cr
-#'  - \code{vignette(topic = "StewartExample")}.
-#' @references 
-#' COMMENGES H., GIRAUD, T., LAMBERT, N. (2016) "ESPON FIT: Functional Indicators for Spatial-Aware Policy-Making", 
-#' Cartographica: The International Journal for Geographic Information and Geovisualization, 51(3): 127-136.
+#' @title Potential Models
+#' @name potential-package
+#' @rdname potential-package
+#' @description This package provides functions to compute potential models as 
+#' defined by Stewart (1941) <doi:10.1126/science.93.2404.89>. Several options
+#' are available to customize the models, such as the possibility to fine-tune 
+#' the distance friction functions or to use custom distance matrices. Some 
+#' computations are parallelized to improve their efficiency.
 #' @docType package
 NULL
 

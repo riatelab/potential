@@ -4,7 +4,7 @@
 \alias{create_grid}
 \title{Create a Regularly Spaced Points Grid}
 \usage{
-create_grid(x, resolution)
+create_grid(x, res)
 }
 \arguments{
 \item{x}{sf object; the spatial extent of this object is used to 
@@ -26,7 +26,7 @@ from the extent of a given spatial object and a given resolution.
 # resolution
 library(sf)
 data(hospital)
-mygrid <- CreateGrid(w = paris, resolution = 200)
+mygrid <- create_grid(x = paris, res = 200)
 plot(st_geometry(mygrid), cex = 0.1, pch = ".")
 plot(st_geometry(paris), border="red", lwd = 2, add = TRUE)
 }

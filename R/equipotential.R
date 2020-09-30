@@ -1,7 +1,8 @@
-#' @title Create Contours from a Stewart Points
-#' @name stewart_to_sf
+#' @title Contours of Equipotential
+#' @name equipotential
 #' @description 
-#' This function creates spatial polygons of contours from a stewart points.
+#' This function creates spatial polygons of contours equipotential from 
+#' a potential points layer
 #' @param x sf POINT data.frame; must contain X, Y and OUTPUT fields.
 #' @param nclass numeric; a number of class.
 #' @param breaks numeric; a vector of break values. 
@@ -14,45 +15,24 @@
 #' The data frame contains four fields: 
 #' id (id of each polygon), min and max (minimum and maximum breaks of the polygon), 
 #' center (central values of classes).
-#' @seealso \link{stewart}.
 #' @importFrom sf st_as_sf st_crs st_bbox st_cast st_sf st_sfc st_intersection 
 #' st_union st_agr<- st_collection_extract st_make_valid
 #' @importFrom isoband isobands iso_to_sfg
 #' @importFrom methods is
 #' @examples
+#' # Create a grid of paris extent and 200 meters resolution
 #' data(hospital)
-#' # Compute Stewart potentials
-#' mystewart <- stewart(knownpts = hospital, varname = "capacity",
-#'                      typefct = "exponential", span = 1000, beta = 3,
-#'                      mask = paris)
-#' # Create contour
-#' contourpoly <- stewart_to_sf(x = mystewart,
-#'                              nclass = 6,
-#'                              mask = paris)
-#' library(sf)
-#' plot(st_geometry(contourpoly))
-#' if(require(cartography)){
-#'   # Created breaks
-#'   bks <- sort(unique(c(contourpoly$min, contourpoly$max)))
-#'   opar <- par(mar = c(0,0,1.2,0))
-#'   # Display the map
-#'   choroLayer(x = contourpoly,
-#'              var = "center", legend.pos = "topleft",
-#'              breaks = bks, border = "grey90",
-#'              lwd = 0.2,
-#'              legend.title.txt = "Potential number\nof beds in the\nneighbourhood",
-#'              legend.values.rnd = 0)
-#'   plot(st_geometry(paris), add = TRUE)
-#'   propSymbolsLayer(x = hospital, var = "capacity",
-#'                    legend.pos = "right",
-#'                    legend.title.txt = "Number of beds",
-#'                    col = "#ff000020")
-#'   layoutLayer(title = "Global Accessibility to Public Hospitals",
-#'               sources = "", author = "")
-#'   par(opar)
-#' }
+#' # Compute Stewart potentials from known points (hospital) on a
+#' # grid defined by its resolution (200 m)
+#' pot2 <- potential(x = hospital, var = "capacity",
+#'                   fun = "e", span = 1250, beta = 3,
+#'                   res = 200, mask = paris)
+#' 
+#' equipot <- equipotential(pot, mask = paris)
+#' 
+#' plot(equipot)
 #' @export
-stewart_to_sf <- function(x, 
+equipotential <- function(x, 
                           nclass = 8, 
                           breaks, 
                           mask, 

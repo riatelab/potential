@@ -1,11 +1,14 @@
-Package: spatpos
-Title: Spatial Position Models
+Package: potential
+Title: Potential Models
 Version: 0.1.0
 Authors@R: c(
       person("Timothée", "Giraud", email = "timothee.giraud@cnrs.fr", role = c("cre","aut")),
       person("Hadrien", "Commenges", email = "hadrien.commenges@univ-paris1.fr", role = c("aut")))
-Description: Computes spatial position models: Stewart potentials, Reilly
-    catchment areas, Huff catchment areas.
+Description: Provides functions to compute potential models as defined by 
+    Stewart (1941) <doi:10.1126/science.93.2404.89>. Several options are 
+    available to customize the models, such as the possibility to fine-tune the 
+    distance friction functions or to use custom distance matrices. 
+    Some computations are parallelized to improve their efficiency. 
 Depends: R (>= 3.5.0)
 License: GPL-3
 LazyData: true

@@ -1,0 +1,102 @@
+---
+output: github_document
+bibliography: "references.bib"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+knitr::knit_hooks$set(margin = function(before, options, envir){
+  if (before){
+    par(mar=c(0.1,0.1,0.1,0.1))
+  } 
+})
+
+```
+
+# potential
+
+This package provides functions to compute potential models as
+defined by @STEWART89. Several options
+are available to customize the models, such as the possibility to fine-tune
+the distance friction functions or to use custom distance matrices. Some
+computations are parallelized to improve their efficiency.
+
+
+## Installation
+
+### From GitHub
+Development version / unstable
+
+```{r, eval = FALSE}
+require(remotes)
+remotes::install_github("riatelab/potential")
+```
+
+## Demo
+
+```{r, margin = TRUE}
+library(sf)
+library(potential)
+data(hospital)
+
+plot(st_geometry(paris), col = "lightblue")
+plot(st_geometry(hospital), add = TRUE)
+
+
+g <- create_grid(x = paris, res = 150)
+
+plot(st_geometry(paris), col = "lightblue")
+plot(st_geometry(hospital), add = TRUE)
+plot(st_geometry(g), cex = .2, add = TRUE)
+
+
+d <- create_matrix(x = hospital, g)
+knitr::kable(d[1:5, 1:5])
+
+
+```
+
+```{r}
+probInterPlot(fun = "e", span = 1250, beta = 3)
+```
+
+```{r}
+pot <- potential(
+  x = hospital, y = g,
+  d = d, var = "capacity",
+  fun = "e", span = 1250,
+  beta = 3
+)
+plot(pot["OUTPUT"], cex = .5, reset = FALSE)
+plot(st_geometry(paris), add = TRUE, lwd = 3)
+
+```
+
+
+
+```{r, margin = TRUE}
+equipot <- equipotential(pot, mask = paris)
+plot(st_geometry(equipot), col = hcl.colors(nrow(equipot), "cividis"))
+```
+
+
+
+## Note
+
+This package provides access to the revamped potential-related functions 
+initialy offered by 
+[`SpatialPosition`](https://CRAN.R-project.org/package=SpatialPosition).
+
+## References
+
+
+
+
+
+
+
+
+

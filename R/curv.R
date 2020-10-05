@@ -17,9 +17,9 @@
 #' @export
 #'
 #' @examples
-#' probInterPlot(fun = "e", span = 2000, beta = 2, limit = 4000)
-#' probInterPlot(fun = "p", span = 2000, beta = 2, limit = 20000)
-probInterPlot <- function(fun = "e", span, beta, limit = span * 3) {
+#' prob_interaction(fun = "e", span = 2000, beta = 2, limit = 4000)
+#' prob_interaction(fun = "p", span = 2000, beta = 2, limit = 20000)
+prob_interaction <- function(fun = "e", span, beta, limit = span * 5) {
   if (fun == "e") {
     alpha <- log(2) / span^beta
     fric <- function(alpha, matdist, beta) {

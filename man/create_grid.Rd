@@ -10,8 +10,8 @@ create_grid(x, res)
 \item{x}{an sf object, the spatial extent of this object is used to
 create the regular grid.}
 
-\item{res}{resolution of the grid (in map units). If it is not set the grid 
-will contain around 5000 points.}
+\item{res}{resolution of the grid (in map units). If \code{res} is not set 
+the grid will contain around 5000 points.}
 }
 \value{
 The output of the function is an sf object of regularly spaced
@@ -22,10 +22,8 @@ This function creates a regular grid of points
 from the extent of a given spatial object and a given resolution.
 }
 \examples{
-# Create a grid of paris extent and 200 meters resolution
 library(sf)
-data(hospital)
-mygrid <- create_grid(x = paris, res = 200)
-plot(st_geometry(mygrid), cex = 0.1, pch = ".")
-plot(st_geometry(paris), border = "red", lwd = 2, add = TRUE)
+g <- create_grid(x = n3_poly, res = 200000)
+plot(st_geometry(g))
+plot(st_geometry(n3_poly), border = "red", add = TRUE)
 }

@@ -1,11 +1,13 @@
 #' @title Compute Potentials using Parallelization
-#' @description Stewart potentials with a cutoff distance and parallel 
+#' @description This function computes potentials as defined 
+#' by J.Q. Stewart (1941) with a cutoff distance and parallel 
 #' computation.
-#' @param x set of points to compute the potentials from, sf points.
-#' @param y set of points for which the potentials are computed, sf points.
+#' @param x an sf object of points, the set of known observations to estimate 
+#' the potentials from.set of points to compute the potentials from.
+#' @param y an sf object of points, the set of unknown units for which the 
+#' function computes the estimates.
 #' @param var names of the variables in \code{x} from which potentials are 
-#' computed.
-#' Quantitative variables with no negative values.
+#' computed. Quantitative variables with no negative values.
 #' @param fun spatial interaction function. Options are "p"
 #' (pareto, power law) or "e" (exponential).
 #' For pareto the interaction is defined as: (1 + alpha * mDistance) ^ (-beta).
@@ -19,7 +21,7 @@
 #' @param limit maximum distance used to retrieve \code{x} points, in map units.
 #' @param ncl number of clusters. \code{ncl} is set to
 #' \code{parallel::detectCores() - 1} by default.
-#' @param size \code{fstewart} splits \code{y} in smaller chunks and
+#' @param size \code{mcpotential} splits \code{y} in smaller chunks and
 #' dispatches the computation in \code{ncl} cores, \code{size} indicates the
 #' size of each chunks.
 #' @return If only one variable is computed a vector is returned, if more than
@@ -28,7 +30,15 @@
 #' @importFrom sf st_buffer st_centroid st_geometry st_intersects
 #' @examples
 #' \dontrun{
-#' # The dataset is in cartography package
+#'   library(sf)
+#'   g <- create_grid(x = n3_poly, res = 20000)
+#'   pot <- mcpotential(
+#'     x = n3_pt, y = g, var = "POP19",
+#'     fun = "e", span = 75000, beta = 2, limit = 300000
+#'   )
+#'   g$OUTPUT <- pot
+#'   equipot <- equipotential(g, mask = n3_poly)
+#'   plot(equipot['center'], pal = hcl.colors(nrow(equipot), "cividis"))
 #' }
 mcpotential <- function(x, y, var = "v", fun = "e",
                         span = 2000, beta = 2,

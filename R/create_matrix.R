@@ -18,11 +18,8 @@
 #' @return A distance matrix, row names are \code{x} row names, column
 #' names are \code{y} row names.
 #' @examples
-#' data(hospital)
-#' # Create a grid of paris extent and 200 meters resolution
-#' g <- create_grid(x = paris, res = 200)
-#' # Create a distance matrix between hospitals and g
-#' mat <- create_matrix(x = hospital, y = g)
+#' g <- create_grid(x = n3_poly, res = 200000)
+#' mat <- create_matrix(x = n3_pt, y = g)
 #' mat[1:5, 1:5]
 #' @importFrom sf st_centroid st_geometry st_geometry<- st_as_sf st_is_longlat
 #' st_distance st_transform st_is

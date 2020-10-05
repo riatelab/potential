@@ -2,7 +2,7 @@
 % Please edit documentation in R/equipotential.R
 \name{equipotential}
 \alias{equipotential}
-\title{Contours of Equipotential}
+\title{Create Polygons of Equipotential}
 \usage{
 equipotential(
   x,
@@ -37,23 +37,16 @@ fields: id (id of each polygon), min and max (minimum and maximum breaks of
 the polygon) and center (central values of classes).
 }
 \description{
-This function creates spatial polygons of contours equipotential from
-a potential points layer
+This function creates polygons of equipotential from a regular grid of 
+potential points.
 }
 \examples{
 library(sf)
-# Create a grid of paris extent and 200 meters resolution
-data(hospital)
-# Compute Stewart potentials from known points (hospital) on a
-# grid defined by its resolution (200 m)
 pot <- potential(
-  x = hospital, var = "capacity",
-  fun = "e", span = 1250, beta = 3,
-  res = 150, mask = paris
+  x = n3_pt, var = "POP19",
+  fun = "e", span = 200000, beta = 2,
+  res = 200000, mask = n3_poly
 )
-
-equipot <- equipotential(pot, mask = paris)
-
-plot(st_geometry(equipot), 
-     col = hcl.colors(nrow(equipot), "cividis"))
+equipot <- equipotential(pot, mask = n3_poly)
+plot(equipot['center'], pal = hcl.colors(nrow(equipot), "cividis"))
 }

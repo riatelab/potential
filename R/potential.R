@@ -2,9 +2,9 @@
 #' @name potential
 #' @description This function computes potentials as defined 
 #' by J.Q. Stewart (1941).
-#' @param x an sf object, this is the set of known observations to
+#' @param x an sf object, the set of known observations to
 #' estimate the potentials from.
-#' @param y an sf object, this is the set of unknown units for which
+#' @param y an sf object, the set of unknown units for which
 #' the function computes the estimates. Not used when \code{res} is set
 #' up.
 #' @param d a distance matrix between known observations and unknown
@@ -12,7 +12,7 @@
 #' names of \code{x} and column names match the row names of
 #' \code{y}. \code{d} can contain any distance metric (time
 #' distance or euclidean distance for example). If \code{d} is missing, 
-#' the distance matrix is built with \code{\link{create_matrix}}. 
+#' the distance matrix is internaly built with \code{\link{create_matrix}}. 
 #' @param var name of the variable in \code{x} from which potentials are 
 #' computed. Use only quantitative variable with no negative values.
 #' @param fun spatial interaction function. Options are "p"
@@ -30,43 +30,20 @@
 #' @param mask an sf object, the spatial extent of this object is used to
 #' create the regularly spaced points output if \code{y} is not set. 
 #' @param bypassctrl if TRUE, bypass the distance matrix size control 
-#' (see Details).
+#' (see \link{create_matrix} Details).
 #' @param longlat if FALSE, the Euclidean distance is used, if TRUE Great Circle
 #' (WGS84 ellipsoid) distance is used.
 #' @return sf object with the computed potentials in a new field
 #' named \code{OUTPUT}.
 #' @examples
-#' # Create a grid of paris extent and 200 meters resolution
-#' data(hospital)
-#' g <- create_grid(x = paris, res = 200)
-#'
-#' # Create a distance matrix between known points (hospital) and points
-#' # of the grid
-#' d <- create_matrix(x = hospital, y = g)
-#'
-#' # Compute Stewart potentials from known points (hospital) on a given
-#' # grid (g) using a given distance matrix (d)
+#' library(sf)
 #' pot <- potential(
-#'   x = hospital, y = g,
-#'   d = d, var = "capacity",
-#'   fun = "e", span = 1250,
-#'   beta = 3, mask = paris
+#'   x = n3_pt, var = "POP19",
+#'   fun = "e", span = 200000, beta = 2,
+#'   res = 200000, mask = n3_poly
 #' )
-#'
-#' # Compute Stewart potentials from known points (hospital) on a
-#' # grid defined by its resolution
-#' pot2 <- potential(
-#'   x = hospital, var = "capacity",
-#'   fun = "e", span = 1250, beta = 3,
-#'   res = 200, mask = paris
-#' )
-#'
-#' # The two methods have the same result
-#' identical(pot, pot2)
-#' # the function output a sf data.frame
-#' class(pot)
-#' # Computed values
-#' summary(pot$OUTPUT)
+#' equipot <- equipotential(pot, mask = n3_poly)
+#' plot(equipot['center'], pal = hcl.colors(nrow(equipot), "cividis"))
 #' @references
 #' STEWART, JOHN Q. 1941. "An Inverse Distance Variation for Certain Social 
 #' Influences." \emph{Science} 93 (2404): 89–90. 

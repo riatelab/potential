@@ -71,8 +71,8 @@ pot <- potential(
   fun = "e", span = 75000,
   beta = 2
 )
-plot(pot["OUTPUT"], reset = FALSE, pch= 20, cex = 1.2)
-plot(st_geometry(n3_poly), add = TRUE)
+
+plot(pot["OUTPUT"], pch= 20, cex = 1.2)
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->

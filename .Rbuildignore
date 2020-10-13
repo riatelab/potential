@@ -10,3 +10,6 @@ references.bib
 README_files
 ^doc$
 ^Meta$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

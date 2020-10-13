@@ -21,9 +21,13 @@ Imports:
     doParallel, 
     foreach
 Suggests:
-    lwgeom
+    lwgeom,
+    cartography,
+    knitr,
+    rmarkdown
 SystemRequirements: GDAL (>= 2.0.1), GEOS (>= 3.4.0), PROJ.4 (>= 4.8.0)
 URL: https://github.com/riatelab/potential
 BugReports: https://github.com/riatelab/potential/issues
 Encoding: UTF-8
 RoxygenNote: 7.1.1
+VignetteBuilder: knitr

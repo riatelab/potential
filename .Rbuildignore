@@ -8,3 +8,5 @@ img
 README.rmd
 references.bib
 README_files
+^doc$
+^Meta$

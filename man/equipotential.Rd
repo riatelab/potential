@@ -6,17 +6,19 @@
 \usage{
 equipotential(
   x,
+  var,
   nclass = 8,
   breaks,
   mask,
   xcoords = "COORDX",
-  ycoords = "COORDY",
-  var = "OUTPUT"
+  ycoords = "COORDY"
 )
 }
 \arguments{
 \item{x}{an sf object of regularly spaced points. It must contain "X", "Y" 
 and "OUTPUT" fields.}
+
+\item{var}{name of the OUTPUT field in \code{x}.}
 
 \item{nclass}{a number of class.}
 
@@ -28,8 +30,6 @@ to clip polygons of contours equipotential.}
 \item{xcoords}{name of the X coordinates field in \code{x}.}
 
 \item{ycoords}{name of the Y coordinates field in \code{x}.}
-
-\item{var}{name of the OUTPUT field in \code{x}.}
 }
 \value{
 The output is an sf object of polygons. The data frame contains four 
@@ -42,11 +42,12 @@ potential points.
 }
 \examples{
 library(sf)
+y <- create_grid(x = n3_poly, res = 200000)
+d <- create_matrix(n3_pt, y)
 pot <- potential(
-  x = n3_pt, var = "POP19",
-  fun = "e", span = 200000, beta = 2,
-  res = 200000, mask = n3_poly
-)
-equipot <- equipotential(pot, mask = n3_poly)
+  x = n3_pt, y = y, d = d, var = "POP19",
+  fun = "e", span = 200000, beta = 2)
+y$OUTPUT <- pot
+equipot <- equipotential(y, var = "OUTPUT", mask = n3_poly)
 plot(equipot['center'], pal = hcl.colors(nrow(equipot), "cividis"))
 }

@@ -4,37 +4,23 @@
 \alias{potential}
 \title{Compute Potentials}
 \usage{
-potential(
-  x,
-  y,
-  d,
-  var,
-  fun = "e",
-  span,
-  beta,
-  res,
-  mask,
-  bypassctrl = FALSE,
-  longlat = TRUE
-)
+potential(x, y, d, var, fun, span, beta)
 }
 \arguments{
 \item{x}{an sf object, the set of known observations to
 estimate the potentials from.}
 
 \item{y}{an sf object, the set of unknown units for which
-the function computes the estimates. Not used when \code{res} is set
-up.}
+the function computes the estimates.}
 
 \item{d}{a distance matrix between known observations and unknown
 units for which the function computes the estimates. Row names match the row
 names of \code{x} and column names match the row names of
 \code{y}. \code{d} can contain any distance metric (time
-distance or euclidean distance for example). If \code{d} is missing, 
-the distance matrix is internaly built with \code{\link{create_matrix}}.}
+distance or euclidean distance for example).}
 
-\item{var}{name of the variable in \code{x} from which potentials are 
-computed. Use only quantitative variable with no negative values.}
+\item{var}{names of the variables in \code{x} from which potentials are 
+computed. Quantitative variables with no negative values.}
 
 \item{fun}{spatial interaction function. Options are "p"
 (pareto, power law) or "e" (exponential).
@@ -48,22 +34,10 @@ The alpha parameter is computed from parameters given by the user
 interaction function equals 0.5.}
 
 \item{beta}{impedance factor for the spatial interaction function.}
-
-\item{res}{resolution of the output grid (in map units).
-If \code{res} is not set, the grid will contain around 5000 points.}
-
-\item{mask}{an sf object, the spatial extent of this object is used to
-create the regularly spaced points output if \code{y} is not set.}
-
-\item{bypassctrl}{if TRUE, bypass the distance matrix size control 
-(see \link{create_matrix} Details).}
-
-\item{longlat}{if FALSE, the Euclidean distance is used, if TRUE Great Circle
-(WGS84 ellipsoid) distance is used.}
 }
 \value{
-sf object with the computed potentials in a new field
-named \code{OUTPUT}.
+If only one variable is computed a vector is returned, if more than
+one variable is computed a matrix is returned.
 }
 \description{
 This function computes potentials as defined 
@@ -71,12 +45,13 @@ by J.Q. Stewart (1941).
 }
 \examples{
 library(sf)
+y <- create_grid(x = n3_poly, res = 200000)
+d <- create_matrix(n3_pt, y)
 pot <- potential(
-  x = n3_pt, var = "POP19",
-  fun = "e", span = 200000, beta = 2,
-  res = 200000, mask = n3_poly
-)
-equipot <- equipotential(pot, mask = n3_poly)
+  x = n3_pt, y = y, d = d, var = "POP19",
+  fun = "e", span = 200000, beta = 2)
+y$OUTPUT <- pot
+equipot <- equipotential(y, var = "OUTPUT", mask = n3_poly)
 plot(equipot['center'], pal = hcl.colors(nrow(equipot), "cividis"))
 }
 \references{

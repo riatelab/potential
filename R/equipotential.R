@@ -21,21 +21,22 @@
 #' @importFrom methods is
 #' @examples
 #' library(sf)
+#' y <- create_grid(x = n3_poly, res = 200000)
+#' d <- create_matrix(n3_pt, y)
 #' pot <- potential(
-#'   x = n3_pt, var = "POP19",
-#'   fun = "e", span = 200000, beta = 2,
-#'   res = 200000, mask = n3_poly
-#' )
-#' equipot <- equipotential(pot, mask = n3_poly)
+#'   x = n3_pt, y = y, d = d, var = "POP19",
+#'   fun = "e", span = 200000, beta = 2)
+#' y$OUTPUT <- pot
+#' equipot <- equipotential(y, var = "OUTPUT", mask = n3_poly)
 #' plot(equipot['center'], pal = hcl.colors(nrow(equipot), "cividis"))
 #' @export
 equipotential <- function(x,
+                          var,
                           nclass = 8,
                           breaks,
                           mask,
                           xcoords = "COORDX",
-                          ycoords = "COORDY",
-                          var = "OUTPUT") {
+                          ycoords = "COORDY") {
   # get initial min and max values
   vmin <- min(x[[var]], na.rm = TRUE)
   vmax <- max(x[[var]], na.rm = TRUE)

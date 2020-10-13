@@ -81,5 +81,5 @@ create_matrix <- function(x, y, bypassctrl = FALSE, longlat = TRUE) {
   mat <- as.vector(d)
   dim(mat) <- dim(d)
   dimnames(mat) <- list(row.names(x), row.names(y))
-  return(round(mat, digits = 2))
+  return(mat)
 }

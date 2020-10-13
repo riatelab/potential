@@ -37,13 +37,13 @@
 #'     fun = "e", span = 75000, beta = 2, limit = 300000
 #'   )
 #'   g$OUTPUT <- pot
-#'   equipot <- equipotential(g, mask = n3_poly)
+#'   equipot <- equipotential(g, var= "OUTPUT", mask = n3_poly)
 #'   plot(equipot['center'], pal = hcl.colors(nrow(equipot), "cividis"))
 #' }
-mcpotential <- function(x, y, var = "v", fun = "e",
-                        span = 2000, beta = 2,
+mcpotential <- function(x, y, var, fun,
+                        span, beta,
                         limit = 3 * span,
-                        ncl = 3, size = 500) {
+                        ncl, size = 500) {
   # launch multiple cores
   if (missing(ncl)) {
     ncl <- parallel::detectCores(all.tests = FALSE, logical = FALSE) - 1

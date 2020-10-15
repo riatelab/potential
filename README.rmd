@@ -24,7 +24,7 @@ knitr::knit_hooks$set(margin = function(before, options, envir){
 
 
 This package provides functions to compute potential models as
-defined by @STEWART89. Several options
+defined by @STEWART41. Several options
 are available to customize the models, such as the possibility to fine-tune
 the distance friction functions or to use custom distance matrices. Some
 computations are parallelized to improve their efficiency.

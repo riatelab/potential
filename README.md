@@ -96,7 +96,7 @@ initialy offered by
 
 <div id="refs" class="references">
 
-<div id="ref-STEWART89">
+<div id="ref-STEWART41">
 
 Stewart, John Q. 1941. “An Inverse Distance Variation for Certain Social
 Influences.” *Science* 93 (2404): 89–90.

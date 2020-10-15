@@ -1,6 +1,8 @@
 
 # potential
 
+[![R-CMD-check](https://github.com/riatelab/potential/workflows/R-CMD-check/badge.svg)](https://github.com/riatelab/potential/actions)
+
 This package provides functions to compute potential models as defined
 by Stewart (1941). Several options are available to customize the
 models, such as the possibility to fine-tune the distance friction
@@ -33,7 +35,7 @@ plot(st_geometry(n3_poly), col = "lightblue")
 plot(st_geometry(n3_pt), add = TRUE)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](man/figures/unnamed-chunk-2-1.png)<!-- -->
 
 ``` r
 g <- create_grid(x = n3_poly, res = 100000)
@@ -43,7 +45,7 @@ plot(st_geometry(n3_pt), add = TRUE)
 plot(st_geometry(g), cex = .2, add = TRUE)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->
+![](man/figures/unnamed-chunk-2-2.png)<!-- -->
 
 ``` r
 d <- create_matrix(x = n3_pt, g)
@@ -62,27 +64,27 @@ knitr::kable(d[1:5, 1:5], row.names = T)
 prob_interaction(fun = "e", span = 75000, beta = 2, limit = 250000)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](man/figures/unnamed-chunk-3-1.png)<!-- -->
 
 ``` r
-pot <- potential(
+g$pot <- potential(
   x = n3_pt, y = g,
   d = d, var = "POP19",
   fun = "e", span = 75000,
   beta = 2
 )
 
-plot(pot["OUTPUT"], pch= 20, cex = 1.2)
+plot(g["pot"], pch= 20, cex = 1.2)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](man/figures/unnamed-chunk-4-1.png)<!-- -->
 
 ``` r
-equipot <- equipotential(pot, mask = n3_poly)
+equipot <- equipotential(g, var = "pot", mask = n3_poly)
 plot(st_geometry(equipot), col = hcl.colors(nrow(equipot), "cividis"))
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](man/figures/unnamed-chunk-5-1.png)<!-- -->
 
 ## Note
 

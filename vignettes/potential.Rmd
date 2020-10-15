@@ -120,7 +120,7 @@ The probability of interaction at the span value (75 km) is 0.5. As the distance
 We use the the values of interaction intensity for each distance between y and x points. 
 
 
-```{r setup3, fig.cap = "$O_j f(d_{ij})$", echo = FALSE}
+```{r setup3, fig.cap = "$f(d_{ij})$", echo = FALSE}
 span <- 75
 beta <- 2
 alpha <- log(2) / span^beta
@@ -144,7 +144,7 @@ labelLayer(xy, txt = "frictionlab", halo = T, col = "blue")
 
 The contribution of each x point to the total potential is equal to the probability of interaction multiplied by its mass.   
 
-```{r, fig.cap="$O_j f(d_{ij}$", echo = FALSE}
+```{r, fig.cap="$O_j f(d_{ij})$", echo = FALSE}
 xy <- merge(xy, st_drop_geometry(x), by.x = "x", by.y = "ID")
 xy$m <- xy$POP19 * xy$friction
 xy$mlab <- paste0(xy$frictionlab, " * ", xy$POP19, " = ", round(xy$m, 0))
@@ -161,7 +161,7 @@ labelLayer(xy, txt = "mlab", halo = T, col = "blue")
 
 It can be rendered cartographicaly in the following figure. 
 
-```{r, fig.cap ="Contribution of each point", echo = FALSE}
+```{r, fig.cap ="$O_j f(d_{ij})$", echo = FALSE}
 x <- merge(x, st_drop_geometry(xy), by.x = "ID", by.y = "x")
 
 x$mroun <- round(x$m, 0)

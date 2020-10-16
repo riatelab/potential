@@ -3,7 +3,7 @@
 #' by J.Q. Stewart (1941) with a cutoff distance and parallel 
 #' computation.
 #' @param x an sf object of points, the set of known observations to estimate 
-#' the potentials from.set of points to compute the potentials from.
+#' the potentials from.
 #' @param y an sf object of points, the set of unknown units for which the 
 #' function computes the estimates.
 #' @param var names of the variables in \code{x} from which potentials are 

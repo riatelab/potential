@@ -2,9 +2,9 @@
 #' @name potential
 #' @description This function computes potentials as defined 
 #' by J.Q. Stewart (1941).
-#' @param x an sf object, the set of known observations to
+#' @param x an sf object of points, the set of known observations to
 #' estimate the potentials from.
-#' @param y an sf object, the set of unknown units for which
+#' @param y an sf object of points, the set of unknown units for which
 #' the function computes the estimates. 
 #' @param d a distance matrix between known observations and unknown
 #' units for which the function computes the estimates. Row names match the row

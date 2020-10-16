@@ -59,7 +59,7 @@ layoutLayer(title = "Potentials of Population",
             horiz = F, postitle = "center", scale = F)
 ```
 
-![](man/figures/unnamed-chunk-2-1.png)<!-- -->
+![](man/figures/demo-1.png)<!-- -->
 
 ## Note
 

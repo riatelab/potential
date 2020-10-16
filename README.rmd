@@ -35,7 +35,7 @@ remotes::install_github("riatelab/potential")
 ## Demo
 
 
-```{r, fig.width = 7, fig.height= 7}
+```{r demo, fig.width = 7, fig.height= 7}
 library(sf)
 library(potential)
 library(cartography)

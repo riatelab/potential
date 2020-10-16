@@ -4,16 +4,16 @@
 \alias{create_matrix}
 \title{Create a Distance Matrix Between Two Spatial Objects}
 \usage{
-create_matrix(x, y, bypassctrl = FALSE, longlat = TRUE)
+create_matrix(x, y, checksize = TRUE, longlat = TRUE)
 }
 \arguments{
-\item{x}{an sf object, rows of the distance matrix, row names are used as 
+\item{x}{an sf object of points, rows of the distance matrix, row names are used as 
 row names of the matrix.}
 
-\item{y}{an sf object, columns of the distance matrix, row names are used
+\item{y}{an sf objectof points, columns of the distance matrix, row names are used
 as column names of the matrix.}
 
-\item{bypassctrl}{if TRUE, bypass the distance matrix size control 
+\item{checksize}{if FALSE, bypass the distance matrix size control 
 (see Details).}
 
 \item{longlat}{if FALSE, the Euclidean distance is used, if TRUE Great Circle
@@ -31,7 +31,7 @@ spatial objects.
 The function returns a full matrix of distances in meters.
 If the matrix to compute is too large (more than 100,000,000 cells, more than
 10,000,000 origins or more than 10,000,000 destinations)
-the function sends a confirmation message to warn users about the amount of
+the function may sends a message to warn users about the amount of
 RAM mobilized.
 }
 \examples{

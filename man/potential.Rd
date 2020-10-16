@@ -7,10 +7,10 @@
 potential(x, y, d, var, fun, span, beta)
 }
 \arguments{
-\item{x}{an sf object, the set of known observations to
+\item{x}{an sf object of points, the set of known observations to
 estimate the potentials from.}
 
-\item{y}{an sf object, the set of unknown units for which
+\item{y}{an sf object of points, the set of unknown units for which
 the function computes the estimates.}
 
 \item{d}{a distance matrix between known observations and unknown

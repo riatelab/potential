@@ -10,8 +10,7 @@ create_grid(x, res)
 \item{x}{an sf object, the spatial extent of this object is used to
 create the regular grid.}
 
-\item{res}{resolution of the grid (in map units). If \code{res} is not set 
-the grid will contain around 5000 points.}
+\item{res}{resolution of the grid (in map units).}
 }
 \value{
 The output of the function is an sf object of regularly spaced

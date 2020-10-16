@@ -30,61 +30,36 @@ library(sf)
 
 ``` r
 library(potential)
+library(cartography)
+# create a regular grid
+y <- create_grid(x = n3_poly, res = 20000)
 
-plot(st_geometry(n3_poly), col = "lightblue")
-plot(st_geometry(n3_pt), add = TRUE)
+# compute potentials
+pot <- mcpotential(
+  x = n3_pt, y = y,
+  var = "POP19",
+  fun = "e", span = 75000,
+  beta = 2, limit = 250000
+)
+y$pot <- pot / max(pot) * 100
+
+# create equipotential areas
+equipot <- equipotential(y, var = "pot", mask = n3_poly)
+
+# map potentials
+par(mar = c(0, 0, 1.2, 0), bg = "#b5bece")
+choroLayer(equipot, var = "center", breaks = seq(0,100,length.out = 11), 
+           col = hcl.colors(10, 'teal'),
+           border = "#121725", legend.pos = "bottom", 
+           lwd = .2, legend.title.txt = "Potential Intensity",
+           legend.horiz = T)
+layoutLayer(title = "Potentials of Population", 
+            col = "#121725", coltitle = "#4dB8da",
+            sources = "© EuroGeographics for the administrative boundaries and © Eurostat for data",
+            horiz = F, postitle = "center", scale = F)
 ```
 
 ![](man/figures/unnamed-chunk-2-1.png)<!-- -->
-
-``` r
-g <- create_grid(x = n3_poly, res = 100000)
-
-plot(st_geometry(n3_poly), col = "lightblue")
-plot(st_geometry(n3_pt), add = TRUE)
-plot(st_geometry(g), cex = .2, add = TRUE)
-```
-
-![](man/figures/unnamed-chunk-2-2.png)<!-- -->
-
-``` r
-d <- create_matrix(x = n3_pt, g)
-knitr::kable(d[1:5, 1:5], row.names = T)
-```
-
-|   |       1 |       2 |       3 |       4 |       5 |
-| :- | ------: | ------: | ------: | ------: | ------: |
-| 1 | 2671654 | 2574653 | 2478056 | 2381893 | 2286198 |
-| 2 | 2619775 | 2522716 | 2426061 | 2329840 | 2234091 |
-| 3 | 2681131 | 2584765 | 2488856 | 2393440 | 2298559 |
-| 4 | 2640664 | 2543918 | 2447601 | 2351746 | 2256394 |
-| 5 | 2637018 | 2540710 | 2444868 | 2349532 | 2254745 |
-
-``` r
-prob_interaction(fun = "e", span = 75000, beta = 2, limit = 250000)
-```
-
-![](man/figures/unnamed-chunk-3-1.png)<!-- -->
-
-``` r
-g$pot <- potential(
-  x = n3_pt, y = g,
-  d = d, var = "POP19",
-  fun = "e", span = 75000,
-  beta = 2
-)
-
-plot(g["pot"], pch= 20, cex = 1.2)
-```
-
-![](man/figures/unnamed-chunk-4-1.png)<!-- -->
-
-``` r
-equipot <- equipotential(g, var = "pot", mask = n3_poly)
-plot(st_geometry(equipot), col = hcl.colors(nrow(equipot), "cividis"))
-```
-
-![](man/figures/unnamed-chunk-5-1.png)<!-- -->
 
 ## Note
 

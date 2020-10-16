@@ -1,5 +1,5 @@
-#' @title Display the Density of Probability of the Spatial Interaction
-#' @description Display the Density of Probability of the Spatial Interaction
+#' @title Display a Spatial Interaction Function
+#' @description Display a spatial interaction function.
 #' @param fun spatial interaction function. Options are "p"
 #' (pareto, power law) or "e" (exponential).
 #' For pareto the interaction is defined as: (1 + alpha * mDistance) ^ (-beta).
@@ -17,9 +17,9 @@
 #' @export
 #'
 #' @examples
-#' prob_interaction(fun = "e", span = 2000, beta = 2, limit = 4000)
-#' prob_interaction(fun = "p", span = 2000, beta = 2, limit = 20000)
-prob_interaction <- function(fun = "e", span, beta, limit = span * 5) {
+#' plot_inter(fun = "e", span = 2000, beta = 2, limit = 4000)
+#' plot_inter(fun = "p", span = 2000, beta = 2, limit = 20000)
+plot_inter <- function(fun = "e", span, beta, limit = span * 5) {
   if (fun == "e") {
     alpha <- log(2) / span^beta
     fric <- function(alpha, matdist, beta) {

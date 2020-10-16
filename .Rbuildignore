@@ -4,9 +4,7 @@
 ^inst/test\.R$
 ^inst/test/$
 .github
-img
 README.rmd
-references.bib
 README_files
 ^doc$
 ^Meta$

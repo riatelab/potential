@@ -1,19 +1,11 @@
 ---
 output: github_document
-bibliography: "references.bib"
+bibliography: "vignettes/references.bib"
 ---
 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.path = "man/figures/")
-
-
-knitr::knit_hooks$set(margin = function(before, options, envir){
-  if (before){
-    par(mar=c(0.1,0.1,0.1,0.1))
-  } 
-})
-
 ```
 
 
@@ -42,48 +34,37 @@ remotes::install_github("riatelab/potential")
 
 ## Demo
 
-```{r, margin = TRUE}
+
+```{r, fig.width = 7, fig.height= 7}
 library(sf)
 library(potential)
+library(cartography)
+# create a regular grid
+y <- create_grid(x = n3_poly, res = 20000)
 
-plot(st_geometry(n3_poly), col = "lightblue")
-plot(st_geometry(n3_pt), add = TRUE)
-
-
-g <- create_grid(x = n3_poly, res = 100000)
-
-plot(st_geometry(n3_poly), col = "lightblue")
-plot(st_geometry(n3_pt), add = TRUE)
-plot(st_geometry(g), cex = .2, add = TRUE)
-
-
-d <- create_matrix(x = n3_pt, g)
-knitr::kable(d[1:5, 1:5], row.names = T)
-
-
-```
-
-```{r}
-prob_interaction(fun = "e", span = 75000, beta = 2, limit = 250000)
-```
-
-```{r, margin=TRUE}
-g$pot <- potential(
-  x = n3_pt, y = g,
-  d = d, var = "POP19",
+# compute potentials
+pot <- mcpotential(
+  x = n3_pt, y = y,
+  var = "POP19",
   fun = "e", span = 75000,
-  beta = 2
+  beta = 2, limit = 250000
 )
+y$pot <- pot / max(pot) * 100
 
-plot(g["pot"], pch= 20, cex = 1.2)
+# create equipotential areas
+equipot <- equipotential(y, var = "pot", mask = n3_poly)
 
-```
-
-
-
-```{r, margin = TRUE}
-equipot <- equipotential(g, var = "pot", mask = n3_poly)
-plot(st_geometry(equipot), col = hcl.colors(nrow(equipot), "cividis"))
+# map potentials
+par(mar = c(0, 0, 1.2, 0), bg = "#b5bece")
+choroLayer(equipot, var = "center", breaks = seq(0,100,length.out = 11), 
+           col = hcl.colors(10, 'teal'),
+           border = "#121725", legend.pos = "bottom", 
+           lwd = .2, legend.title.txt = "Potential Intensity",
+           legend.horiz = T)
+layoutLayer(title = "Potentials of Population", 
+            col = "#121725", coltitle = "#4dB8da",
+            sources = "© EuroGeographics for the administrative boundaries and © Eurostat for data",
+            horiz = F, postitle = "center", scale = F)
 ```
 
 

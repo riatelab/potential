@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • potential</title>
+<title>Display a Spatial Interaction Function — plot_inter • potential</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Display a Spatial Interaction Function — plot_inter" />
+<meta property="og:description" content="Display a spatial interaction function." />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -108,90 +109,57 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Display a Spatial Interaction Function</h1>
+    <small class="dont-index">Source: <a href='https://github.com/riatelab/potential/blob/master/R/curv.R'><code>R/curv.R</code></a></small>
+    <div class="hidden name"><code>plot_inter.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Display a spatial interaction function.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>plot_inter</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='st'>"e"</span>, <span class='va'>span</span>, <span class='va'>beta</span>, limit <span class='op'>=</span> <span class='va'>span</span> <span class='op'>*</span> <span class='fl'>5</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="create_grid.html">create_grid()</a></code> </p>
-        </td>
-        <td><p>Create a Regularly Spaced Points Grid</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="create_matrix.html">create_matrix()</a></code> </p>
-        </td>
-        <td><p>Create a Distance Matrix Between Two Spatial Objects</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="equipotential.html">equipotential()</a></code> </p>
-        </td>
-        <td><p>Create Polygons of Equipotential</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mcpotential.html">mcpotential()</a></code> </p>
-        </td>
-        <td><p>Compute Potentials using Parallelization</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="n3_poly.html">nuts3</a></code> </p>
-        </td>
-        <td><p>Points and Polygons Layers of European Statistical Units (NUTS3)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="n3_pt.html">nuts3</a></code> </p>
-        </td>
-        <td><p>Points and Polygons Layers of European Statistical Units (NUTS3)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_inter.html">plot_inter()</a></code> </p>
-        </td>
-        <td><p>Display a Spatial Interaction Function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="potential-package.html">potential-package</a></code> </p>
-        </td>
-        <td><p>Potential Models</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="potential.html">potential()</a></code> </p>
-        </td>
-        <td><p>Compute Potentials</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>fun</th>
+      <td><p>spatial interaction function. Options are "p"
+(pareto, power law) or "e" (exponential).
+For pareto the interaction is defined as: (1 + alpha * mDistance) ^ (-beta).
+For "exponential" the interaction is defined as:
+exp(- alpha * mDistance ^ beta).
+The alpha parameter is computed from parameters given by the user
+(<code>beta</code> and <code>span</code>).</p></td>
+    </tr>
+    <tr>
+      <th>span</th>
+      <td><p>distance where the density of probability of the spatial
+interaction function equals 0.5.</p></td>
+    </tr>
+    <tr>
+      <th>beta</th>
+      <td><p>impedance factor for the spatial interaction function.</p></td>
+    </tr>
+    <tr>
+      <th>limit</th>
+      <td><p>maximum distance used to retrieved <code>x</code> points, in 
+map units.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a plot</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>plot_inter</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='st'>"e"</span>, span <span class='op'>=</span> <span class='fl'>2000</span>, beta <span class='op'>=</span> <span class='fl'>2</span>, limit <span class='op'>=</span> <span class='fl'>4000</span><span class='op'>)</span>
+</div><div class='img'><img src='plot_inter-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot_inter</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='st'>"p"</span>, span <span class='op'>=</span> <span class='fl'>2000</span>, beta <span class='op'>=</span> <span class='fl'>2</span>, limit <span class='op'>=</span> <span class='fl'>20000</span><span class='op'>)</span>
+</div><div class='img'><img src='plot_inter-2.png' alt='' width='700' height='433' /></div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

@@ -1,7 +1,7 @@
 ---
 title: "potential"
 output: rmarkdown::html_vignette
-bibliography: "../references.bib"
+bibliography: "references.bib"
 vignette: >
   %\VignetteIndexEntry{potential}
   %\VignetteEngine{knitr::rmarkdown}
@@ -31,6 +31,7 @@ options(scipen = 1000)
 ```
 
 
+# Historic and conceptual background 
 
 
 ## Modeling spatial interactions
@@ -43,7 +44,7 @@ The most ancient and common spatial interactions model is of the gravity form. I
 
 There are two main ways of modeling spatial interactions: the first one focuses on links between places (flows), the second one focuses on places and their influence at a distance. Following the physics metaphor, the flow may be seen as the **gravitational force** between two masses, the place influence as the **gravitational potential**. The `potential` package, as its name suggests, proposes an implementation of the place-based model of potentials defined by John Q. Stewart [-@STEWART41].
 
-The Stewart model is also known in the literature, depending on the discipline, as **potential access**, **gravitational potential** or **gravitational accessibility**. The concept was developped in the 1940s by physicist John Q. Stewart from an analogy to the gravity model. In his seminal work on the catchment areas of American universities, Stewart computes **potentials of population**. This potential is defined as a stock of population weighted by distance:
+The Stewart model is also known in the literature, depending on the discipline, as **potential access**, **gravitational potential** or **gravitational accessibility**. The concept was developed in the 1940s by physicist John Q. Stewart from an analogy to the gravity model. In his seminal work on the catchment areas of American universities, Stewart computes **potentials of population**. This potential is defined as a stock of population weighted by distance:
 
 $$
 A_i = \sum_{j=1}^n O_j f(d_{ij})
@@ -59,10 +60,13 @@ The computation of potentials could be considered as a **spatial interpolation m
 
 ## The distance friction
 
-Modeling spatial interactions implies quantifying the distance friction or impedance. The role of the distance can be interpreted as a disincentive to access desired destinations or opportunities (e.g. jobs, shops). At the very place of the opportunity, the interaction function equals 1, meaning that the potential access is 100%. Far away from the opportunity, the interaction function tends to 0, meaning that the potential access is 0 %. The **span** is defined as the value where the interaction function falls to 0.5 (50%). From the individuals' point of vue, this function may be seen as a degree of availability of a given opportunity. From the opportunity's point of vue (a store for example), the interaction function may be seen as a decreasing catchment area: there is a maximal attraction close to the opportunity and this attraction decreases progressively through distance. 
+Modeling spatial interactions implies quantifying the distance friction or impedance. The role of the distance can be interpreted as a disincentive to access desired destinations or opportunities (e.g. jobs, shops). At the very place of the opportunity, the interaction function equals 1, meaning that the potential access is 100%. Far away from the opportunity, the interaction function tends to 0, meaning that the potential access is 0 %. The **span** is defined as the value where the interaction function falls to 0.5 (50%). From the individuals' point of view, this function may be seen as a degree of availability of a given opportunity. From the opportunity's point of view (a store for example), the interaction function may be seen as a decreasing catchment area: there is a maximal attraction close to the opportunity and this attraction decreases progressively through distance. 
 
 
-## Examples
+# Examples
+
+
+## Potential in one point
 
 The first example details the steps involved in the computation of the potential for one point ($A_{i=1}$).
 This example is based on a population dataset of administrative units of the French region of Occitanie.
@@ -107,11 +111,11 @@ labelLayer(xy, txt = "distlab", halo = T, col = "blue")
 ```
 
 
-For the next step we have to select a distance friction function. `prob_interaction()` allows to visualize the decrease of the interaction density with the distance according to the selected function and its parameters. 
+For the next step we have to select a distance friction function. `plot_inter()` allows to visualize the decrease of the interaction density with the distance according to the selected function and its parameters. 
 
-```{r, echo = FALSE, fig.cap="$f(d_{ij})$"}
+```{r curve, echo = FALSE, fig.cap="$f(d_{ij})$"}
 par(mar = c(5.1, 4.1, 4.1, 2.1))
-prob_interaction(fun = "e", span = 75 , beta = 2, limit = 300)
+plot_inter(fun = "e", span = 75 , beta = 2, limit = 300)
 ```
 
 Here, the probability of interaction at the span value (75 km) is 0.5. 
@@ -178,13 +182,13 @@ plot(y, pch = 23, add = T, bg = "blue", cex = 2)
 
 Finally, the value of the potential of $i$ is the sum of each $j$'s contributions. 
 
-## Compute potentials in a pseudo-continuous space
+## Potentials in a pseudo-continuous space
 
 A common practice is to compute potentials on points of a regular grid to estimate potentials on a pseudo-continue surface.
 
 We can use the same dataset as an example of use. 
 
-## Create a regular grid
+### Create a regular grid
 
 `create_grid()` is used to create a regular grid with the extent of an existing layer (`x`) and a specific resolution (`res`). The resolution is set in units of `x` (here, meters).
 
@@ -200,7 +204,7 @@ y <- create_grid(x = n3_poly, res = 100000)
 plot(st_geometry(y), pch = 23, add = TRUE, bg = "blue", cex = .5 )
 ```
 
-## Create a distance matrix
+### Create a distance matrix
 
 `create_matrix()` is used to compute distances between objects. 
 
@@ -211,7 +215,7 @@ d[1:5, 1:5]
 
 The distance is expressed in map units (meters).
 
-## Compute the potentials
+### Compute the potentials
 
 The `potential()` function computes potentials. 
 
@@ -244,10 +248,16 @@ choroLayer(iso, var = "center", breaks =  seq(0,100, 10),
 ```
 
 
-In order to obtain smoother equipotential areas we need to compute the potentials on a much finer grid and that can be really time consuming with `potential()`.  `mcpotential()` take advantage of multithread possibility to compute potentials faster. The only drawback is the impossibility to provide a custom distance matrix to the function, and to use only carthesian distances (no great circle distances.). 
+
+### Compute the potentials using parallel computation
 
 
-```{r smooth, fig.path="../man/figures", fig.width = 7, fig.height= 6}
+In order to obtain smoother equipotential areas we need to compute the potentials on a much finer grid and that can be really time consuming with `potential()`.  
+`mcpotential()` computes potentials with a cutoff distance and parallel computation. The cutoff distance means that points that are too far away are not taken into account in the computation. 
+The limits of this function are the impossibility to provide custom distance matrices (`d`), and the fact that it only uses Cartesian distances (hence its use for global data is likely to be inappropriate). 
+
+
+```{r smooth, fig.path="./", fig.width = 7, fig.height= 6, results=FALSE, eval = F}
 y <- create_grid(x = n3_poly, res = 20000)
 y$pot <- mcpotential(x = n3_pt, y = y, 
                      var = "POP19", fun = "e",
@@ -256,18 +266,19 @@ y$pot2 <- 100 * y$pot / max(y$pot)
 iso <- equipotential(x = y, var = "pot2", breaks = seq(0,100, 10), mask = n3_poly)
 choroLayer(iso, var = "center", breaks =  seq(0,100, 10), 
            col = hcl.colors(10, 'teal'), 
-           border = "#121725", legend.pos = "topright", 
-           lwd = .2, legend.title.txt = "Potential Intensity", legend.horiz = T)
+           border = "#121725", legend.pos = c(6194790,3428230), 
+           lwd = .2, legend.title.txt = "Potential Intensity")
 mtext(text = "© EuroGeographics for the administrative boundaries and © Eurostat for data",
-      side=1, line = -1, cex = .8, adj = 1)
+      side=1, line = -1, cex = .7, adj = .99)
 mtext(text = "Potential of population",
-      side=3, line = -2, cex = 1.1, adj = 0)
+      side=3, line = -2, cex = 1.1, adj = 0.01)
 ```
 
+![](smooth-1.png)
 
 
 
-## Bibliography
+# Bibliography
 
 
 

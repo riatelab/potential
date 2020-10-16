@@ -4,8 +4,7 @@
 #' from the extent of a given spatial object and a given resolution.
 #' @param x an sf object, the spatial extent of this object is used to
 #' create the regular grid.
-#' @param res resolution of the grid (in map units). If \code{res} is not set 
-#' the grid will contain around 5000 points. 
+#' @param res resolution of the grid (in map units). 
 #' @return The output of the function is an sf object of regularly spaced
 #' points with the extent of x.
 #' @examples
@@ -18,15 +17,15 @@
 #' @export
 create_grid <- function(x, res) {
   bb <- st_bbox(x)
-  if (missing(res)) {
-    k <- 5000
-    s <- (bb[3] - bb[1]) / (bb[4] - bb[2])
-    ny <- sqrt(k / s)
-    nx <- s * ny
-    gx <- seq(bb[1], bb[3], length.out = nx)
-    gy <- seq(bb[2], bb[4], length.out = ny)
-    res <- (mean(c(gx[2] - gx[1], gy[2] - gy[1])))
-  }
+  # if (missing(res)) {
+  #   k <- 5000
+  #   s <- (bb[3] - bb[1]) / (bb[4] - bb[2])
+  #   ny <- sqrt(k / s)
+  #   nx <- s * ny
+  #   gx <- seq(bb[1], bb[3], length.out = nx)
+  #   gy <- seq(bb[2], bb[4], length.out = ny)
+  #   res <- (mean(c(gx[2] - gx[1], gy[2] - gy[1])))
+  # }
 
   rounder <- bb %% res
   bb[1:2] <- bb[1:2] - rounder[1:2]

@@ -122,24 +122,24 @@ spatial objects." />
 spatial objects.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_matrix</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, bypassctrl <span class='op'>=</span> <span class='cn'>FALSE</span>, longlat <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>create_matrix</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, checksize <span class='op'>=</span> <span class='cn'>TRUE</span>, longlat <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>an sf object, rows of the distance matrix, row names are used as 
+      <td><p>an sf object of points, rows of the distance matrix, row names are used as 
 row names of the matrix.</p></td>
     </tr>
     <tr>
       <th>y</th>
-      <td><p>an sf object, columns of the distance matrix, row names are used
+      <td><p>an sf objectof points, columns of the distance matrix, row names are used
 as column names of the matrix.</p></td>
     </tr>
     <tr>
-      <th>bypassctrl</th>
-      <td><p>if TRUE, bypass the distance matrix size control 
+      <th>checksize</th>
+      <td><p>if FALSE, bypass the distance matrix size control 
 (see Details).</p></td>
     </tr>
     <tr>
@@ -158,7 +158,7 @@ names are <code>y</code> row names.</p>
     <p>The function returns a full matrix of distances in meters.
 If the matrix to compute is too large (more than 100,000,000 cells, more than
 10,000,000 origins or more than 10,000,000 destinations)
-the function sends a confirmation message to warn users about the amount of
+the function may sends a message to warn users about the amount of
 RAM mobilized.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

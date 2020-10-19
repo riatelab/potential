@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Create Polygons of Equipotential — equipotential" />
-<meta property="og:description" content="This function creates polygons of equipotential from a regular grid of 
+<meta property="og:description" content="This function creates polygons of equipotential from a regular grid of
 potential points." />
 
 
@@ -73,7 +73,7 @@ potential points." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">potential</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.0</span>
       </span>
     </div>
 
@@ -118,7 +118,7 @@ potential points." />
     </div>
 
     <div class="ref-description">
-    <p>This function creates polygons of equipotential from a regular grid of 
+    <p>This function creates polygons of equipotential from a regular grid of
 potential points.</p>
     </div>
 
@@ -137,7 +137,7 @@ potential points.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>an sf object of regularly spaced points. It must contain "X", "Y" 
+      <td><p>an sf object of regularly spaced points. It must contain "X", "Y"
 and "OUTPUT" fields.</p></td>
     </tr>
     <tr>
@@ -154,7 +154,7 @@ and "OUTPUT" fields.</p></td>
     </tr>
     <tr>
       <th>mask</th>
-      <td><p>an sf object of polygons or multipolygons. /codemask is  used 
+      <td><p>an sf object of polygons or multipolygons. /codemask is  used
 to clip polygons of contours equipotential.</p></td>
     </tr>
     <tr>
@@ -169,8 +169,8 @@ to clip polygons of contours equipotential.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The output is an sf object of polygons. The data frame contains four 
-fields: id (id of each polygon), min and max (minimum and maximum breaks of 
+    <p>The output is an sf object (POLYGONS). The data frame contains four
+fields: id (id of each polygon), min and max (minimum and maximum breaks of
 the polygon) and center (central values of classes).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -179,10 +179,11 @@ the polygon) and center (central values of classes).</p>
 <span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='create_matrix.html'>create_matrix</a></span><span class='op'>(</span><span class='va'>n3_pt</span>, <span class='va'>y</span><span class='op'>)</span>
 <span class='va'>pot</span> <span class='op'>&lt;-</span> <span class='fu'><a href='potential.html'>potential</a></span><span class='op'>(</span>
   x <span class='op'>=</span> <span class='va'>n3_pt</span>, y <span class='op'>=</span> <span class='va'>y</span>, d <span class='op'>=</span> <span class='va'>d</span>, var <span class='op'>=</span> <span class='st'>"POP19"</span>,
-  fun <span class='op'>=</span> <span class='st'>"e"</span>, span <span class='op'>=</span> <span class='fl'>200000</span>, beta <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+  fun <span class='op'>=</span> <span class='st'>"e"</span>, span <span class='op'>=</span> <span class='fl'>200000</span>, beta <span class='op'>=</span> <span class='fl'>2</span>
+<span class='op'>)</span>
 <span class='va'>y</span><span class='op'>$</span><span class='va'>OUTPUT</span> <span class='op'>&lt;-</span> <span class='va'>pot</span>
 <span class='va'>equipot</span> <span class='op'>&lt;-</span> <span class='fu'>equipotential</span><span class='op'>(</span><span class='va'>y</span>, var <span class='op'>=</span> <span class='st'>"OUTPUT"</span>, mask <span class='op'>=</span> <span class='va'>n3_poly</span><span class='op'>)</span>
-<span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>equipot</span><span class='op'>[</span><span class='st'>'center'</span><span class='op'>]</span>, pal <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>hcl.colors</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>equipot</span><span class='op'>)</span>, <span class='st'>"cividis"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>equipot</span><span class='op'>[</span><span class='st'>"center"</span><span class='op'>]</span>, pal <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>hcl.colors</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>equipot</span><span class='op'>)</span>, <span class='st'>"cividis"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='img'><img src='equipotential-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -73,7 +73,7 @@ spatial objects." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">potential</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.0</span>
       </span>
     </div>
 
@@ -129,17 +129,19 @@ spatial objects.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>an sf object of points, rows of the distance matrix, row names are used as 
+      <td><p>an sf object (POINT), rows of the distance matrix, row names are 
+used as
 row names of the matrix.</p></td>
     </tr>
     <tr>
       <th>y</th>
-      <td><p>an sf objectof points, columns of the distance matrix, row names are used
+      <td><p>an sf object (POINT), columns of the distance matrix, row names 
+are used
 as column names of the matrix.</p></td>
     </tr>
     <tr>
       <th>checksize</th>
-      <td><p>if FALSE, bypass the distance matrix size control 
+      <td><p>if FALSE, bypass the distance matrix size control
 (see Details).</p></td>
     </tr>
     <tr>

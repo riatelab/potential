@@ -72,7 +72,7 @@ layoutLayer(title = "Potentials of Population",
 ## Note
 
 This package provides access to the revamped potential-related functions 
-initialy offered by 
+initially offered by 
 [`SpatialPosition`](https://CRAN.R-project.org/package=SpatialPosition).
 
 ## References

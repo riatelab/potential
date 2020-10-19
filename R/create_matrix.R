@@ -2,9 +2,9 @@
 #' @name create_matrix
 #' @description This function creates a distance matrix between two
 #' spatial objects.
-#' @param x an sf object of points, rows of the distance matrix, row names are used as 
+#' @param x an sf object (POINT), rows of the distance matrix, row names are used as 
 #' row names of the matrix.
-#' @param y an sf objectof points, columns of the distance matrix, row names are used
+#' @param y an sf object (POINT), columns of the distance matrix, row names are used
 #' as column names of the matrix.
 #' @param checksize if FALSE, bypass the distance matrix size control 
 #' (see Details).

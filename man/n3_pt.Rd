@@ -20,7 +20,7 @@ website (05/10/2020) from the "demo_r_pjanaggr3" dataset
 
 Geometries are downloaded from the GISCO website (NUTS3 - 2016 - 1:60 Million)
 
-When data from this packgage is used in any printed or electronic 
+When data from this package is used in any printed or electronic 
 publication, in addition to any other provisions applicable to the whole 
 Eurostat website, data source will have to be acknowledged in the legend of 
 the map and in the introductory page of the publication with the following 

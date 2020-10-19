@@ -12,7 +12,7 @@
 #' @param xcoords name of the X coordinates field in \code{x}.
 #' @param ycoords name of the Y coordinates field in \code{x}.
 #' @param var name of the OUTPUT field in \code{x}.
-#' @return The output is an sf object of polygons. The data frame contains four 
+#' @return The output is an sf object (POLYGONS). The data frame contains four 
 #' fields: id (id of each polygon), min and max (minimum and maximum breaks of 
 #' the polygon) and center (central values of classes).
 #' @importFrom sf st_as_sf st_crs st_bbox st_cast st_sf st_sfc st_intersection

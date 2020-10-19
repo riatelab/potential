@@ -7,10 +7,10 @@
 mcpotential(x, y, var, fun, span, beta, limit = 3 * span, ncl, size = 500)
 }
 \arguments{
-\item{x}{an sf object of points, the set of known observations to estimate 
+\item{x}{an sf object (POINT), the set of known observations to estimate 
 the potentials from.}
 
-\item{y}{an sf object of points, the set of unknown units for which the 
+\item{y}{an sf object (POINT), the set of unknown units for which the 
 function computes the estimates.}
 
 \item{var}{names of the variables in \code{x} from which potentials are 

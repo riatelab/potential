@@ -32,7 +32,7 @@ to clip polygons of contours equipotential.}
 \item{ycoords}{name of the Y coordinates field in \code{x}.}
 }
 \value{
-The output is an sf object of polygons. The data frame contains four 
+The output is an sf object (POLYGONS). The data frame contains four 
 fields: id (id of each polygon), min and max (minimum and maximum breaks of 
 the polygon) and center (central values of classes).
 }

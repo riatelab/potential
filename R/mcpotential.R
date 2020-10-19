@@ -2,9 +2,9 @@
 #' @description This function computes potentials as defined 
 #' by J.Q. Stewart (1941) with a cutoff distance and parallel 
 #' computation.
-#' @param x an sf object of points, the set of known observations to estimate 
+#' @param x an sf object (POINT), the set of known observations to estimate 
 #' the potentials from.
-#' @param y an sf object of points, the set of unknown units for which the 
+#' @param y an sf object (POINT), the set of unknown units for which the 
 #' function computes the estimates.
 #' @param var names of the variables in \code{x} from which potentials are 
 #' computed. Quantitative variables with no negative values.

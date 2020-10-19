@@ -32,7 +32,8 @@ pot <- potential(
 g$OUTPUT <- pot
 expect_silent(equipotential(g, var = "OUTPUT", mask = n3_poly))
 expect_silent(equipotential(g, var = "OUTPUT"))
-expect_silent(equipotential(g, var = "OUTPUT", breaks = c(0,1000,1000000,40000000)))
+expect_silent(equipotential(g, var = "OUTPUT", 
+                            breaks = c(0,1000,1000000,40000000)))
               
 
 
@@ -41,6 +42,9 @@ home <- length(unclass(packageVersion("potential"))[[1]]) == 4
 if(home){
   expect_silent(mcpotential(
     x = n3_pt, y = g, var = "POP19",
+    fun = "e", span = 200000, beta = 2))
+  expect_silent(mcpotential(
+    x = n3_pt, y = g, var = c("POP19", "POP18"),
     fun = "e", span = 200000, beta = 2))
   expect_silent(mcpotential(
     x = n3_pt, y = g, var = "POP19",

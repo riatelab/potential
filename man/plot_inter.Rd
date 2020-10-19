@@ -20,7 +20,7 @@ interaction function equals 0.5.}
 
 \item{beta}{impedance factor for the spatial interaction function.}
 
-\item{limit}{maximum distance used to retrieved \code{x} points, in 
+\item{limit}{maximum distance used to retrieved \code{x} points, in
 map units.}
 }
 \value{

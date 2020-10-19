@@ -7,13 +7,13 @@
 mcpotential(x, y, var, fun, span, beta, limit = 3 * span, ncl, size = 500)
 }
 \arguments{
-\item{x}{an sf object (POINT), the set of known observations to estimate 
+\item{x}{an sf object (POINT), the set of known observations to estimate
 the potentials from.}
 
-\item{y}{an sf object (POINT), the set of unknown units for which the 
+\item{y}{an sf object (POINT), the set of unknown units for which the
 function computes the estimates.}
 
-\item{var}{names of the variables in \code{x} from which potentials are 
+\item{var}{names of the variables in \code{x} from which potentials are
 computed. Quantitative variables with no negative values.}
 
 \item{fun}{spatial interaction function. Options are "p"
@@ -43,20 +43,20 @@ If only one variable is computed a vector is returned, if more than
 one variable is computed a matrix is returned.
 }
 \description{
-This function computes potentials as defined 
-by J.Q. Stewart (1941) with a cutoff distance and parallel 
+This function computes potentials as defined
+by J.Q. Stewart (1941) with a cutoff distance and parallel
 computation.
 }
 \examples{
 \dontrun{
-  library(sf)
-  g <- create_grid(x = n3_poly, res = 20000)
-  pot <- mcpotential(
-    x = n3_pt, y = g, var = "POP19",
-    fun = "e", span = 75000, beta = 2, limit = 300000
-  )
-  g$OUTPUT <- pot
-  equipot <- equipotential(g, var= "OUTPUT", mask = n3_poly)
-  plot(equipot['center'], pal = hcl.colors(nrow(equipot), "cividis"))
+library(sf)
+g <- create_grid(x = n3_poly, res = 20000)
+pot <- mcpotential(
+  x = n3_pt, y = g, var = "POP19",
+  fun = "e", span = 75000, beta = 2, limit = 300000
+)
+g$OUTPUT <- pot
+equipot <- equipotential(g, var = "OUTPUT", mask = n3_poly)
+plot(equipot["center"], pal = hcl.colors(nrow(equipot), "cividis"))
 }
 }

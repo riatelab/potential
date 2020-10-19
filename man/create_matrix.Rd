@@ -7,13 +7,15 @@
 create_matrix(x, y, checksize = TRUE, longlat = TRUE)
 }
 \arguments{
-\item{x}{an sf object (POINT), rows of the distance matrix, row names are used as 
+\item{x}{an sf object (POINT), rows of the distance matrix, row names are 
+used as
 row names of the matrix.}
 
-\item{y}{an sf object (POINT), columns of the distance matrix, row names are used
+\item{y}{an sf object (POINT), columns of the distance matrix, row names 
+are used
 as column names of the matrix.}
 
-\item{checksize}{if FALSE, bypass the distance matrix size control 
+\item{checksize}{if FALSE, bypass the distance matrix size control
 (see Details).}
 
 \item{longlat}{if FALSE, the Euclidean distance is used, if TRUE Great Circle

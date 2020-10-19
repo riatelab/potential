@@ -19,7 +19,7 @@ names of \code{x} and column names match the row names of
 \code{y}. \code{d} can contain any distance metric (time
 distance or euclidean distance for example).}
 
-\item{var}{names of the variables in \code{x} from which potentials are 
+\item{var}{names of the variables in \code{x} from which potentials are
 computed. Quantitative variables with no negative values.}
 
 \item{fun}{spatial interaction function. Options are "p"
@@ -40,7 +40,7 @@ If only one variable is computed a vector is returned, if more than
 one variable is computed a matrix is returned.
 }
 \description{
-This function computes potentials as defined 
+This function computes potentials as defined
 by J.Q. Stewart (1941).
 }
 \examples{
@@ -49,13 +49,14 @@ y <- create_grid(x = n3_poly, res = 200000)
 d <- create_matrix(n3_pt, y)
 pot <- potential(
   x = n3_pt, y = y, d = d, var = "POP19",
-  fun = "e", span = 200000, beta = 2)
+  fun = "e", span = 200000, beta = 2
+)
 y$OUTPUT <- pot
 equipot <- equipotential(y, var = "OUTPUT", mask = n3_poly)
-plot(equipot['center'], pal = hcl.colors(nrow(equipot), "cividis"))
+plot(equipot["center"], pal = hcl.colors(nrow(equipot), "cividis"))
 }
 \references{
-STEWART, JOHN Q. 1941. "An Inverse Distance Variation for Certain Social 
-Influences." \emph{Science} 93 (2404): 89–90. 
+STEWART, JOHN Q. 1941. "An Inverse Distance Variation for Certain Social
+Influences." \emph{Science} 93 (2404): 89–90.
 \url{https://doi.org/10.1126/science.93.2404.89}.
 }

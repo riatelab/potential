@@ -2,10 +2,11 @@
 # potential
 
 [![R-CMD-check](https://github.com/riatelab/potential/workflows/R-CMD-check/badge.svg)](https://github.com/riatelab/potential/actions)
+[![codecov](https://codecov.io/gh/riatelab/potential/branch/master/graph/badge.svg?token=G8MZTHC9KQ)](https://codecov.io/gh/riatelab/potential)
 
 This package provides functions to compute potential models as defined
 by Stewart (1941). Several options are available to customize the
-models, such as the possibility to fine-tune the distance friction
+models, for example it is possible to fine-tune the distance friction
 functions or to use custom distance matrices. Some computations are
 parallelized to improve their efficiency.
 
@@ -64,7 +65,7 @@ layoutLayer(title = "Potentials of Population",
 ## Note
 
 This package provides access to the revamped potential-related functions
-initialy offered by
+initially offered by
 [`SpatialPosition`](https://CRAN.R-project.org/package=SpatialPosition).
 
 ## References

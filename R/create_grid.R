@@ -4,7 +4,7 @@
 #' from the extent of a given spatial object and a given resolution.
 #' @param x an sf object, the spatial extent of this object is used to
 #' create the regular grid.
-#' @param res resolution of the grid (in map units). 
+#' @param res resolution of the grid (in map units).
 #' @return The output of the function is an sf object of regularly spaced
 #' points with the extent of x.
 #' @examples

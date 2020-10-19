@@ -1,12 +1,12 @@
 #' @title Compute Potentials using Parallelization
-#' @description This function computes potentials as defined 
-#' by J.Q. Stewart (1941) with a cutoff distance and parallel 
+#' @description This function computes potentials as defined
+#' by J.Q. Stewart (1941) with a cutoff distance and parallel
 #' computation.
-#' @param x an sf object (POINT), the set of known observations to estimate 
+#' @param x an sf object (POINT), the set of known observations to estimate
 #' the potentials from.
-#' @param y an sf object (POINT), the set of unknown units for which the 
+#' @param y an sf object (POINT), the set of unknown units for which the
 #' function computes the estimates.
-#' @param var names of the variables in \code{x} from which potentials are 
+#' @param var names of the variables in \code{x} from which potentials are
 #' computed. Quantitative variables with no negative values.
 #' @param fun spatial interaction function. Options are "p"
 #' (pareto, power law) or "e" (exponential).
@@ -30,15 +30,15 @@
 #' @importFrom sf st_buffer st_centroid st_geometry st_intersects
 #' @examples
 #' \dontrun{
-#'   library(sf)
-#'   g <- create_grid(x = n3_poly, res = 20000)
-#'   pot <- mcpotential(
-#'     x = n3_pt, y = g, var = "POP19",
-#'     fun = "e", span = 75000, beta = 2, limit = 300000
-#'   )
-#'   g$OUTPUT <- pot
-#'   equipot <- equipotential(g, var= "OUTPUT", mask = n3_poly)
-#'   plot(equipot['center'], pal = hcl.colors(nrow(equipot), "cividis"))
+#' library(sf)
+#' g <- create_grid(x = n3_poly, res = 20000)
+#' pot <- mcpotential(
+#'   x = n3_pt, y = g, var = "POP19",
+#'   fun = "e", span = 75000, beta = 2, limit = 300000
+#' )
+#' g$OUTPUT <- pot
+#' equipot <- equipotential(g, var = "OUTPUT", mask = n3_poly)
+#' plot(equipot["center"], pal = hcl.colors(nrow(equipot), "cividis"))
 #' }
 mcpotential <- function(x, y, var, fun,
                         span, beta,
@@ -134,8 +134,10 @@ mcpotential <- function(x, y, var, fun,
   if (length(var) == 1) {
     pot <- as.numeric(pot)
   } else {
-    pot <- matrix(pot, ncol = length(var), byrow = TRUE, 
-                  dimnames = list(NULL, var))
+    pot <- matrix(pot,
+      ncol = length(var), byrow = TRUE,
+      dimnames = list(NULL, var)
+    )
   }
 
   return(pot)

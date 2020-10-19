@@ -10,7 +10,7 @@
 #' @param span distance where the density of probability of the spatial
 #' interaction function equals 0.5.
 #' @param beta impedance factor for the spatial interaction function.
-#' @param limit maximum distance used to retrieved \code{x} points, in 
+#' @param limit maximum distance used to retrieved \code{x} points, in
 #' map units.
 #' @return a plot
 #' @import graphics
@@ -51,8 +51,10 @@ plot_inter <- function(fun = "e", span, beta, limit = span * 5) {
   text(x = span, y = 0.5, labels = "span", col = "grey40", pos = 4)
 
   points(x = limit, y = fric(alpha, limit, beta), pch = 21, bg = "red")
-  text(x = limit, y = fric(alpha, limit, beta), labels = "limit", 
-       col = "grey40", pos = 3)
+  text(
+    x = limit, y = fric(alpha, limit, beta), labels = "limit",
+    col = "grey40", pos = 3
+  )
 
   segments(
     x0 = 0, y0 = fric(alpha, limit, beta),

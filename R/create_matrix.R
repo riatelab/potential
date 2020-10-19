@@ -2,11 +2,13 @@
 #' @name create_matrix
 #' @description This function creates a distance matrix between two
 #' spatial objects.
-#' @param x an sf object (POINT), rows of the distance matrix, row names are used as 
+#' @param x an sf object (POINT), rows of the distance matrix, row names are 
+#' used as
 #' row names of the matrix.
-#' @param y an sf object (POINT), columns of the distance matrix, row names are used
+#' @param y an sf object (POINT), columns of the distance matrix, row names 
+#' are used
 #' as column names of the matrix.
-#' @param checksize if FALSE, bypass the distance matrix size control 
+#' @param checksize if FALSE, bypass the distance matrix size control
 #' (see Details).
 #' @param longlat if FALSE, the Euclidean distance is used, if TRUE Great Circle
 #' (WGS84 ellipsoid) distance is used.
@@ -30,13 +32,15 @@ create_matrix <- function(x, y, checksize = TRUE, longlat = TRUE) {
     nk <- nrow(x)
     nu <- nrow(y)
     if (nk * nu > 100000000 | nu > 10000000 | nk > 10000000) {
-      stop(paste0("Computation aborted. The distance matrix would probably ",
-      "be too large. Use checksize = FALSE to bypass this control."),
-           call. = FALSE
-      ) 
-    }  
+      stop(paste0(
+        "Computation aborted. The distance matrix would probably ",
+        "be too large. Use checksize = FALSE to bypass this control."
+      ),
+      call. = FALSE
+      )
+    }
   }
-  
+
   if (!st_is_longlat(x)) {
     if (longlat) {
       x <- st_transform(x, 4326)

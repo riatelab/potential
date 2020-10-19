@@ -1,19 +1,19 @@
 #' @title Create Polygons of Equipotential
 #' @name equipotential
 #' @description
-#' This function creates polygons of equipotential from a regular grid of 
-#' potential points. 
-#' @param x an sf object of regularly spaced points. It must contain "X", "Y" 
+#' This function creates polygons of equipotential from a regular grid of
+#' potential points.
+#' @param x an sf object of regularly spaced points. It must contain "X", "Y"
 #' and "OUTPUT" fields.
 #' @param nclass a number of class.
 #' @param breaks a vector of break values.
-#' @param mask an sf object of polygons or multipolygons. /code{mask} is  used 
+#' @param mask an sf object of polygons or multipolygons. /code{mask} is  used
 #' to clip polygons of contours equipotential.
 #' @param xcoords name of the X coordinates field in \code{x}.
 #' @param ycoords name of the Y coordinates field in \code{x}.
 #' @param var name of the OUTPUT field in \code{x}.
-#' @return The output is an sf object (POLYGONS). The data frame contains four 
-#' fields: id (id of each polygon), min and max (minimum and maximum breaks of 
+#' @return The output is an sf object (POLYGONS). The data frame contains four
+#' fields: id (id of each polygon), min and max (minimum and maximum breaks of
 #' the polygon) and center (central values of classes).
 #' @importFrom sf st_as_sf st_crs st_bbox st_cast st_sf st_sfc st_intersection
 #' st_union st_agr<- st_collection_extract st_make_valid
@@ -25,10 +25,11 @@
 #' d <- create_matrix(n3_pt, y)
 #' pot <- potential(
 #'   x = n3_pt, y = y, d = d, var = "POP19",
-#'   fun = "e", span = 200000, beta = 2)
+#'   fun = "e", span = 200000, beta = 2
+#' )
 #' y$OUTPUT <- pot
 #' equipot <- equipotential(y, var = "OUTPUT", mask = n3_poly)
-#' plot(equipot['center'], pal = hcl.colors(nrow(equipot), "cividis"))
+#' plot(equipot["center"], pal = hcl.colors(nrow(equipot), "cividis"))
 #' @export
 equipotential <- function(x,
                           var,

@@ -111,7 +111,7 @@ labelLayer(xy, txt = "distlab", halo = T, col = "blue")
 ```
 
 
-For the next step we have to select a distance friction function. `plot_inter()` allows to visualize the decrease of the interaction density with the distance according to the selected function and its parameters. 
+For the next step we have to select a distance friction function. `plot_inter()` allows to visualize the decrease of the interaction intensity with the distance according to the selected function and its parameters. 
 
 ```{r curve, echo = FALSE, fig.cap="$f(d_{ij})$"}
 par(mar = c(5.1, 4.1, 4.1, 2.1))

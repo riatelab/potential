@@ -21,6 +21,7 @@ Imports:
     doParallel, 
     foreach
 Suggests:
+    covr,
     lwgeom,
     cartography,
     knitr,

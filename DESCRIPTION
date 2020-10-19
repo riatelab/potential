@@ -1,6 +1,6 @@
 Package: potential
 Title: Potential Models
-Version: 0.1.0
+Version: 0.1.0.0
 Authors@R: c(
       person("Timothée", "Giraud", email = "timothee.giraud@cnrs.fr", role = c("cre","aut")),
       person("Hadrien", "Commenges", email = "hadrien.commenges@univ-paris1.fr", role = c("aut")))

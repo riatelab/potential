@@ -1,6 +1,6 @@
-#' @title Compute Potentials
+#' @title Compute the Potential Model
 #' @name potential
-#' @description This function computes potentials as defined
+#' @description This function computes the potential mo^del as defined
 #' by J.Q. Stewart (1941).
 #' @param x an sf object (POINT), the set of known observations to
 #' estimate the potentials from.

@@ -37,12 +37,12 @@ options(scipen = 1000)
 ## Modeling spatial interactions
 
 Modeling spatial interactions is used to understand and quantify the level of interaction between different locations.  
-The most ancient and common spatial interactions model is of the gravity form. It has roots in the late 19st century and has been used in several fields (geography, economy, demography) to model a high variety of flows (commuting, trade, migrations). A brief presentation can be found in @rodrigue2013spatial and a more detailed one, among many others, in @fotheringham1989spatial.
+The most ancient and common spatial interactions model the gravity model. It has roots in the late 19st century and has been used in several fields (geography, economy, demography) to model a high variety of flows (commuting, trade, migrations). A brief presentation can be found in @rodrigue2013spatial and a more detailed one, among many others, in @fotheringham1989spatial.
 
 
 ## A place-based model: Stewart's potentials
 
-There are two main ways of modeling spatial interactions: the first one focuses on links between places (flows), the second one focuses on places and their influence at a distance. Following the physics metaphor, the flow may be seen as the **gravitational force** between two masses, the place influence as the **gravitational potential**. The `potential` package, as its name suggests, proposes an implementation of the place-based model of potentials defined by John Q. Stewart [-@STEWART41].
+There are two main ways of modeling spatial interactions: the first one focuses on links between places (flows), the second one focuses on places and their influence at a distance. Following the physics metaphor, the flow may be seen as the **gravitational force** between two masses, the place influence as the **gravitational potential**. The `potential` package, as its name suggests, proposes an implementation of the place-based model of potential defined by John Q. Stewart [-@STEWART41].
 
 The Stewart model is also known in the literature, depending on the discipline, as **potential access**, **gravitational potential** or **gravitational accessibility**. The concept was developed in the 1940s by physicist John Q. Stewart from an analogy to the gravity model. In his seminal work on the catchment areas of American universities, Stewart computes **potentials of population**. This potential is defined as a stock of population weighted by distance:
 

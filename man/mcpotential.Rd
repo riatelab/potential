@@ -43,8 +43,8 @@ If only one variable is computed a vector is returned, if more than
 one variable is computed a matrix is returned.
 }
 \description{
-This function computes potentials as defined
-by J.Q. Stewart (1941) with a cutoff distance and parallel
+This function computes the potential model with a cutoff 
+distance and parallel
 computation.
 }
 \examples{

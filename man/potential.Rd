@@ -2,7 +2,7 @@
 % Please edit documentation in R/potential.R
 \name{potential}
 \alias{potential}
-\title{Compute Potentials}
+\title{Compute the Potential Model}
 \usage{
 potential(x, y, d, var, fun, span, beta)
 }
@@ -40,7 +40,7 @@ If only one variable is computed a vector is returned, if more than
 one variable is computed a matrix is returned.
 }
 \description{
-This function computes potentials as defined
+This function computes the potential mo^del as defined
 by J.Q. Stewart (1941).
 }
 \examples{

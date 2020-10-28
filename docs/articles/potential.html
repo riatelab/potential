@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">potential</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -67,7 +67,8 @@
 
       
 
-      </header><script src="potential_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="potential_files/header-attrs-2.5/header-attrs.js"></script><link href="potential_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="potential_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>potential</h1>
@@ -87,12 +88,12 @@
 <h2 class="hasAnchor">
 <a href="#modeling-spatial-interactions" class="anchor"></a>Modeling spatial interactions</h2>
 <p>Modeling spatial interactions is used to understand and quantify the level of interaction between different locations.<br>
-The most ancient and common spatial interactions model is of the gravity form. It has roots in the late 19st century and has been used in several fields (geography, economy, demography) to model a high variety of flows (commuting, trade, migrations). A brief presentation can be found in <span class="citation">Rodrigue, Comtois, and Slack (2013)</span> and a more detailed one, among many others, in <span class="citation">Fotheringham and O’Kelly (1989)</span>.</p>
+The most ancient and common spatial interactions model the gravity model. It has roots in the late 19st century and has been used in several fields (geography, economy, demography) to model a high variety of flows (commuting, trade, migrations). A brief presentation can be found in <span class="citation">Rodrigue, Comtois, and Slack (2013)</span> and a more detailed one, among many others, in <span class="citation">Fotheringham and O’Kelly (1989)</span>.</p>
 </div>
 <div id="a-place-based-model-stewarts-potentials" class="section level2">
 <h2 class="hasAnchor">
 <a href="#a-place-based-model-stewarts-potentials" class="anchor"></a>A place-based model: Stewart’s potentials</h2>
-<p>There are two main ways of modeling spatial interactions: the first one focuses on links between places (flows), the second one focuses on places and their influence at a distance. Following the physics metaphor, the flow may be seen as the <strong>gravitational force</strong> between two masses, the place influence as the <strong>gravitational potential</strong>. The <code>potential</code> package, as its name suggests, proposes an implementation of the place-based model of potentials defined by John Q. Stewart <span class="citation">(1941)</span>.</p>
+<p>There are two main ways of modeling spatial interactions: the first one focuses on links between places (flows), the second one focuses on places and their influence at a distance. Following the physics metaphor, the flow may be seen as the <strong>gravitational force</strong> between two masses, the place influence as the <strong>gravitational potential</strong>. The <code>potential</code> package, as its name suggests, proposes an implementation of the place-based model of potential defined by John Q. Stewart <span class="citation">(1941)</span>.</p>
 <p>The Stewart model is also known in the literature, depending on the discipline, as <strong>potential access</strong>, <strong>gravitational potential</strong> or <strong>gravitational accessibility</strong>. The concept was developed in the 1940s by physicist John Q. Stewart from an analogy to the gravity model. In his seminal work on the catchment areas of American universities, Stewart computes <strong>potentials of population</strong>. This potential is defined as a stock of population weighted by distance:</p>
 <p><span class="math display">\[
 A_i = \sum_{j=1}^n O_j f(d_{ij})
@@ -252,18 +253,18 @@ Regular grid
 <div id="bibliography" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#bibliography" class="anchor"></a>Bibliography</h1>
-<div id="refs" class="references">
-<div id="ref-fotheringham1989spatial">
-<p>Fotheringham, A Stewart, and Morton E O’Kelly. 1989. <em>Spatial Interaction Models: Formulations and Applications</em>. Vol. 1. Kluwer Academic Publishers Dordrecht.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-fotheringham1989spatial" class="csl-entry">
+Fotheringham, A Stewart, and Morton E O’Kelly. 1989. <em>Spatial Interaction Models: Formulations and Applications</em>. Vol. 1. Kluwer Academic Publishers Dordrecht.
 </div>
-<div id="ref-rich1980potential">
-<p>Rich, David C. 1980. “Potential Models in Human Geography.” <em>CATMOG 26</em> 38.</p>
+<div id="ref-rich1980potential" class="csl-entry">
+Rich, David C. 1980. <span>“Potential Models in Human Geography.”</span> <em>CATMOG 26</em> 38.
 </div>
-<div id="ref-rodrigue2013spatial">
-<p>Rodrigue, Jean-Paul, Claude Comtois, and Brian Slack. 2013. “Spatial Interactions and the Gravity Model.” <em>The Geography of Transport Systems.</em> <a href="https://transportgeography.org/?page_id=8565">https://transportgeography.org/?page_id=8565</a>.</p>
+<div id="ref-rodrigue2013spatial" class="csl-entry">
+Rodrigue, Jean-Paul, Claude Comtois, and Brian Slack. 2013. <span>“Spatial Interactions and the Gravity Model.”</span> <em>The Geography of Transport Systems.</em> <a href="https://transportgeography.org/?page_id=8565">https://transportgeography.org/?page_id=8565</a>.
 </div>
-<div id="ref-STEWART41">
-<p>Stewart, John Q. 1941. “An Inverse Distance Variation for Certain Social Influences.” <em>Science</em> 93 (2404): 89–90. <a href="https://doi.org/10.1126/science.93.2404.89">https://doi.org/10.1126/science.93.2404.89</a>.</p>
+<div id="ref-STEWART41" class="csl-entry">
+Stewart, John Q. 1941. <span>“An Inverse Distance Variation for Certain Social Influences.”</span> <em>Science</em> 93 (2404): 89–90. <a href="https://doi.org/10.1126/science.93.2404.89">https://doi.org/10.1126/science.93.2404.89</a>.
 </div>
 </div>
 </div>

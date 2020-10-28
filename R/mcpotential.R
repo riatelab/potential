@@ -1,6 +1,6 @@
 #' @title Compute Potentials using Parallelization
-#' @description This function computes potentials as defined
-#' by J.Q. Stewart (1941) with a cutoff distance and parallel
+#' @description This function computes the potential model with a cutoff 
+#' distance and parallel
 #' computation.
 #' @param x an sf object (POINT), the set of known observations to estimate
 #' the potentials from.

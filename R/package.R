@@ -1,7 +1,7 @@
 #' @title Implementation of the Potential Model
 #' @name potential-package
 #' @rdname potential-package
-#' @description This package provides functions to compute potential model as
+#' @description This package provides functions to compute the potential model as
 #' defined by Stewart (1941) <doi:10.1126/science.93.2404.89>. Several options
 #' are available to customize the model, such as the possibility to fine-tune
 #' the distance friction functions or to use custom distance matrices. Some

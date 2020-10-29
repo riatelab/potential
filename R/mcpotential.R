@@ -1,4 +1,4 @@
-#' @title Compute Potentials using Parallelization
+#' @title Compute the Potential Model using Parallelization
 #' @description This function computes the potential model with a cutoff 
 #' distance and parallel
 #' computation.

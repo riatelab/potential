@@ -2,7 +2,7 @@
 % Please edit documentation in R/mcpotential.R
 \name{mcpotential}
 \alias{mcpotential}
-\title{Compute Potentials using Parallelization}
+\title{Compute the Potential Model using Parallelization}
 \usage{
 mcpotential(x, y, var, fun, span, beta, limit = 3 * span, ncl, size = 500)
 }

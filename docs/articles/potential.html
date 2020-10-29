@@ -174,15 +174,11 @@ A_i = \sum_{j=1}^n O_j f(d_{ij})
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/potential">potential</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/cartography/">cartography</a></span><span class="op">)</span>
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">n3_poly</span><span class="op">)</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/propSymbolsLayer.html">propSymbolsLayer</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, var <span class="op">=</span><span class="st">"POP19"</span>, legend.pos <span class="op">=</span> <span class="cn">NA</span>, 
-                 col <span class="op">=</span> <span class="st">"#940000"</span>, border <span class="op">=</span> <span class="st">"white"</span>, inches <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">100000</span><span class="op">)</span>
-<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">23</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, bg <span class="op">=</span> <span class="st">"blue"</span>, cex <span class="op">=</span> <span class="fl">.5</span> <span class="op">)</span></pre></div>
-<div class="figure">
-<img src="potential_files/figure-html/unnamed-chunk-4-1.png" alt="Regular grid" width="576"><p class="caption">
-Regular grid
-</p>
-</div>
+<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">23</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, bg <span class="op">=</span> <span class="st">"blue"</span>, cex <span class="op">=</span> <span class="fl">.5</span> <span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/propSymbolsLayer.html">propSymbolsLayer</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, var <span class="op">=</span><span class="st">"POP19"</span>, legend.pos <span class="op">=</span> <span class="cn">NA</span>, 
+                 col <span class="op">=</span> <span class="st">"#940000"</span>, border <span class="op">=</span> <span class="st">"white"</span>, inches <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span></pre></div>
+<p><img src="potential_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
 </div>
 <div id="create-a-distance-matrix" class="section level3">
 <h3 class="hasAnchor">
@@ -235,7 +231,8 @@ Regular grid
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">20000</span><span class="op">)</span>
 <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mcpotential.html">mcpotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span>, 
                      var <span class="op">=</span> <span class="st">"POP19"</span>, fun <span class="op">=</span> <span class="st">"e"</span>,
-                     span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span>, limit <span class="op">=</span> <span class="fl">200000</span><span class="op">)</span>
+                     span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span>, 
+                     limit <span class="op">=</span> <span class="fl">200000</span><span class="op">)</span>
 <span class="va">y</span><span class="op">$</span><span class="va">pot2</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">pot</span><span class="op">)</span>
 <span class="va">iso</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equipotential.html">equipotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/cartography/man/choroLayer.html">choroLayer</a></span><span class="op">(</span><span class="va">iso</span>, var <span class="op">=</span> <span class="st">"center"</span>, breaks <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, 
@@ -250,9 +247,9 @@ Regular grid
 </div>
 </div>
 </div>
-<div id="bibliography" class="section level1 unnumbered">
+<div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
-<a href="#bibliography" class="anchor"></a>Bibliography</h1>
+<a href="#references" class="anchor"></a>References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-fotheringham1989spatial" class="csl-entry">
 Fotheringham, A Stewart, and Morton E O’Kelly. 1989. <em>Spatial Interaction Models: Formulations and Applications</em>. Vol. 1. Kluwer Academic Publishers Dordrecht.

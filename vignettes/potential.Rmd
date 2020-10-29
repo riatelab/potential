@@ -193,15 +193,15 @@ We can use the same dataset as an example of use.
 `create_grid()` is used to create a regular grid with the extent of an existing layer (`x`) and a specific resolution (`res`). The resolution is set in units of `x` (here, meters).
 
 
-```{r, fig.cap="Regular grid", fig.height= 6}
+```{r, fig.height= 6}
 library(sf)
 library(potential)
 library(cartography)
 plot(st_geometry(n3_poly), col= "grey80", border = "white", lwd = .4)
-propSymbolsLayer(x = n3_pt, var ="POP19", legend.pos = NA, 
-                 col = "#940000", border = "white", inches = .1)
 y <- create_grid(x = n3_poly, res = 100000)
 plot(st_geometry(y), pch = 23, add = TRUE, bg = "blue", cex = .5 )
+propSymbolsLayer(x = n3_pt, var ="POP19", legend.pos = NA, 
+                 col = "#940000", border = "white", inches = .1)
 ```
 
 ### Create a distance matrix
@@ -261,7 +261,8 @@ The limits of this function are the impossibility to provide custom distance mat
 y <- create_grid(x = n3_poly, res = 20000)
 y$pot <- mcpotential(x = n3_pt, y = y, 
                      var = "POP19", fun = "e",
-                     span = 75000, beta = 2, limit = 200000)
+                     span = 75000, beta = 2, 
+                     limit = 200000)
 y$pot2 <- 100 * y$pot / max(y$pot)
 iso <- equipotential(x = y, var = "pot2", breaks = seq(0,100, 10), mask = n3_poly)
 choroLayer(iso, var = "center", breaks =  seq(0,100, 10), 
@@ -278,7 +279,7 @@ mtext(text = "Potential of population",
 
 
 
-# Bibliography
+# References
 
 
 

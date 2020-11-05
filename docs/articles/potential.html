@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">potential</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.0</span>
       </span>
     </div>
 
@@ -232,7 +232,7 @@ A_i = \sum_{j=1}^n O_j f(d_{ij})
 <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mcpotential.html">mcpotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span>, 
                      var <span class="op">=</span> <span class="st">"POP19"</span>, fun <span class="op">=</span> <span class="st">"e"</span>,
                      span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span>, 
-                     limit <span class="op">=</span> <span class="fl">200000</span><span class="op">)</span>
+                     limit <span class="op">=</span> <span class="fl">200000</span>, ncl <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="va">y</span><span class="op">$</span><span class="va">pot2</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">pot</span><span class="op">)</span>
 <span class="va">iso</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equipotential.html">equipotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/cartography/man/choroLayer.html">choroLayer</a></span><span class="op">(</span><span class="va">iso</span>, var <span class="op">=</span> <span class="st">"center"</span>, breaks <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, 

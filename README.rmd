@@ -35,7 +35,7 @@ remotes::install_github("riatelab/potential")
 ## Demo
 
 
-```{r demo, fig.width = 7, fig.height= 7}
+```{r demo, fig.width = 7, fig.height= 7, fig.show='hold'}
 library(sf)
 library(potential)
 library(cartography)
@@ -47,7 +47,8 @@ pot <- mcpotential(
   x = n3_pt, y = y,
   var = "POP19",
   fun = "e", span = 75000,
-  beta = 2, limit = 250000
+  beta = 2, limit = 250000, 
+  ncl = 2
 )
 y$pot <- pot / max(pot) * 100
 
@@ -55,7 +56,7 @@ y$pot <- pot / max(pot) * 100
 equipot <- equipotential(y, var = "pot", mask = n3_poly)
 
 # map potentials
-par(mar = c(0, 0, 1.2, 0), bg = "#b5bece")
+opar <- par(mar = c(0, 0, 1.2, 0), bg = "#b5bece", no.readonly = TRUE)
 choroLayer(equipot, var = "center", breaks = seq(0,100,length.out = 11), 
            col = hcl.colors(10, 'teal'),
            border = "#121725", legend.pos = "bottom", 
@@ -65,6 +66,7 @@ layoutLayer(title = "Potentials of Population",
             col = "#121725", coltitle = "#4dB8da",
             sources = "© EuroGeographics for the administrative boundaries and © Eurostat for data",
             horiz = F, postitle = "center", scale = F)
+par(opar)
 ```
 
 

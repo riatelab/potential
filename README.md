@@ -4,9 +4,9 @@
 [![R-CMD-check](https://github.com/riatelab/potential/workflows/R-CMD-check/badge.svg)](https://github.com/riatelab/potential/actions)
 [![codecov](https://codecov.io/gh/riatelab/potential/branch/master/graph/badge.svg?token=G8MZTHC9KQ)](https://codecov.io/gh/riatelab/potential)
 
-This package provides functions to compute potential models as defined
-by Stewart (1941). Several options are available to customize the
-models, for example it is possible to fine-tune the distance friction
+This package provides functions to compute the potential model as
+defined by Stewart (1941). Several options are available to customize
+the model, for example it is possible to fine-tune the distance friction
 functions or to use custom distance matrices. Some computations are
 parallelized to improve their efficiency.
 
@@ -40,7 +40,8 @@ pot <- mcpotential(
   x = n3_pt, y = y,
   var = "POP19",
   fun = "e", span = 75000,
-  beta = 2, limit = 250000
+  beta = 2, limit = 250000, 
+  ncl = 2
 )
 y$pot <- pot / max(pot) * 100
 
@@ -48,7 +49,7 @@ y$pot <- pot / max(pot) * 100
 equipot <- equipotential(y, var = "pot", mask = n3_poly)
 
 # map potentials
-par(mar = c(0, 0, 1.2, 0), bg = "#b5bece")
+opar <- par(mar = c(0, 0, 1.2, 0), bg = "#b5bece", no.readonly = TRUE)
 choroLayer(equipot, var = "center", breaks = seq(0,100,length.out = 11), 
            col = hcl.colors(10, 'teal'),
            border = "#121725", legend.pos = "bottom", 
@@ -58,6 +59,7 @@ layoutLayer(title = "Potentials of Population",
             col = "#121725", coltitle = "#4dB8da",
             sources = "© EuroGeographics for the administrative boundaries and © Eurostat for data",
             horiz = F, postitle = "center", scale = F)
+par(opar)
 ```
 
 ![](man/figures/demo-1.png)<!-- -->
@@ -70,9 +72,9 @@ initially offered by
 
 ## References
 
-<div id="refs" class="references">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
-<div id="ref-STEWART41">
+<div id="ref-STEWART41" class="csl-entry">
 
 Stewart, John Q. 1941. “An Inverse Distance Variation for Certain Social
 Influences.” *Science* 93 (2404): 89–90.

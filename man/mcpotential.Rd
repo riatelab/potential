@@ -48,12 +48,14 @@ distance and parallel
 computation.
 }
 \examples{
-\dontrun{
+\donttest{
 library(sf)
 g <- create_grid(x = n3_poly, res = 20000)
 pot <- mcpotential(
   x = n3_pt, y = g, var = "POP19",
-  fun = "e", span = 75000, beta = 2, limit = 300000
+  fun = "e", span = 75000, beta = 2, 
+  limit = 300000, 
+  ncl = 2
 )
 g$OUTPUT <- pot
 equipot <- equipotential(g, var = "OUTPUT", mask = n3_poly)

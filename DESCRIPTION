@@ -1,8 +1,9 @@
 Package: potential
 Title: Implementation of the Potential Model
-Version: 0.1.0.0
+Version: 0.1.0
 Authors@R: c(
-      person("Timothée", "Giraud", email = "timothee.giraud@cnrs.fr", role = c("cre","aut")),
+      person("Timothée", "Giraud", email = "timothee.giraud@cnrs.fr", role = c("cre","aut"),
+             comment = c(ORCID = "0000-0002-1932-3323")),
       person("Hadrien", "Commenges", email = "hadrien.commenges@univ-paris1.fr", role = c("aut")))
 Description: Provides functions to compute the potential model as defined by
     Stewart (1941) <doi:10.1126/science.93.2404.89>. Several options are available

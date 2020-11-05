@@ -17,16 +17,6 @@
 #' @export
 create_grid <- function(x, res) {
   bb <- st_bbox(x)
-  # if (missing(res)) {
-  #   k <- 5000
-  #   s <- (bb[3] - bb[1]) / (bb[4] - bb[2])
-  #   ny <- sqrt(k / s)
-  #   nx <- s * ny
-  #   gx <- seq(bb[1], bb[3], length.out = nx)
-  #   gy <- seq(bb[2], bb[4], length.out = ny)
-  #   res <- (mean(c(gx[2] - gx[1], gy[2] - gy[1])))
-  # }
-
   rounder <- bb %% res
   bb[1:2] <- bb[1:2] - rounder[1:2]
   bb[3:4] <- bb[3:4] + res - rounder[3:4]

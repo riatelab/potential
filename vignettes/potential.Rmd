@@ -15,7 +15,11 @@ knitr::knit_hooks$set(margin = function(before, options, envir){
     par(mar=c(0,0,0,0))
   } 
 })
-
+knitr::knit_hooks$set(marginx = function(before, options, envir){
+  if (before){
+    par(mar=c(5.1,4.1,4.1,2.1))
+  } 
+})
 
 knitr::opts_chunk$set(
   message = FALSE, 
@@ -113,8 +117,7 @@ labelLayer(xy, txt = "distlab", halo = T, col = "blue")
 
 For the next step we have to select a distance friction function. `plot_inter()` allows to visualize the decrease of the interaction intensity with the distance according to the selected function and its parameters. 
 
-```{r curve, echo = FALSE, fig.cap="$f(d_{ij})$"}
-par(mar = c(5.1, 4.1, 4.1, 2.1))
+```{r curve, echo = FALSE, fig.cap="$f(d_{ij})$", marginx=TRUE}
 plot_inter(fun = "e", span = 75 , beta = 2, limit = 300)
 ```
 
@@ -132,7 +135,6 @@ fric <- function(alpha, matdist, beta) {
 
 xy$friction <- fric(alpha, xy$dist, beta)
 
-par(mar = c(0,0,0,0))
 plot(st_geometry(x_poly), col= "grey80", border = "white", lwd = .4)
 propSymbolsLayer(x = x, var ="POP19", legend.pos = NA, 
                  col = "#94000033", border = "white")
@@ -142,32 +144,31 @@ plot(y, pch = 23, add = T, bg = "blue", cex = 2)
 xy$frictionlab <- round(xy$friction,2)
 labelLayer(xy, txt = "frictionlab", halo = T, col = "blue")
 ```
-  
+
 
 The contribution of each $j$ to the total potential ($A_i$) is equal to the interaction intensity multiplied by its mass ($O_j f(d_{ij}$).   
+
 
 ```{r, fig.cap="$O_j f(d_{ij})$", echo = FALSE}
 xy <- merge(xy, st_drop_geometry(x), by.x = "x", by.y = "ID")
 xy$m <- xy$POP19 * xy$friction
 xy$mlab <- paste0(xy$frictionlab, " * ", xy$POP19, " = ", round(xy$m, 0))
-par(mar = c(0,0,0,0))
 plot(st_geometry(x_poly), col= "grey80", border = "white", lwd = .4)
 propSymbolsLayer(x = x, var ="POP19", legend.pos = NA, 
                  col = "#94000033", border = "white")
 plot(st_geometry(xy), add = T, lty = 2)
 plot(y, pch = 23, add = T, bg = "blue", cex = 2)
-
 xy$frictionlab <- round(xy$friction,2)
 labelLayer(xy, txt = "mlab", halo = T, col = "blue")
 ```
 
 It can be rendered cartographically in the following figure. 
 
+
 ```{r, fig.cap ="$O_j f(d_{ij})$", echo = FALSE}
 x <- merge(x, st_drop_geometry(xy), by.x = "ID", by.y = "x")
 
 x$mroun <- round(x$m, 0)
-par(mar = c(0,0,0,0))
 plot(st_geometry(x_poly), col= "grey80", border = "white", lwd = .4)
 propSymbolsLayer(x = x, var ="POP19.x", legend.pos = NA, 
                  col = "#94000033", border = "white")
@@ -176,7 +177,6 @@ propSymbolsLayer(x = x, var ="mroun", legend.pos = NA, fixmax = max(x$POP19.x),
 plot(st_geometry(xy), add = T, lty = 2)
 
 labelLayer(x, txt = "mroun", halo = T, col = "blue", pos = 4)
-
 plot(y, pch = 23, add = T, bg = "blue", cex = 2)
 ```
 
@@ -257,12 +257,12 @@ In order to obtain smoother equipotential areas we need to compute the potential
 The limits of this function are the impossibility to provide custom distance matrices (`d`), and the fact that it only uses Cartesian distances (hence its use for global data is likely to be inappropriate). 
 
 
-```{r smooth, fig.path="./", fig.width = 7, fig.height= 6, results=FALSE, eval = F}
+```{r smooth, fig.path="./", fig.width = 7, fig.height= 6, results=FALSE, eval = FALSE}
 y <- create_grid(x = n3_poly, res = 20000)
 y$pot <- mcpotential(x = n3_pt, y = y, 
                      var = "POP19", fun = "e",
                      span = 75000, beta = 2, 
-                     limit = 200000)
+                     limit = 200000, ncl = 2)
 y$pot2 <- 100 * y$pot / max(y$pot)
 iso <- equipotential(x = y, var = "pot2", breaks = seq(0,100, 10), mask = n3_poly)
 choroLayer(iso, var = "center", breaks =  seq(0,100, 10), 

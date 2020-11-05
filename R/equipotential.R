@@ -38,21 +38,20 @@ equipotential <- function(x,
                           mask,
                           xcoords = "COORDX",
                           ycoords = "COORDY") {
-  # get initial min and max values
+
   vmin <- min(x[[var]], na.rm = TRUE)
   vmax <- max(x[[var]], na.rm = TRUE)
-
   if (missing(breaks)) {
     breaks <- seq(from = vmin, to = vmax, length.out = (nclass + 1))
   } else {
     breaks <- sort(unique(c(vmin, breaks[breaks > vmin & breaks < vmax], vmax)))
   }
-
+  
   m <- matrix(
     data = x[[var]], nrow = length(unique(x[[xcoords]])),
     dimnames = list(unique(x[[xcoords]]), unique(x[[ycoords]]))
   )
-
+  
   lev_low <- breaks[1:(length(breaks) - 1)]
   lev_high <- breaks[2:length(breaks)]
   raw <- isobands(
@@ -61,7 +60,7 @@ equipotential <- function(x,
     levels_low = lev_low,
     levels_high = c(lev_high[-length(lev_high)], vmax + 1e-10)
   )
-
+  
   bands <- iso_to_sfg(raw)
   iso <- st_sf(
     id = 1:length(bands),
@@ -71,16 +70,16 @@ equipotential <- function(x,
     crs = st_crs(x)
   )
   iso$center <- iso$min + (iso$max - iso$min) / 2
-
-
-
+  
+  
+  
   st_geometry(iso) <- st_make_valid(st_geometry(iso))
-
-
+  
+  
   if (methods::is(st_geometry(iso), "sfc_GEOMETRY")) {
     st_geometry(iso) <- st_collection_extract(st_geometry(iso), "POLYGON")
   }
-
+  
   if (!missing(mask)) {
     st_agr(iso) <- "constant"
     iso <- st_cast(st_intersection(x = iso, y = st_union(st_geometry(mask))))

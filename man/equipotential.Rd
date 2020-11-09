@@ -4,15 +4,7 @@
 \alias{equipotential}
 \title{Create Polygons of Equipotential}
 \usage{
-equipotential(
-  x,
-  var,
-  nclass = 8,
-  breaks,
-  mask,
-  xcoords = "COORDX",
-  ycoords = "COORDY"
-)
+equipotential(x, var, nclass = 8, breaks, mask, buffer, xcoords, ycoords)
 }
 \arguments{
 \item{x}{an sf object of regularly spaced points. It must contain "X", "Y"
@@ -27,9 +19,15 @@ and "OUTPUT" fields.}
 \item{mask}{an sf object of polygons or multipolygons. /code{mask} is  used
 to clip polygons of contours equipotential.}
 
-\item{xcoords}{name of the X coordinates field in \code{x}.}
+\item{buffer}{if set, a buffer is internaly added to the mask in order to 
+reach more precisely the number of breaks. The buffer is defined in 
+\code{x} units.}
 
-\item{ycoords}{name of the Y coordinates field in \code{x}.}
+\item{xcoords}{name of the X coordinates field in \code{x}, not needed 
+if \code{x} is constructed with create_grid.}
+
+\item{ycoords}{name of the Y coordinates field in \code{x}, not needed 
+if \code{x} is constructed with create_grid.}
 }
 \value{
 The output is an sf object (POLYGONS). The data frame contains four

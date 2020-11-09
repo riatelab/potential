@@ -9,14 +9,19 @@
 #' @param breaks a vector of break values.
 #' @param mask an sf object of polygons or multipolygons. /code{mask} is  used
 #' to clip polygons of contours equipotential.
-#' @param xcoords name of the X coordinates field in \code{x}.
-#' @param ycoords name of the Y coordinates field in \code{x}.
+#' @param xcoords name of the X coordinates field in \code{x}, not needed 
+#' if \code{x} is constructed with create_grid.
+#' @param ycoords name of the Y coordinates field in \code{x}, not needed 
+#' if \code{x} is constructed with create_grid.
 #' @param var name of the OUTPUT field in \code{x}.
+#' @param buffer if set, a buffer is internaly added to the mask in order to 
+#' reach more precisely the number of breaks. The buffer is defined in 
+#' \code{x} units.
 #' @return The output is an sf object (POLYGONS). The data frame contains four
 #' fields: id (id of each polygon), min and max (minimum and maximum breaks of
 #' the polygon) and center (central values of classes).
 #' @importFrom sf st_as_sf st_crs st_bbox st_cast st_sf st_sfc st_intersection
-#' st_union st_agr<- st_collection_extract st_make_valid
+#' st_union st_agr<- st_collection_extract st_make_valid st_buffer st_coordinates
 #' @importFrom isoband isobands iso_to_sfg
 #' @importFrom methods is
 #' @examples
@@ -36,9 +41,27 @@ equipotential <- function(x,
                           nclass = 8,
                           breaks,
                           mask,
-                          xcoords = "COORDX",
-                          ycoords = "COORDY") {
-
+                          buffer, 
+                          xcoords,
+                          ycoords) {
+  if( missing(xcoords) && missing(ycoords) ){
+    nx <- names(x)
+    if(!"COORDX" %in% nx || !"COORDY" %in% nx){
+      xy <- st_coordinates(x)
+      x$COORDX <- xy[, 1]
+      x$COORDY <- xy[, 2]
+    } 
+    xcoords <- "COORDX"
+    ycoords <- "COORDY"
+  }
+  
+  if (!missing(buffer)){
+    mask_b <- sf::st_buffer(mask, buffer)
+    inter <- st_intersects(x = x, y = mask_b)
+    inout <- sapply(inter, function(x)if(length(x)>0){1}else{NA})
+    x[[var]] <- inout * x[[var]]
+  }
+  
   vmin <- min(x[[var]], na.rm = TRUE)
   vmax <- max(x[[var]], na.rm = TRUE)
   if (missing(breaks)) {

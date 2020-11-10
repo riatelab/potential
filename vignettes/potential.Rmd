@@ -10,28 +10,16 @@ vignette: >
 
 ```{r, include = FALSE}
 
-knitr::knit_hooks$set(margin = function(before, options, envir){
-  if (before){
-    par(mar=c(0,0,0,0))
-  } 
-})
-knitr::knit_hooks$set(marginx = function(before, options, envir){
-  if (before){
-    par(mar=c(5.1,4.1,4.1,2.1))
-  } 
-})
-
 knitr::opts_chunk$set(
   message = FALSE, 
   warning = FALSE,
   collapse = TRUE,
   comment = "#>", 
   fig.width = 6,
-  fig.height = 4, 
-  margin = TRUE
+  fig.height = 4
 )
 
-options(scipen = 1000)
+
 ```
 
 
@@ -82,6 +70,8 @@ The stocks of population ($O_j$) are located on the centroids of the regions.
 library(sf)
 library(potential)
 library(cartography)
+opar <- par(mar=c(0,0,0,0)) 
+
 x <- n3_pt[substr(n3_pt$ID,1,3) %in% c( "FRJ"), ]
 x_poly <- n3_poly[substr(n3_poly$ID,1,3) %in% c( "FRJ"),]
 x$POP19 <- round(x$POP19 / 1000, 0) 
@@ -94,6 +84,7 @@ y <- st_as_sf(data.frame(ID = "A", x = 3700000, y = 2290000),
               coords = c("x", "y"), crs = st_crs(x))
 
 plot(y, pch = 23, add = T, bg = "blue", cex = 2)
+par(opar)
 ```
 
 
@@ -101,6 +92,8 @@ The first step is computing the distances between the point and all population p
 
 
 ```{r setup2, fig.cap = "$d_{ij}$", echo = FALSE}
+opar <- par(mar=c(0,0,0,0)) 
+
 xy <- getLinkLayer(x = rbind(x[,"ID"], y), df = expand.grid(x = x$ID, y = y$ID))
 xy$dist <- round(as.numeric(st_length(xy)) / 1000, 0)
 xy$distlab <- paste0(round(as.numeric(st_length(xy)) / 1000, 0), " km")
@@ -112,12 +105,13 @@ plot(st_geometry(xy), add = T, lty = 2)
 plot(y, pch = 23, add = T, bg = "blue", cex = 2)
 
 labelLayer(xy, txt = "distlab", halo = T, col = "blue")
+par(opar)
 ```
 
 
 For the next step we have to select a distance friction function. `plot_inter()` allows to visualize the decrease of the interaction intensity with the distance according to the selected function and its parameters. 
 
-```{r curve, echo = FALSE, fig.cap="$f(d_{ij})$", marginx=TRUE}
+```{r curve, echo = FALSE, fig.cap="$f(d_{ij})$"}
 plot_inter(fun = "e", span = 75 , beta = 2, limit = 300)
 ```
 
@@ -126,6 +120,8 @@ Here, the probability of interaction at the span value (75 km) is 0.5.
 We can now use the values of the interaction intensity for each distance between $i$ and $j$. 
 
 ```{r setup3, fig.cap = "$f(d_{ij})$", echo = FALSE}
+opar <- par(mar=c(0,0,0,0)) 
+
 span <- 75
 beta <- 2
 alpha <- log(2) / span^beta
@@ -143,6 +139,7 @@ plot(y, pch = 23, add = T, bg = "blue", cex = 2)
 
 xy$frictionlab <- round(xy$friction,2)
 labelLayer(xy, txt = "frictionlab", halo = T, col = "blue")
+par(opar)
 ```
 
 
@@ -150,6 +147,8 @@ The contribution of each $j$ to the total potential ($A_i$) is equal to the inte
 
 
 ```{r, fig.cap="$O_j f(d_{ij})$", echo = FALSE}
+opar <- par(mar=c(0,0,0,0)) 
+
 xy <- merge(xy, st_drop_geometry(x), by.x = "x", by.y = "ID")
 xy$m <- xy$POP19 * xy$friction
 xy$mlab <- paste0(xy$frictionlab, " * ", xy$POP19, " = ", round(xy$m, 0))
@@ -160,12 +159,15 @@ plot(st_geometry(xy), add = T, lty = 2)
 plot(y, pch = 23, add = T, bg = "blue", cex = 2)
 xy$frictionlab <- round(xy$friction,2)
 labelLayer(xy, txt = "mlab", halo = T, col = "blue")
+par(opar)
 ```
 
 It can be rendered cartographically in the following figure. 
 
 
 ```{r, fig.cap ="$O_j f(d_{ij})$", echo = FALSE}
+opar <- par(mar=c(0,0,0,0)) 
+
 x <- merge(x, st_drop_geometry(xy), by.x = "ID", by.y = "x")
 
 x$mroun <- round(x$m, 0)
@@ -178,6 +180,7 @@ plot(st_geometry(xy), add = T, lty = 2)
 
 labelLayer(x, txt = "mroun", halo = T, col = "blue", pos = 4)
 plot(y, pch = 23, add = T, bg = "blue", cex = 2)
+par(opar)
 ```
 
 Finally, the value of the potential of $i$ is the sum of each $j$'s contributions. 
@@ -200,8 +203,7 @@ library(cartography)
 plot(st_geometry(n3_poly), col= "grey80", border = "white", lwd = .4)
 y <- create_grid(x = n3_poly, res = 100000)
 plot(st_geometry(y), pch = 23, add = TRUE, bg = "blue", cex = .5 )
-propSymbolsLayer(x = n3_pt, var ="POP19", legend.pos = NA, 
-                 col = "#940000", border = "white", inches = .1)
+
 ```
 
 ### Create a distance matrix
@@ -265,6 +267,7 @@ y$pot <- mcpotential(x = n3_pt, y = y,
                      limit = 200000, ncl = 2)
 y$pot2 <- 100 * y$pot / max(y$pot)
 iso <- equipotential(x = y, var = "pot2", breaks = seq(0,100, 10), mask = n3_poly)
+opar <- par(mar=c(0,0,0,0)) 
 choroLayer(iso, var = "center", breaks =  seq(0,100, 10), 
            col = hcl.colors(10, 'teal'), 
            border = "#121725", legend.pos = c(6194790,3428230), 
@@ -273,9 +276,11 @@ mtext(text = "© EuroGeographics for the administrative boundaries and © Eurost
       side=1, line = -1, cex = .7, adj = .99)
 mtext(text = "Potential of population",
       side=3, line = -2, cex = 1.1, adj = 0.01)
+par(opar)
 ```
 
 ![](smooth-1.png)
+
 
 
 

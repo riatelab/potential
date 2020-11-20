@@ -73,7 +73,7 @@ potential points." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">potential</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.0</span>
       </span>
     </div>
 
@@ -122,15 +122,7 @@ potential points." />
 potential points.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>equipotential</span><span class='op'>(</span>
-  <span class='va'>x</span>,
-  <span class='va'>var</span>,
-  nclass <span class='op'>=</span> <span class='fl'>8</span>,
-  <span class='va'>breaks</span>,
-  <span class='va'>mask</span>,
-  xcoords <span class='op'>=</span> <span class='st'>"COORDX"</span>,
-  ycoords <span class='op'>=</span> <span class='st'>"COORDY"</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>equipotential</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var</span>, nclass <span class='op'>=</span> <span class='fl'>8</span>, <span class='va'>breaks</span>, <span class='va'>mask</span>, <span class='va'>buffer</span>, <span class='va'>xcoords</span>, <span class='va'>ycoords</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,12 +150,20 @@ and "OUTPUT" fields.</p></td>
 to clip polygons of contours equipotential.</p></td>
     </tr>
     <tr>
+      <th>buffer</th>
+      <td><p>if set, a buffer is internaly added to the mask in order to 
+reach more precisely the number of breaks. The buffer is defined in 
+<code>x</code> units.</p></td>
+    </tr>
+    <tr>
       <th>xcoords</th>
-      <td><p>name of the X coordinates field in <code>x</code>.</p></td>
+      <td><p>name of the X coordinates field in <code>x</code>, not needed 
+if <code>x</code> is constructed with create_grid.</p></td>
     </tr>
     <tr>
       <th>ycoords</th>
-      <td><p>name of the Y coordinates field in <code>x</code>.</p></td>
+      <td><p>name of the Y coordinates field in <code>x</code>, not needed 
+if <code>x</code> is constructed with create_grid.</p></td>
     </tr>
     </table>
 

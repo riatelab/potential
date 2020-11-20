@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">potential</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.0</span>
       </span>
     </div>
 
@@ -169,72 +169,71 @@ A_i = \sum_{j=1}^n O_j f(d_{ij})
 <h3 class="hasAnchor">
 <a href="#create-a-regular-grid" class="anchor"></a>Create a regular grid</h3>
 <p><code><a href="../reference/create_grid.html">create_grid()</a></code> is used to create a regular grid with the extent of an existing layer (<code>x</code>) and a specific resolution (<code>res</code>). The resolution is set in units of <code>x</code> (here, meters).</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/potential">potential</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/cartography/">cartography</a></span><span class="op">)</span>
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">n3_poly</span><span class="op">)</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">100000</span><span class="op">)</span>
-<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">23</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, bg <span class="op">=</span> <span class="st">"blue"</span>, cex <span class="op">=</span> <span class="fl">.5</span> <span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/propSymbolsLayer.html">propSymbolsLayer</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, var <span class="op">=</span><span class="st">"POP19"</span>, legend.pos <span class="op">=</span> <span class="cn">NA</span>, 
-                 col <span class="op">=</span> <span class="st">"#940000"</span>, border <span class="op">=</span> <span class="st">"white"</span>, inches <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">23</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, bg <span class="op">=</span> <span class="st">"blue"</span>, cex <span class="op">=</span> <span class="fl">.5</span> <span class="op">)</span></code></pre></div>
 <p><img src="potential_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
 </div>
 <div id="create-a-distance-matrix" class="section level3">
 <h3 class="hasAnchor">
 <a href="#create-a-distance-matrix" class="anchor"></a>Create a distance matrix</h3>
 <p><code><a href="../reference/create_matrix.html">create_matrix()</a></code> is used to compute distances between objects.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_matrix.html">create_matrix</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_matrix.html">create_matrix</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span>
 <span class="va">d</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>
 <span class="co">#&gt;         1       2       3       4       5</span>
-<span class="co">#&gt; 1 2671654 2574653 2478056 2381893 2286198</span>
-<span class="co">#&gt; 2 2619775 2522716 2426061 2329840 2234091</span>
-<span class="co">#&gt; 3 2681131 2584765 2488856 2393440 2298559</span>
-<span class="co">#&gt; 4 2640664 2543918 2447601 2351746 2256394</span>
-<span class="co">#&gt; 5 2637018 2540710 2444868 2349532 2254745</span></pre></div>
+<span class="co">#&gt; 1 2674796 2578559 2482621 2387015 2291785</span>
+<span class="co">#&gt; 2 2622868 2526551 2430532 2334847 2239539</span>
+<span class="co">#&gt; 3 2682813 2587272 2492081 2397282 2302922</span>
+<span class="co">#&gt; 4 2643075 2547108 2451462 2356179 2261302</span>
+<span class="co">#&gt; 5 2638427 2542933 2447799 2353068 2258792</span></code></pre></div>
 <p>The distance is expressed in map units (meters).</p>
 </div>
 <div id="compute-the-potentials" class="section level3">
 <h3 class="hasAnchor">
 <a href="#compute-the-potentials" class="anchor"></a>Compute the potentials</h3>
 <p>The <code><a href="../reference/potential.html">potential()</a></code> function computes potentials.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/potential.html">potential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span>, d <span class="op">=</span> <span class="va">d</span>,
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/potential.html">potential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span>, d <span class="op">=</span> <span class="va">d</span>,
                    var <span class="op">=</span> <span class="st">"POP19"</span>, fun <span class="op">=</span> <span class="st">"e"</span>,
                    span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">n3_poly</span><span class="op">)</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/cartography/man/propSymbolsLayer.html">propSymbolsLayer</a></span><span class="op">(</span><span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot"</span>, inches<span class="op">=</span> <span class="fl">.06</span>, legend.style <span class="op">=</span> <span class="st">"e"</span>, 
-                 lwd <span class="op">=</span> <span class="fl">.5</span>, legend.frame <span class="op">=</span> <span class="cn">TRUE</span>, legend.pos <span class="op">=</span> <span class="st">"topright"</span><span class="op">)</span></pre></div>
+                 lwd <span class="op">=</span> <span class="fl">.5</span>, legend.frame <span class="op">=</span> <span class="cn">TRUE</span>, legend.pos <span class="op">=</span> <span class="st">"topright"</span><span class="op">)</span></code></pre></div>
 <p><img src="potential_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
 <p>It’s possible to express the potential relatively to its maximum in order to display more understandable values <span class="citation">(Rich 1980)</span>.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="va">y</span><span class="op">$</span><span class="va">pot2</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">pot</span><span class="op">)</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span><span class="op">$</span><span class="va">pot2</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">pot</span><span class="op">)</span>
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">n3_poly</span><span class="op">)</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/cartography/man/propSymbolsLayer.html">propSymbolsLayer</a></span><span class="op">(</span><span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, inches<span class="op">=</span> <span class="fl">.06</span>, legend.style <span class="op">=</span> <span class="st">"e"</span>, 
-                 lwd <span class="op">=</span> <span class="fl">.5</span>, legend.frame <span class="op">=</span> <span class="cn">TRUE</span>, legend.pos <span class="op">=</span> <span class="st">"topright"</span><span class="op">)</span></pre></div>
+                 lwd <span class="op">=</span> <span class="fl">.5</span>, legend.frame <span class="op">=</span> <span class="cn">TRUE</span>, legend.pos <span class="op">=</span> <span class="st">"topright"</span><span class="op">)</span></code></pre></div>
 <p><img src="potential_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
 <p>It’s also possible to compute areas of equipotential with <code><a href="../reference/equipotential.html">equipotential()</a></code>.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="va">iso</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equipotential.html">equipotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">iso</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equipotential.html">equipotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/cartography/man/choroLayer.html">choroLayer</a></span><span class="op">(</span><span class="va">iso</span>, var <span class="op">=</span> <span class="st">"center"</span>, breaks <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, 
            col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'teal'</span><span class="op">)</span>, 
            border <span class="op">=</span> <span class="st">"#121725"</span>, legend.pos <span class="op">=</span> <span class="st">"topright"</span>, 
-           lwd <span class="op">=</span> <span class="fl">.2</span>, legend.title.txt <span class="op">=</span> <span class="st">"Potential of\nPopulation"</span><span class="op">)</span></pre></div>
+           lwd <span class="op">=</span> <span class="fl">.2</span>, legend.title.txt <span class="op">=</span> <span class="st">"Potential of\nPopulation"</span><span class="op">)</span></code></pre></div>
 <p><img src="potential_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
 </div>
 <div id="compute-the-potentials-using-parallel-computation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#compute-the-potentials-using-parallel-computation" class="anchor"></a>Compute the potentials using parallel computation</h3>
 <p>In order to obtain smoother equipotential areas we need to compute the potentials on a much finer grid and that can be really time consuming with <code><a href="../reference/potential.html">potential()</a></code>.<br><code><a href="../reference/mcpotential.html">mcpotential()</a></code> computes potentials with a cutoff distance and parallel computation. The cutoff distance means that points that are too far away are not taken into account in the computation. The limits of this function are the impossibility to provide custom distance matrices (<code>d</code>), and the fact that it only uses Cartesian distances (hence its use for global data is likely to be inappropriate).</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">20000</span><span class="op">)</span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">20000</span><span class="op">)</span>
 <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mcpotential.html">mcpotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span>, 
                      var <span class="op">=</span> <span class="st">"POP19"</span>, fun <span class="op">=</span> <span class="st">"e"</span>,
                      span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span>, 
                      limit <span class="op">=</span> <span class="fl">200000</span>, ncl <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="va">y</span><span class="op">$</span><span class="va">pot2</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">pot</span><span class="op">)</span>
 <span class="va">iso</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equipotential.html">equipotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
+<span class="va">opar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span> 
 <span class="fu"><a href="https://rdrr.io/pkg/cartography/man/choroLayer.html">choroLayer</a></span><span class="op">(</span><span class="va">iso</span>, var <span class="op">=</span> <span class="st">"center"</span>, breaks <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, 
            col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'teal'</span><span class="op">)</span>, 
            border <span class="op">=</span> <span class="st">"#121725"</span>, legend.pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6194790</span>,<span class="fl">3428230</span><span class="op">)</span>, 
@@ -242,7 +241,8 @@ A_i = \sum_{j=1}^n O_j f(d_{ij})
 <span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html">mtext</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"© EuroGeographics for the administrative boundaries and © Eurostat for data"</span>,
       side<span class="op">=</span><span class="fl">1</span>, line <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, cex <span class="op">=</span> <span class="fl">.7</span>, adj <span class="op">=</span> <span class="fl">.99</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html">mtext</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"Potential of population"</span>,
-      side<span class="op">=</span><span class="fl">3</span>, line <span class="op">=</span> <span class="op">-</span><span class="fl">2</span>, cex <span class="op">=</span> <span class="fl">1.1</span>, adj <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></pre></div>
+      side<span class="op">=</span><span class="fl">3</span>, line <span class="op">=</span> <span class="op">-</span><span class="fl">2</span>, cex <span class="op">=</span> <span class="fl">1.1</span>, adj <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></code></pre></div>
 <p><img src="smooth-1.png"></p>
 </div>
 </div>

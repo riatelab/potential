@@ -4,7 +4,7 @@
 \alias{create_matrix}
 \title{Create a Distance Matrix Between Two Spatial Objects}
 \usage{
-create_matrix(x, y, checksize = TRUE, longlat = TRUE)
+create_matrix(x, y, checksize = TRUE, longlat = FALSE)
 }
 \arguments{
 \item{x}{an sf object (POINT), rows of the distance matrix, row names are 

@@ -27,7 +27,7 @@
 #' st_distance st_transform st_is
 #' @importFrom methods is
 #' @export
-create_matrix <- function(x, y, checksize = TRUE, longlat = TRUE) {
+create_matrix <- function(x, y, checksize = TRUE, longlat = FALSE) {
   if (checksize) {
     nk <- nrow(x)
     nu <- nrow(y)

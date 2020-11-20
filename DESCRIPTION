@@ -1,6 +1,6 @@
 Package: potential
 Title: Implementation of the Potential Model
-Version: 0.1.1.0
+Version: 0.2.0.0
 Authors@R: c(
       person("Timothée", "Giraud", email = "timothee.giraud@cnrs.fr", role = c("cre","aut"),
              comment = c(ORCID = "0000-0002-1932-3323")),
@@ -28,7 +28,6 @@ Suggests:
     knitr,
     tinytest,
     rmarkdown
-SystemRequirements: GDAL (>= 2.0.1), GEOS (>= 3.4.0), PROJ.4 (>= 4.8.0)
 URL: https://github.com/riatelab/potential
 BugReports: https://github.com/riatelab/potential/issues
 Encoding: UTF-8

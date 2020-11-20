@@ -1,6 +1,7 @@
 
 # potential
 
+[![](https://www.r-pkg.org/badges/version/potential)](https://cran.r-project.org/package=potential)
 [![R-CMD-check](https://github.com/riatelab/potential/workflows/R-CMD-check/badge.svg)](https://github.com/riatelab/potential/actions)
 [![codecov](https://codecov.io/gh/riatelab/potential/branch/master/graph/badge.svg?token=G8MZTHC9KQ)](https://codecov.io/gh/riatelab/potential)
 
@@ -14,10 +15,17 @@ parallelized to improve their efficiency.
 
 ### From GitHub
 
-Development version / unstable
+You can install the released version of `potential` from
+[CRAN](https://CRAN.R-project.org/package=potential) with:
 
 ``` r
-require(remotes)
+install.packages("potential")
+```
+
+You can install the development version of `potential` from GitHub with:
+
+``` r
+# install.packages("remotes")
 remotes::install_github("riatelab/potential")
 ```
 

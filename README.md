@@ -11,9 +11,11 @@ the model, for example it is possible to fine-tune the distance friction
 functions or to use custom distance matrices. Some computations are
 parallelized to improve their efficiency.
 
-## Installation
+-   [**Website**](https://riatelab.github.io/potential/)  
+-   [**Vignette**](https://riatelab.github.io/potential/articles/potential.html)  
+-   [**Blog post**](https://rgeomatic.hypotheses.org/?p=2023)
 
-### From GitHub
+## Installation
 
 You can install the released version of `potential` from
 [CRAN](https://CRAN.R-project.org/package=potential) with:
@@ -33,16 +35,17 @@ remotes::install_github("riatelab/potential")
 
 ``` r
 library(sf)
-```
-
-    ## Linking to GEOS 3.7.1, GDAL 3.1.2, PROJ 7.1.0
-
-``` r
 library(potential)
 library(cartography)
+# Display the spatial interaction function
+plot_inter(fun = "e", span = 75000, beta = 2, limit = 250000)
+```
+
+![](man/figures/demox-1.png)<!-- -->
+
+``` r
 # create a regular grid
 y <- create_grid(x = n3_poly, res = 20000)
-
 # compute potentials
 pot <- mcpotential(
   x = n3_pt, y = y,
@@ -51,22 +54,26 @@ pot <- mcpotential(
   beta = 2, limit = 250000, 
   ncl = 2
 )
+# Define potential according to the maximum value
 y$pot <- pot / max(pot) * 100
-
 # create equipotential areas
 equipot <- equipotential(y, var = "pot", mask = n3_poly)
-
 # map potentials
 opar <- par(mar = c(0, 0, 1.2, 0), bg = "#b5bece", no.readonly = TRUE)
-choroLayer(equipot, var = "center", breaks = seq(0,100,length.out = 11), 
+choroLayer(equipot, var = "center", 
+           breaks = seq(0,100,length.out = 11), 
            col = hcl.colors(10, 'teal'),
-           border = "#121725", legend.pos = "bottom", 
-           lwd = .2, legend.title.txt = "Potential Intensity",
-           legend.horiz = T)
+           border = "#121725", 
+           lwd = .2, 
+           legend.pos = "bottom", 
+           legend.title.txt = "Potential Intensity",
+           legend.horiz = TRUE)
 layoutLayer(title = "Potentials of Population", 
             col = "#121725", coltitle = "#4dB8da",
             sources = "© EuroGeographics for the administrative boundaries and © Eurostat for data",
-            horiz = F, postitle = "center", scale = F)
+            horiz = FALSE, 
+            postitle = "center", 
+            scale = FALSE)
 par(opar)
 ```
 

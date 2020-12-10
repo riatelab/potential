@@ -53,6 +53,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/exemple.html">Stewart Potentials: a Use Case</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -78,12 +90,18 @@
 <a href="#potential" class="anchor"></a>potential</h1></div>
 
 <p>This package provides functions to compute the potential model as defined by Stewart (1941). Several options are available to customize the model, for example it is possible to fine-tune the distance friction functions or to use custom distance matrices. Some computations are parallelized to improve their efficiency.</p>
+<ul>
+<li>
+<a href="https://riatelab.github.io/potential/"><strong>Website</strong></a><br>
+</li>
+<li>
+<a href="https://riatelab.github.io/potential/articles/potential.html"><strong>Vignette</strong></a><br>
+</li>
+<li><a href="https://rgeomatic.hypotheses.org/?p=2023"><strong>Blog post</strong></a></li>
+</ul>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div id="from-github" class="section level3">
-<h3 class="hasAnchor">
-<a href="#from-github" class="anchor"></a>From GitHub</h3>
 <p>You can install the released version of <code>potential</code> from <a href="https://CRAN.R-project.org/package=potential">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"potential"</span><span class="op">)</span></code></pre></div>
@@ -92,19 +110,19 @@
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"riatelab/potential"</span><span class="op">)</span></code></pre></div>
 </div>
-</div>
 <div id="demo" class="section level2">
 <h2 class="hasAnchor">
 <a href="#demo" class="anchor"></a>Demo</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Linking to GEOS 3.7.1, GDAL 3.1.2, PROJ 7.1.0</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/potential">potential</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/potential">potential</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/cartography/">cartography</a></span><span class="op">)</span>
-<span class="co"># create a regular grid</span>
+<span class="co"># Display the spatial interaction function</span>
+<span class="fu"><a href="reference/plot_inter.html">plot_inter</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"e"</span>, span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span>, limit <span class="op">=</span> <span class="fl">250000</span><span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/demox-1.png"><!-- --></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a regular grid</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">20000</span><span class="op">)</span>
-
 <span class="co"># compute potentials</span>
 <span class="va">pot</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/mcpotential.html">mcpotential</a></span><span class="op">(</span>
   x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span>,
@@ -113,22 +131,26 @@
   beta <span class="op">=</span> <span class="fl">2</span>, limit <span class="op">=</span> <span class="fl">250000</span>, 
   ncl <span class="op">=</span> <span class="fl">2</span>
 <span class="op">)</span>
+<span class="co"># Define potential according to the maximum value</span>
 <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">&lt;-</span> <span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">pot</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>
-
 <span class="co"># create equipotential areas</span>
 <span class="va">equipot</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/equipotential.html">equipotential</a></span><span class="op">(</span><span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot"</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
-
 <span class="co"># map potentials</span>
 <span class="va">opar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1.2</span>, <span class="fl">0</span><span class="op">)</span>, bg <span class="op">=</span> <span class="st">"#b5bece"</span>, no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/choroLayer.html">choroLayer</a></span><span class="op">(</span><span class="va">equipot</span>, var <span class="op">=</span> <span class="st">"center"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>,length.out <span class="op">=</span> <span class="fl">11</span><span class="op">)</span>, 
+<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/choroLayer.html">choroLayer</a></span><span class="op">(</span><span class="va">equipot</span>, var <span class="op">=</span> <span class="st">"center"</span>, 
+           breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>,length.out <span class="op">=</span> <span class="fl">11</span><span class="op">)</span>, 
            col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'teal'</span><span class="op">)</span>,
-           border <span class="op">=</span> <span class="st">"#121725"</span>, legend.pos <span class="op">=</span> <span class="st">"bottom"</span>, 
-           lwd <span class="op">=</span> <span class="fl">.2</span>, legend.title.txt <span class="op">=</span> <span class="st">"Potential Intensity"</span>,
-           legend.horiz <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
+           border <span class="op">=</span> <span class="st">"#121725"</span>, 
+           lwd <span class="op">=</span> <span class="fl">.2</span>, 
+           legend.pos <span class="op">=</span> <span class="st">"bottom"</span>, 
+           legend.title.txt <span class="op">=</span> <span class="st">"Potential Intensity"</span>,
+           legend.horiz <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/cartography/man/layoutLayer.html">layoutLayer</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Potentials of Population"</span>, 
             col <span class="op">=</span> <span class="st">"#121725"</span>, coltitle <span class="op">=</span> <span class="st">"#4dB8da"</span>,
             sources <span class="op">=</span> <span class="st">"© EuroGeographics for the administrative boundaries and © Eurostat for data"</span>,
-            horiz <span class="op">=</span> <span class="cn">F</span>, postitle <span class="op">=</span> <span class="st">"center"</span>, scale <span class="op">=</span> <span class="cn">F</span><span class="op">)</span>
+            horiz <span class="op">=</span> <span class="cn">FALSE</span>, 
+            postitle <span class="op">=</span> <span class="st">"center"</span>, 
+            scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/demo-1.png"><!-- --></p>
 </div>

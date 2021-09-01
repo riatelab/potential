@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">potential</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -43,7 +43,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -69,7 +69,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/riatelab/potential/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -114,9 +114,8 @@
 <h2 class="hasAnchor">
 <a href="#demo" class="anchor"></a>Demo</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/mapsf/">mapsf</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/potential">potential</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/cartography/">cartography</a></span><span class="op">)</span>
 <span class="co"># Display the spatial interaction function</span>
 <span class="fu"><a href="reference/plot_inter.html">plot_inter</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"e"</span>, span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span>, limit <span class="op">=</span> <span class="fl">250000</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/demox-1.png"><!-- --></p>
@@ -136,22 +135,17 @@
 <span class="co"># create equipotential areas</span>
 <span class="va">equipot</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/equipotential.html">equipotential</a></span><span class="op">(</span><span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot"</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
 <span class="co"># map potentials</span>
-<span class="va">opar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1.2</span>, <span class="fl">0</span><span class="op">)</span>, bg <span class="op">=</span> <span class="st">"#b5bece"</span>, no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/choroLayer.html">choroLayer</a></span><span class="op">(</span><span class="va">equipot</span>, var <span class="op">=</span> <span class="st">"center"</span>, 
-           breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>,length.out <span class="op">=</span> <span class="fl">11</span><span class="op">)</span>, 
-           col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'teal'</span><span class="op">)</span>,
-           border <span class="op">=</span> <span class="st">"#121725"</span>, 
-           lwd <span class="op">=</span> <span class="fl">.2</span>, 
-           legend.pos <span class="op">=</span> <span class="st">"bottom"</span>, 
-           legend.title.txt <span class="op">=</span> <span class="st">"Potential Intensity"</span>,
-           legend.horiz <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/layoutLayer.html">layoutLayer</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Potentials of Population"</span>, 
-            col <span class="op">=</span> <span class="st">"#121725"</span>, coltitle <span class="op">=</span> <span class="st">"#4dB8da"</span>,
-            sources <span class="op">=</span> <span class="st">"© EuroGeographics for the administrative boundaries and © Eurostat for data"</span>,
-            horiz <span class="op">=</span> <span class="cn">FALSE</span>, 
-            postitle <span class="op">=</span> <span class="st">"center"</span>, 
-            scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_theme.html">mf_theme</a></span><span class="op">(</span><span class="st">"default"</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">equipot</span>, var <span class="op">=</span> <span class="st">"center"</span>, type <span class="op">=</span> <span class="st">"choro"</span>, 
+       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>,length.out <span class="op">=</span> <span class="fl">11</span><span class="op">)</span>, 
+       pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'teal'</span><span class="op">)</span>,
+       border <span class="op">=</span> <span class="st">"#121725"</span>, 
+       leg_val_rnd <span class="op">=</span> <span class="fl">0</span>,
+       lwd <span class="op">=</span> <span class="fl">.2</span>, 
+       leg_pos <span class="op">=</span> <span class="st">"topright"</span>, 
+       leg_title <span class="op">=</span> <span class="st">"Potential Intensity"</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_title.html">mf_title</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"Potentials of Population"</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_credits.html">mf_credits</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"© EuroGeographics for the administrative boundaries and © Eurostat for data"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/demo-1.png"><!-- --></p>
 </div>
 <div id="note" class="section level2">

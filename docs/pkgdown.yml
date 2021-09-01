@@ -1,8 +1,8 @@
-pandoc: 2.11.0.2
+pandoc: 2.11.4
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   exemple: exemple.html
   potential: potential.html
-last_built: 2020-12-10T15:11Z
+last_built: 2021-09-01T09:55Z
 

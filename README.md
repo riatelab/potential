@@ -34,9 +34,8 @@ remotes::install_github("riatelab/potential")
 ## Demo
 
 ``` r
-library(sf)
+library(mapsf)
 library(potential)
-library(cartography)
 # Display the spatial interaction function
 plot_inter(fun = "e", span = 75000, beta = 2, limit = 250000)
 ```
@@ -59,22 +58,17 @@ y$pot <- pot / max(pot) * 100
 # create equipotential areas
 equipot <- equipotential(y, var = "pot", mask = n3_poly)
 # map potentials
-opar <- par(mar = c(0, 0, 1.2, 0), bg = "#b5bece", no.readonly = TRUE)
-choroLayer(equipot, var = "center", 
-           breaks = seq(0,100,length.out = 11), 
-           col = hcl.colors(10, 'teal'),
-           border = "#121725", 
-           lwd = .2, 
-           legend.pos = "bottom", 
-           legend.title.txt = "Potential Intensity",
-           legend.horiz = TRUE)
-layoutLayer(title = "Potentials of Population", 
-            col = "#121725", coltitle = "#4dB8da",
-            sources = "© EuroGeographics for the administrative boundaries and © Eurostat for data",
-            horiz = FALSE, 
-            postitle = "center", 
-            scale = FALSE)
-par(opar)
+mf_theme("default")
+mf_map(x = equipot, var = "center", type = "choro", 
+       breaks = seq(0,100,length.out = 11), 
+       pal = hcl.colors(10, 'teal'),
+       border = "#121725", 
+       leg_val_rnd = 0,
+       lwd = .2, 
+       leg_pos = "topright", 
+       leg_title = "Potential Intensity")
+mf_title(txt = "Potentials of Population")
+mf_credits(txt = "© EuroGeographics for the administrative boundaries and © Eurostat for data")
 ```
 
 ![](man/figures/demo-1.png)<!-- -->

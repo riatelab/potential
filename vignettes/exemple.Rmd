@@ -36,47 +36,48 @@ In this vignette, we show a use case of these potentials on the regional GDP per
 * a regional map of the potential GDP per capita;
 * a smoothed map of the GDP per capita.
 
-Note that this example is based on data and mapping functions proposed in the **[cartography]( https://cran.r-project.org/package=cartography) package**.  
+Note that this example is based on data proposed in the `[cartography]( https://cran.r-project.org/package=cartography)` package but function used to create maps are from `[mapsf]( https://cran.r-project.org/package=mapsf)`.  
 
 ## Regional Map of the GDP per Capita
 
 ```{r regionalmap, fig.width=7, fig.height=6, fig.show='hold' }
 library(cartography)
+library(mapsf)
 library(potential)
 library(sp)
-library(sf)
 data(nuts2006)
-# Transform sp Nuts3 to sf Nuts3
+# Transform sp data to sf data
 nuts3.spdf@data <- nuts3.df
 nuts3 <- st_as_sf(nuts3.spdf)
+nuts0 <- st_as_sf(nuts0.spdf)
+world <- st_as_sf(world.spdf)
 
 # Compute the GDP per capita variable
 nuts3$gdpcap <- nuts3$gdppps2008 * 1000000 / nuts3$pop2008
 # Discretize the variable
 bv <- quantile(nuts3$gdpcap, seq(from = 0, to = 1, length.out = 9))
 # Draw the map
-opar <- par(mar = c(0,0,1.2,0))
 # Set a color palette
-pal <- carto.pal(pal1 = "wine.pal", n1 = 8)
+pal <- mf_get_pal(n = 9, palette = "Burg", rev = TRUE)
 # Draw the basemap
-plot(nuts0.spdf, add = F, border = NA, bg = "#cdd2d4")
-plot(world.spdf, col = "#f5f5f3ff", border = "#a9b3b4ff", add = TRUE)
+mf_theme(bg = "#cdd2d4", mar = c(0,0,1.2,0), tab = FALSE)
+mf_init(nuts0)
+mf_map(world, col = "#f5f5f3ff", border = "#a9b3b4ff", add = TRUE)
 # Map the regional GDP per capita
-choroLayer(x = nuts3, 
-           var = "gdpcap", 
-           legend.pos = "topright",
-           breaks = bv, col = pal, 
-           border = NA, 
-           legend.title.txt = "GDP per capita",
-           legend.values.rnd = -2, 
-           add = TRUE)
-plot(nuts0.spdf, add = TRUE, lwd = 0.5, border = "grey30")
-plot(world.spdf, col = NA, border = "#7DA9B8", add = TRUE)
+mf_map(x = nuts3, var = "gdpcap", type = "choro",
+       leg_pos = "topright",
+       breaks = bv, 
+       pal = pal, 
+       border = NA, 
+       leg_title = "GDP per capita",
+       leg_val_rnd = -2, 
+       add = TRUE)
+mf_map(nuts0, add = TRUE, lwd = 0.5, border = "grey30", col = NA)
+mf_map(world, col = NA, border = "#7DA9B8", add = TRUE)
 # Set a layout
-layoutLayer(title = "Wealth Inequality in Europe", 
-            sources = "Basemap: UMS RIATE, 2015 - Data: Eurostat, 2008", 
-            author = "T. Giraud, 2020")
-par(opar)
+mf_title(txt = "GDP per capita Inequality in Europe")
+mf_credits(txt = "Basemap: UMS RIATE, 2015 - Data: Eurostat, 2008\nT. Giraud, 2020", 
+           bg = "#ffffff80")
 ```
 
 
@@ -106,29 +107,28 @@ nuts3$gdpcappot <-  pot[, 2] * 1000000 / pot[, 1]
 # Discretize the variable
 bv2 <- c(min(nuts3$gdpcappot), bv[2:8], max(nuts3$gdpcappot))
 # Draw the map
-par <- par(mar = c(0,0,1.2,0))
 # Draw the basemap
-plot(nuts0.spdf, add = F, border = NA, bg = "#cdd2d4")
-plot(world.spdf, col = "#f5f5f3ff", border = "#a9b3b4ff", add = TRUE)
+mf_init(nuts0)
+mf_map(world, col = "#f5f5f3ff", border = "#a9b3b4ff", add = TRUE)
 # Map the regional potential of GDP per capita
-choroLayer(spdf = nuts3, 
-           var = "gdpcappot", 
-           legend.pos = "topright",
-           breaks = bv2, col = pal, 
-           border = NA,
-           legend.title.txt = "Potential\nGDP per capita",
-           legend.values.rnd = -2, add = TRUE)
-plot(nuts0.spdf, add=T, lwd = 0.5, border = "grey30")
-plot(world.spdf, col = NA, border = "#7DA9B8", add=T)
+mf_map(x = nuts3, var = "gdpcappot", type = "choro",
+       leg_pos = "topright",
+       breaks = bv2, 
+       pal = pal, 
+       border = NA, 
+       leg_title = "Potential\nGDP per capita",
+       leg_val_rnd = -2, 
+       add = TRUE)
+mf_map(nuts0, add = TRUE, lwd = 0.5, border = "grey30", col = NA)
+mf_map(world, col = NA, border = "#7DA9B8", add = TRUE)
 # Set a text to explicit the function parameters
 text(x = 6271272, y = 3743765, 
      labels = "Distance function:\n- type = exponential\n- beta = 2\n- span = 75 km", 
      cex = 0.8, adj = 0, font = 3)
 # Set a layout
-layoutLayer(title = "Wealth Inequality in Europe", 
-            sources = "Basemap: UMS RIATE, 2015 - Data: Eurostat, 2008", 
-            author = "T. Giraud, 2020")
-par(opar)
+mf_title(txt = "GDP per capita Inequality in Europe")
+mf_credits(txt = "Basemap: UMS RIATE, 2015 - Data: Eurostat, 2008\nT. Giraud, 2020", 
+           bg = "#ffffff80")
 ```
 
 This map gives a smoothed picture of the spatial patterns of wealth in Europe while keeping the original spatial units as interpretive framework. Hence, the map reader can still rely on a known territorial division to develop its analyses.
@@ -144,12 +144,12 @@ g <- create_grid(x = nuts3, res = 50000)
 d <- create_matrix(nuts3pt, g)
 # function = exponential, beta = 2, span = 75 km
 pot2 <- potential(x = nuts3pt, 
-                 y = g, 
-                 d = d, 
-                 var = c("pop2008", "gdppps2008"), 
-                 fun = "e",  
-                 beta = 2, 
-                 span = 75000)
+                  y = g, 
+                  d = d, 
+                  var = c("pop2008", "gdppps2008"), 
+                  fun = "e",  
+                  beta = 2, 
+                  span = 75000)
 # Create the ratio variable
 g$gdpcappot <-  pot2[, 2] * 1000000 / pot2[, 1]
 
@@ -158,29 +158,28 @@ pot <- equipotential(x = g, var = "gdpcappot", breaks = bv, mask = nuts3)
 # Get breaks values
 bv3 <- sort(c(unique(pot$min), max(pot$max)), decreasing = FALSE)
 # Draw the map
-par <- par(mar = c(0,0,1.2,0))
 # Draw the basemap
-plot(nuts0.spdf, add = F, border = NA, bg = "#cdd2d4")
-plot(world.spdf, col = "#f5f5f3ff", border = "#a9b3b4ff", add = TRUE)
+mf_init(nuts0)
+mf_map(world, col = "#f5f5f3ff", border = "#a9b3b4ff", add = TRUE)
 # Map the potential GDP per Capita
-choroLayer(x = pot, var = "center", 
-           legend.pos = "topright",
-           breaks = bv3, col = pal, add=T, 
-           border = NA, lwd = 0.2,
-           legend.title.txt = "Potential\nGDP per capita",
-           legend.values.rnd = -2)
-plot(nuts0.spdf, add=T, lwd = 0.5, border = "grey30")
-plot(world.spdf, col = NA, border = "#7DA9B8", add=T)
+mf_map(x = pot, var = "center", type = "choro",
+       leg_pos = "topright",
+       breaks = bv3, 
+       pal = pal, 
+       border = NA, 
+       leg_title = "Potential\nGDP per capita",
+       leg_val_rnd = -2, 
+       add = TRUE)
+mf_map(nuts0, add = TRUE, lwd = 0.5, border = "grey30", col = NA)
+mf_map(world, col = NA, border = "#7DA9B8", add = TRUE)
 # Set a text to explicit the function parameters
 text(x = 6271272, y = 3743765, 
      labels = "Distance function:\n- type = exponential\n- beta = 2\n- span = 75 km", 
      cex = 0.8, adj = 0, font = 3)
 # Set a layout
-layoutLayer(title = "Wealth Inequality in Europe", 
-            sources = "Basemap: UMS RIATE, 2015 - Data: Eurostat, 2008", 
-            author = "T. Giraud, 2020")
-par(opar)
+mf_title(txt = "GDP per capita Inequality in Europe")
+mf_credits(txt = "Basemap: UMS RIATE, 2015 - Data: Eurostat, 2008\nT. Giraud, 2020", 
+           bg = "#ffffff80")
 ```
 
 Unlike the previous maps, this one doesn't keep the initial territorial division to give a smoothed picture of the spatial patterns of wealth in Europe. The result is easy to read and can be considered as a bypassing of the Modifiable Areal Unit Problem (MAUP).
-                 

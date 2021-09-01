@@ -36,7 +36,7 @@ In this vignette, we show a use case of these potentials on the regional GDP per
 * a regional map of the potential GDP per capita;
 * a smoothed map of the GDP per capita.
 
-Note that this example is based on data proposed in the `[cartography]( https://cran.r-project.org/package=cartography)` package but function used to create maps are from `[mapsf]( https://cran.r-project.org/package=mapsf)`.  
+Note that this example is based on data proposed in the [`cartography`]( https://cran.r-project.org/package=cartography) package but function used to create maps are from [`mapsf`]( https://cran.r-project.org/package=mapsf).  
 
 ## Regional Map of the GDP per Capita
 
@@ -76,7 +76,7 @@ mf_map(nuts0, add = TRUE, lwd = 0.5, border = "grey30", col = NA)
 mf_map(world, col = NA, border = "#7DA9B8", add = TRUE)
 # Set a layout
 mf_title(txt = "GDP per capita Inequality in Europe")
-mf_credits(txt = "Basemap: UMS RIATE, 2015 - Data: Eurostat, 2008\nT. Giraud, 2020", 
+mf_credits(txt = "Basemap: UMS RIATE, 2015 - Data: Eurostat, 2008\nT. Giraud, 2021", 
            bg = "#ffffff80")
 ```
 
@@ -127,7 +127,7 @@ text(x = 6271272, y = 3743765,
      cex = 0.8, adj = 0, font = 3)
 # Set a layout
 mf_title(txt = "GDP per capita Inequality in Europe")
-mf_credits(txt = "Basemap: UMS RIATE, 2015 - Data: Eurostat, 2008\nT. Giraud, 2020", 
+mf_credits(txt = "Basemap: UMS RIATE, 2015 - Data: Eurostat, 2008\nT. Giraud, 2021", 
            bg = "#ffffff80")
 ```
 
@@ -178,7 +178,7 @@ text(x = 6271272, y = 3743765,
      cex = 0.8, adj = 0, font = 3)
 # Set a layout
 mf_title(txt = "GDP per capita Inequality in Europe")
-mf_credits(txt = "Basemap: UMS RIATE, 2015 - Data: Eurostat, 2008\nT. Giraud, 2020", 
+mf_credits(txt = "Basemap: UMS RIATE, 2015 - Data: Eurostat, 2008\nT. Giraud, 2021", 
            bg = "#ffffff80")
 ```
 

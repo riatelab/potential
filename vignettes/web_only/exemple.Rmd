@@ -157,7 +157,7 @@ mf_title(txt = "GDP per Capita Inequalities in Italy")
 mf_scale(100)
 mf_credits(txt = cred, bg = "#ffffff80")
 # Set a text to explicit the function parameters
-text(x = 4893429, y = 2308495, xpd = TRUE,
+text(x = 4873429, y = 2308495, xpd = TRUE,
      labels = paste0("Distance function:\n",
                      "- type = exponential\n",
                      "- beta = 2\n", 
@@ -214,7 +214,7 @@ mf_title(txt = "GDP per Capita Inequalities in Italy")
 mf_scale(100)
 mf_credits(txt = cred, bg = "#ffffff80")
 # Set a text to explicit the function parameters
-text(x = 4893429, y = 2308495, xpd = TRUE,
+text(x = 4873429, y = 2308495, xpd = TRUE,
      labels = paste0("Distance function:\n",
                      "- type = exponential\n",
                      "- beta = 2\n", 

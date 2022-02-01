@@ -1,6 +1,6 @@
 Package: potential
 Title: Implementation of the Potential Model
-Version: 0.3.0
+Version: 0.2.0
 Authors@R: c(
       person("Timothée", "Giraud", email = "timothee.giraud@cnrs.fr", role = c("cre","aut"),
              comment = c(ORCID = "0000-0002-1932-3323")),
@@ -24,8 +24,8 @@ Imports:
 Suggests:
     covr,
     lwgeom,
-    sp,
-    cartography,
+    eurostat,
+    giscoR,
     mapsf,
     knitr,
     tinytest,
@@ -33,5 +33,5 @@ Suggests:
 URL: https://github.com/riatelab/potential
 BugReports: https://github.com/riatelab/potential/issues
 Encoding: UTF-8
-RoxygenNote: 7.1.1
 VignetteBuilder: knitr
+RoxygenNote: 7.1.2

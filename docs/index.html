@@ -23,6 +23,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -35,18 +37,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">potential</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/potential.html">Get started</a>
 </li>
@@ -61,14 +57,14 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/exemple.html">Stewart Potentials: a Use Case</a>
+      <a href="articles/web_only/exemple.html">Stewart Potentials: a Use Case</a>
     </li>
   </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/riatelab/potential/">
+  <a href="https://github.com/riatelab/potential/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -85,37 +81,37 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="potential" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#potential" class="anchor"></a>potential</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="potential">potential<a class="anchor" aria-label="anchor" href="#potential"></a>
+</h1></div>
 
 <p>This package provides functions to compute the potential model as defined by Stewart (1941). Several options are available to customize the model, for example it is possible to fine-tune the distance friction functions or to use custom distance matrices. Some computations are parallelized to improve their efficiency.</p>
 <ul>
 <li>
-<a href="https://riatelab.github.io/potential/"><strong>Website</strong></a><br>
+<a href="https://riatelab.github.io/potential/" class="external-link"><strong>Website</strong></a><br>
 </li>
 <li>
-<a href="https://riatelab.github.io/potential/articles/potential.html"><strong>Vignette</strong></a><br>
+<a href="https://riatelab.github.io/potential/articles/potential.html" class="external-link"><strong>Vignette</strong></a><br>
 </li>
-<li><a href="https://rgeomatic.hypotheses.org/?p=2023"><strong>Blog post</strong></a></li>
+<li><a href="https://rgeomatic.hypotheses.org/?p=2023" class="external-link"><strong>Blog post</strong></a></li>
 </ul>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of <code>potential</code> from <a href="https://CRAN.R-project.org/package=potential">CRAN</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the released version of <code>potential</code> from <a href="https://CRAN.R-project.org/package=potential" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"potential"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"potential"</span><span class="op">)</span></code></pre></div>
 <p>You can install the development version of <code>potential</code> from GitHub with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"riatelab/potential"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"riatelab/potential"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="demo" class="section level2">
-<h2 class="hasAnchor">
-<a href="#demo" class="anchor"></a>Demo</h2>
+<div class="section level2">
+<h2 id="demo">Demo<a class="anchor" aria-label="anchor" href="#demo"></a>
+</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/mapsf/">mapsf</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/potential">potential</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/mapsf/" class="external-link">mapsf</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/potential" class="external-link">potential</a></span><span class="op">)</span>
 <span class="co"># Display the spatial interaction function</span>
 <span class="fu"><a href="reference/plot_inter.html">plot_inter</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"e"</span>, span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span>, limit <span class="op">=</span> <span class="fl">250000</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/demox-1.png"><!-- --></p>
@@ -131,34 +127,34 @@
   ncl <span class="op">=</span> <span class="fl">2</span>
 <span class="op">)</span>
 <span class="co"># Define potential according to the maximum value</span>
-<span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">&lt;-</span> <span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">pot</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>
+<span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">&lt;-</span> <span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">pot</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>
 <span class="co"># create equipotential areas</span>
 <span class="va">equipot</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/equipotential.html">equipotential</a></span><span class="op">(</span><span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot"</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
 <span class="co"># map potentials</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_theme.html">mf_theme</a></span><span class="op">(</span><span class="st">"default"</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">equipot</span>, var <span class="op">=</span> <span class="st">"center"</span>, type <span class="op">=</span> <span class="st">"choro"</span>, 
-       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>,length.out <span class="op">=</span> <span class="fl">11</span><span class="op">)</span>, 
-       pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'teal'</span><span class="op">)</span>,
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_theme.html" class="external-link">mf_theme</a></span><span class="op">(</span><span class="st">"default"</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">equipot</span>, var <span class="op">=</span> <span class="st">"center"</span>, type <span class="op">=</span> <span class="st">"choro"</span>, 
+       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>,length.out <span class="op">=</span> <span class="fl">11</span><span class="op">)</span>, 
+       pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'teal'</span><span class="op">)</span>,
        border <span class="op">=</span> <span class="st">"#121725"</span>, 
        leg_val_rnd <span class="op">=</span> <span class="fl">0</span>,
        lwd <span class="op">=</span> <span class="fl">.2</span>, 
        leg_pos <span class="op">=</span> <span class="st">"topright"</span>, 
        leg_title <span class="op">=</span> <span class="st">"Potential Intensity"</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_title.html">mf_title</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"Potentials of Population"</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_credits.html">mf_credits</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"© EuroGeographics for the administrative boundaries and © Eurostat for data"</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_title.html" class="external-link">mf_title</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"Potentials of Population"</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_credits.html" class="external-link">mf_credits</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"© EuroGeographics for the administrative boundaries and © Eurostat for data"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/demo-1.png"><!-- --></p>
 </div>
-<div id="note" class="section level2">
-<h2 class="hasAnchor">
-<a href="#note" class="anchor"></a>Note</h2>
-<p>This package provides access to the revamped potential-related functions initially offered by <a href="https://CRAN.R-project.org/package=SpatialPosition"><code>SpatialPosition</code></a>.</p>
+<div class="section level2">
+<h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a>
+</h2>
+<p>This package provides access to the revamped potential-related functions initially offered by <a href="https://CRAN.R-project.org/package=SpatialPosition" class="external-link"><code>SpatialPosition</code></a>.</p>
 </div>
-<div id="references" class="section level2">
-<h2 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h2>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-STEWART41" class="csl-entry">
-Stewart, John Q. 1941. “An Inverse Distance Variation for Certain Social Influences.” <em>Science</em> 93 (2404): 89–90. <a href="https://doi.org/10.1126/science.93.2404.89" class="uri">https://doi.org/10.1126/science.93.2404.89</a>.
+Stewart, John Q. 1941. “An Inverse Distance Variation for Certain Social Influences.” <em>Science</em> 93 (2404): 89–90. <a href="https://doi.org/10.1126/science.93.2404.89" class="external-link uri">https://doi.org/10.1126/science.93.2404.89</a>.
 </div>
 </div>
 </div>
@@ -167,48 +163,58 @@ Stewart, John Q. 1941. “An Inverse Distance Variation for Certain Social Influ
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=potential">https://​cloud.r-project.org/​package=potential</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/riatelab/potential/">https://​github.com/​riatelab/​potential/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/riatelab/potential/issues">https://​github.com/​riatelab/​potential/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=potential" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/riatelab/potential/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/riatelab/potential/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Timothée Giraud <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0002-1932-3323" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing potential</a></li>
+</ul>
+</div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Timothée Giraud <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0002-1932-3323" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Hadrien Commenges <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=potential"><img src="https://www.r-pkg.org/badges/version/potential"></a></li>
-<li><a href="https://github.com/riatelab/potential/actions"><img src="https://github.com/riatelab/potential/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://codecov.io/gh/riatelab/potential"><img src="https://codecov.io/gh/riatelab/potential/branch/master/graph/badge.svg?token=G8MZTHC9KQ" alt="codecov"></a></li>
+<li><a href="https://cran.r-project.org/package=potential" class="external-link"><img src="https://www.r-pkg.org/badges/version/potential"></a></li>
+<li><a href="https://github.com/riatelab/potential/actions" class="external-link"><img src="https://github.com/riatelab/potential/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://codecov.io/gh/riatelab/potential" class="external-link"><img src="https://codecov.io/gh/riatelab/potential/branch/master/graph/badge.svg?token=G8MZTHC9KQ" alt="codecov"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Timothée Giraud, Hadrien Commenges.</p>
+  <p></p>
+<p>Developed by Timothée Giraud, Hadrien Commenges.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -216,6 +222,8 @@ Stewart, John Q. 1941. “An Inverse Distance Variation for Certain Social Influ
 
   
 
+
+  
 
   </body>
 </html>

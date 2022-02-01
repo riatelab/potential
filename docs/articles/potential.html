@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">potential</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/potential.html">Get started</a>
 </li>
@@ -57,14 +53,14 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/exemple.html">Stewart Potentials: a Use Case</a>
+      <a href="../articles/web_only/exemple.html">Stewart Potentials: a Use Case</a>
     </li>
   </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/riatelab/potential/">
+  <a href="https://github.com/riatelab/potential/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -79,31 +75,31 @@
 
       
 
-      </header><script src="potential_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>potential</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/riatelab/potential/blob/master/vignettes/potential.Rmd"><code>vignettes/potential.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/riatelab/potential/blob/HEAD/vignettes/potential.Rmd" class="external-link"><code>vignettes/potential.Rmd</code></a></small>
       <div class="hidden name"><code>potential.Rmd</code></div>
 
     </div>
 
     
     
-<div id="historic-and-conceptual-background" class="section level1">
-<h1 class="hasAnchor">
-<a href="#historic-and-conceptual-background" class="anchor"></a>Historic and conceptual background</h1>
-<div id="modeling-spatial-interactions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#modeling-spatial-interactions" class="anchor"></a>Modeling spatial interactions</h2>
+<div class="section level2">
+<h2 id="historic-and-conceptual-background">Historic and conceptual background<a class="anchor" aria-label="anchor" href="#historic-and-conceptual-background"></a>
+</h2>
+<div class="section level3">
+<h3 id="modeling-spatial-interactions">Modeling spatial interactions<a class="anchor" aria-label="anchor" href="#modeling-spatial-interactions"></a>
+</h3>
 <p>Modeling spatial interactions is used to understand and quantify the level of interaction between different locations.<br>
 The most ancient and common spatial interactions model the gravity model. It has roots in the late 19st century and has been used in several fields (geography, economy, demography) to model a high variety of flows (commuting, trade, migrations). A brief presentation can be found in <span class="citation">Rodrigue, Comtois, and Slack (2013)</span> and a more detailed one, among many others, in <span class="citation">Fotheringham and O’Kelly (1989)</span>.</p>
 </div>
-<div id="a-place-based-model-stewarts-potentials" class="section level2">
-<h2 class="hasAnchor">
-<a href="#a-place-based-model-stewarts-potentials" class="anchor"></a>A place-based model: Stewart’s potentials</h2>
+<div class="section level3">
+<h3 id="a-place-based-model-stewarts-potentials">A place-based model: Stewart’s potentials<a class="anchor" aria-label="anchor" href="#a-place-based-model-stewarts-potentials"></a>
+</h3>
 <p>There are two main ways of modeling spatial interactions: the first one focuses on links between places (flows), the second one focuses on places and their influence at a distance. Following the physics metaphor, the flow may be seen as the <strong>gravitational force</strong> between two masses, the place influence as the <strong>gravitational potential</strong>. The <code>potential</code> package, as its name suggests, proposes an implementation of the place-based model of potential defined by John Q. Stewart <span class="citation">(1941)</span>.</p>
 <p>The Stewart model is also known in the literature, depending on the discipline, as <strong>potential access</strong>, <strong>gravitational potential</strong> or <strong>gravitational accessibility</strong>. The concept was developed in the 1940s by physicist John Q. Stewart from an analogy to the gravity model. In his seminal work on the catchment areas of American universities, Stewart computes <strong>potentials of population</strong>. This potential is defined as a stock of population weighted by distance:</p>
 <p><span class="math display">\[
@@ -120,18 +116,18 @@ A_i = \sum_{j=1}^n O_j f(d_{ij})
 </ul>
 <p>The computation of potentials could be considered as a <strong>spatial interpolation method</strong> such as inverse distance weighted interpolation (IDW) or kernel density estimator (KDE). These models aim to estimate unknown values of non-observed points from known values given by measure points. Cartographically speaking, they are often used to get a continuous surface from a set of discrete points. However, we argue that the Stewart model is mainly a spatial interaction modeling approach, with a possible secondary use for spatial interpolation.</p>
 </div>
-<div id="the-distance-friction" class="section level2">
-<h2 class="hasAnchor">
-<a href="#the-distance-friction" class="anchor"></a>The distance friction</h2>
+<div class="section level3">
+<h3 id="the-distance-friction">The distance friction<a class="anchor" aria-label="anchor" href="#the-distance-friction"></a>
+</h3>
 <p>Modeling spatial interactions implies quantifying the distance friction or impedance. The role of the distance can be interpreted as a disincentive to access desired destinations or opportunities (e.g. jobs, shops). At the very place of the opportunity, the interaction function equals 1, meaning that the potential access is 100%. Far away from the opportunity, the interaction function tends to 0, meaning that the potential access is 0 %. The <strong>span</strong> is defined as the value where the interaction function falls to 0.5 (50%). From the individuals’ point of view, this function may be seen as a degree of availability of a given opportunity. From the opportunity’s point of view (a store for example), the interaction function may be seen as a decreasing catchment area: there is a maximal attraction close to the opportunity and this attraction decreases progressively through distance.</p>
 </div>
 </div>
-<div id="examples" class="section level1">
-<h1 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h1>
-<div id="potential-in-one-point" class="section level2">
-<h2 class="hasAnchor">
-<a href="#potential-in-one-point" class="anchor"></a>Potential in one point</h2>
+<div class="section level2">
+<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h2>
+<div class="section level3">
+<h3 id="potential-in-one-point">Potential in one point<a class="anchor" aria-label="anchor" href="#potential-in-one-point"></a>
+</h3>
 <p>The first example details the steps involved in the computation of the potential for one point (<span class="math inline">\(A_{i=1}\)</span>). This example is based on a population dataset of administrative units of the French region of Occitanie. The stocks of population (<span class="math inline">\(O_j\)</span>) are located on the centroids of the regions.</p>
 <div class="figure">
 <img src="potential_files/figure-html/setup-1.png" alt="$O_j$ and $_i$" width="576"><p class="caption">
@@ -171,26 +167,26 @@ A_i = \sum_{j=1}^n O_j f(d_{ij})
 </div>
 <p>Finally, the value of the potential of <span class="math inline">\(i\)</span> is the sum of each <span class="math inline">\(j\)</span>’s contributions.</p>
 </div>
-<div id="potentials-in-a-pseudo-continuous-space" class="section level2">
-<h2 class="hasAnchor">
-<a href="#potentials-in-a-pseudo-continuous-space" class="anchor"></a>Potentials in a pseudo-continuous space</h2>
+<div class="section level3">
+<h3 id="potentials-in-a-pseudo-continuous-space">Potentials in a pseudo-continuous space<a class="anchor" aria-label="anchor" href="#potentials-in-a-pseudo-continuous-space"></a>
+</h3>
 <p>A common practice is to compute potentials on points of a regular grid to estimate potentials on a pseudo-continue surface.</p>
 <p>We can use the same dataset as an example of use.</p>
-<div id="create-a-regular-grid" class="section level3">
-<h3 class="hasAnchor">
-<a href="#create-a-regular-grid" class="anchor"></a>Create a regular grid</h3>
+<div class="section level4">
+<h4 id="create-a-regular-grid">Create a regular grid<a class="anchor" aria-label="anchor" href="#create-a-regular-grid"></a>
+</h4>
 <p><code><a href="../reference/create_grid.html">create_grid()</a></code> is used to create a regular grid with the extent of an existing layer (<code>x</code>) and a specific resolution (<code>res</code>). The resolution is set in units of <code>x</code> (here, meters).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/potential">potential</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/mapsf/">mapsf</a></span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span><span class="va">n3_poly</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/potential" class="external-link">potential</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/mapsf/" class="external-link">mapsf</a></span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">n3_poly</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">100000</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span><span class="va">y</span>, pch <span class="op">=</span> <span class="fl">23</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, bg <span class="op">=</span> <span class="st">"blue"</span>, cex <span class="op">=</span> <span class="fl">.5</span> <span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">y</span>, pch <span class="op">=</span> <span class="fl">23</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, bg <span class="op">=</span> <span class="st">"blue"</span>, cex <span class="op">=</span> <span class="fl">.5</span> <span class="op">)</span></code></pre></div>
 <p><img src="potential_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
 </div>
-<div id="create-a-distance-matrix" class="section level3">
-<h3 class="hasAnchor">
-<a href="#create-a-distance-matrix" class="anchor"></a>Create a distance matrix</h3>
+<div class="section level4">
+<h4 id="create-a-distance-matrix">Create a distance matrix<a class="anchor" aria-label="anchor" href="#create-a-distance-matrix"></a>
+</h4>
 <p><code><a href="../reference/create_matrix.html">create_matrix()</a></code> is used to compute distances between objects.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_matrix.html">create_matrix</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span>
@@ -203,16 +199,16 @@ A_i = \sum_{j=1}^n O_j f(d_{ij})
 <span class="co">#&gt; 5 2638427 2542933 2447799 2353068 2258792</span></code></pre></div>
 <p>The distance is expressed in map units (meters).</p>
 </div>
-<div id="compute-the-potentials" class="section level3">
-<h3 class="hasAnchor">
-<a href="#compute-the-potentials" class="anchor"></a>Compute the potentials</h3>
+<div class="section level4">
+<h4 id="compute-the-potentials">Compute the potentials<a class="anchor" aria-label="anchor" href="#compute-the-potentials"></a>
+</h4>
 <p>The <code><a href="../reference/potential.html">potential()</a></code> function computes potentials.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/potential.html">potential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span>, d <span class="op">=</span> <span class="va">d</span>,
                    var <span class="op">=</span> <span class="st">"POP19"</span>, fun <span class="op">=</span> <span class="st">"e"</span>,
                    span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span><span class="va">n3_poly</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span><span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot"</span>, type <span class="op">=</span> <span class="st">"prop"</span>, 
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">n3_poly</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot"</span>, type <span class="op">=</span> <span class="st">"prop"</span>, 
        inches<span class="op">=</span> <span class="fl">.1</span>, 
        lwd <span class="op">=</span> <span class="fl">.5</span>, 
        leg_val_cex <span class="op">=</span> <span class="fl">.5</span>, 
@@ -222,9 +218,9 @@ A_i = \sum_{j=1}^n O_j f(d_{ij})
 <p><img src="potential_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
 <p>It’s possible to express the potential relatively to its maximum in order to display more understandable values <span class="citation">(Rich 1980)</span>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span><span class="op">$</span><span class="va">pot2</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">pot</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span><span class="va">n3_poly</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span><span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, type <span class="op">=</span> <span class="st">"prop"</span>, 
+<code class="sourceCode R"><span class="va">y</span><span class="op">$</span><span class="va">pot2</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">pot</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">n3_poly</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, type <span class="op">=</span> <span class="st">"prop"</span>, 
        inches<span class="op">=</span> <span class="fl">.1</span>, 
        lwd <span class="op">=</span> <span class="fl">.5</span>, 
        leg_val_cex <span class="op">=</span> <span class="fl">.5</span>, 
@@ -234,10 +230,10 @@ A_i = \sum_{j=1}^n O_j f(d_{ij})
 <p><img src="potential_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
 <p>It’s also possible to compute areas of equipotential with <code><a href="../reference/equipotential.html">equipotential()</a></code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">iso</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equipotential.html">equipotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iso</span>, var <span class="op">=</span> <span class="st">"center"</span>, type <span class="op">=</span> <span class="st">"choro"</span>, 
-       breaks <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, 
-       pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'teal'</span><span class="op">)</span>,
+<code class="sourceCode R"><span class="va">iso</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equipotential.html">equipotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iso</span>, var <span class="op">=</span> <span class="st">"center"</span>, type <span class="op">=</span> <span class="st">"choro"</span>, 
+       breaks <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, 
+       pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'teal'</span><span class="op">)</span>,
        lwd <span class="op">=</span> <span class="fl">.2</span>,
        border <span class="op">=</span> <span class="st">"#121725"</span>, 
        leg_pos <span class="op">=</span> <span class="st">"topright"</span>,
@@ -245,9 +241,9 @@ A_i = \sum_{j=1}^n O_j f(d_{ij})
        leg_title <span class="op">=</span> <span class="st">"Potential of\nPopulation"</span><span class="op">)</span></code></pre></div>
 <p><img src="potential_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
 </div>
-<div id="compute-the-potentials-using-parallel-computation" class="section level3">
-<h3 class="hasAnchor">
-<a href="#compute-the-potentials-using-parallel-computation" class="anchor"></a>Compute the potentials using parallel computation</h3>
+<div class="section level4">
+<h4 id="compute-the-potentials-using-parallel-computation">Compute the potentials using parallel computation<a class="anchor" aria-label="anchor" href="#compute-the-potentials-using-parallel-computation"></a>
+</h4>
 <p>In order to obtain smoother equipotential areas we need to compute the potentials on a much finer grid and that can be really time consuming with <code><a href="../reference/potential.html">potential()</a></code>.<br><code><a href="../reference/mcpotential.html">mcpotential()</a></code> computes potentials with a cutoff distance and parallel computation. The cutoff distance means that points that are too far away are not taken into account in the computation. The limits of this function are the impossibility to provide custom distance matrices (<code>d</code>), and the fact that it only uses Cartesian distances (hence its use for global data is likely to be inappropriate).</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">20000</span><span class="op">)</span>
@@ -255,26 +251,26 @@ A_i = \sum_{j=1}^n O_j f(d_{ij})
                      var <span class="op">=</span> <span class="st">"POP19"</span>, fun <span class="op">=</span> <span class="st">"e"</span>,
                      span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span>, 
                      limit <span class="op">=</span> <span class="fl">200000</span>, ncl <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="va">y</span><span class="op">$</span><span class="va">pot2</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">pot</span><span class="op">)</span>
-<span class="va">iso</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equipotential.html">equipotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iso</span>, var <span class="op">=</span> <span class="st">"center"</span>, type <span class="op">=</span> <span class="st">"choro"</span>, 
-       breaks <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, 
-       pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'teal'</span><span class="op">)</span>,
+<span class="va">y</span><span class="op">$</span><span class="va">pot2</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">pot</span><span class="op">)</span>
+<span class="va">iso</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equipotential.html">equipotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iso</span>, var <span class="op">=</span> <span class="st">"center"</span>, type <span class="op">=</span> <span class="st">"choro"</span>, 
+       breaks <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, 
+       pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'teal'</span><span class="op">)</span>,
        lwd <span class="op">=</span> <span class="fl">.2</span>,
        border <span class="op">=</span> <span class="st">"#121725"</span>, 
-       leg_pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6194790</span>,<span class="fl">3428230</span><span class="op">)</span>,
+       leg_pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6194790</span>,<span class="fl">3428230</span><span class="op">)</span>,
        leg_val_rnd <span class="op">=</span> <span class="fl">0</span>,
        leg_title <span class="op">=</span> <span class="st">"Potential Intensity"</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_credits.html">mf_credits</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"© EuroGeographics for the administrative boundaries and © Eurostat for data"</span>,
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_credits.html" class="external-link">mf_credits</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"© EuroGeographics for the administrative boundaries and © Eurostat for data"</span>,
            pos <span class="op">=</span> <span class="st">"bottomright"</span>, cex <span class="op">=</span> <span class="fl">.7</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_title.html">mf_title</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"Potential of population"</span>, bg <span class="op">=</span> <span class="st">"white"</span>, fg <span class="op">=</span> <span class="st">"black"</span>, inner <span class="op">=</span> <span class="cn">TRUE</span>, cex <span class="op">=</span> <span class="fl">1.1</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_title.html" class="external-link">mf_title</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"Potential of population"</span>, bg <span class="op">=</span> <span class="st">"white"</span>, fg <span class="op">=</span> <span class="st">"black"</span>, inner <span class="op">=</span> <span class="cn">TRUE</span>, cex <span class="op">=</span> <span class="fl">1.1</span><span class="op">)</span></code></pre></div>
 <p><img src="smooth-1.png"></p>
 </div>
 </div>
 </div>
-<div id="references" class="section level1 unnumbered">
-<h1 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h1>
+<div class="section level2">
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-fotheringham1989spatial" class="csl-entry">
 Fotheringham, A Stewart, and Morton E O’Kelly. 1989. <em>Spatial Interaction Models: Formulations and Applications</em>. Vol. 1. Kluwer Academic Publishers Dordrecht.
@@ -283,10 +279,10 @@ Fotheringham, A Stewart, and Morton E O’Kelly. 1989. <em>Spatial Interaction M
 Rich, David C. 1980. <span>“Potential Models in Human Geography.”</span> <em>CATMOG 26</em> 38.
 </div>
 <div id="ref-rodrigue2013spatial" class="csl-entry">
-Rodrigue, Jean-Paul, Claude Comtois, and Brian Slack. 2013. <span>“Spatial Interactions and the Gravity Model.”</span> <em>The Geography of Transport Systems.</em> <a href="https://transportgeography.org/?page_id=8565">https://transportgeography.org/?page_id=8565</a>.
+Rodrigue, Jean-Paul, Claude Comtois, and Brian Slack. 2013. <span>“Spatial Interactions and the Gravity Model.”</span> <em>The Geography of Transport Systems.</em> <a href="https://transportgeography.org/?page_id=8565" class="external-link">https://transportgeography.org/?page_id=8565</a>.
 </div>
 <div id="ref-STEWART41" class="csl-entry">
-Stewart, John Q. 1941. <span>“An Inverse Distance Variation for Certain Social Influences.”</span> <em>Science</em> 93 (2404): 89–90. <a href="https://doi.org/10.1126/science.93.2404.89">https://doi.org/10.1126/science.93.2404.89</a>.
+Stewart, John Q. 1941. <span>“An Inverse Distance Variation for Certain Social Influences.”</span> <em>Science</em> 93 (2404): 89–90. <a href="https://doi.org/10.1126/science.93.2404.89" class="external-link">https://doi.org/10.1126/science.93.2404.89</a>.
 </div>
 </div>
 </div>
@@ -303,11 +299,13 @@ Stewart, John Q. 1941. <span>“An Inverse Distance Variation for Certain Social
 
 
       <footer><div class="copyright">
-  <p>Developed by Timothée Giraud, Hadrien Commenges.</p>
+  <p></p>
+<p>Developed by Timothée Giraud, Hadrien Commenges.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -315,6 +313,8 @@ Stewart, John Q. 1941. <span>“An Inverse Distance Variation for Certain Social
 
   
 
+
+  
 
   </body>
 </html>

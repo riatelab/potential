@@ -3,7 +3,7 @@
 
 [![](https://www.r-pkg.org/badges/version/potential)](https://cran.r-project.org/package=potential)
 [![R-CMD-check](https://github.com/riatelab/potential/workflows/R-CMD-check/badge.svg)](https://github.com/riatelab/potential/actions)
-[![codecov](https://codecov.io/gh/riatelab/potential/branch/master/graph/badge.svg?token=G8MZTHC9KQ)](https://codecov.io/gh/riatelab/potential)
+<!-- [![codecov](https://codecov.io/gh/riatelab/potential/branch/master/graph/badge.svg?token=G8MZTHC9KQ)](https://codecov.io/gh/riatelab/potential) -->
 
 This package provides functions to compute the potential model as
 defined by Stewart (1941). Several options are available to customize
@@ -13,7 +13,7 @@ parallelized to improve their efficiency.
 
 -   [**Website**](https://riatelab.github.io/potential/)  
 -   [**Vignette**](https://riatelab.github.io/potential/articles/potential.html)  
--   [**Blog post**](https://rgeomatic.hypotheses.org/?p=2023)
+-   [**Blog post**](https://rgeomatic.hypotheses.org/2023)
 
 ## Installation
 

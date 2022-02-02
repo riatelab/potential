@@ -40,7 +40,7 @@ If only one variable is computed a vector is returned, if more than
 one variable is computed a matrix is returned.
 }
 \description{
-This function computes the potential mo^del as defined
+This function computes the potential model as defined
 by J.Q. Stewart (1941).
 }
 \examples{
@@ -58,5 +58,5 @@ plot(equipot["center"], pal = hcl.colors(nrow(equipot), "cividis"))
 \references{
 STEWART, JOHN Q. 1941. "An Inverse Distance Variation for Certain Social
 Influences." \emph{Science} 93 (2404): 89–90.
-\url{https://doi.org/10.1126/science.93.2404.89}.
+\doi{10.1126/science.93.2404.89}.
 }

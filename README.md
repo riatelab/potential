@@ -1,5 +1,5 @@
 
-# potential
+# potential <img src="man/figures/logo.png" align="right" width="140"/>
 
 [![](https://www.r-pkg.org/badges/version/potential)](https://cran.r-project.org/package=potential)
 [![R-CMD-check](https://github.com/riatelab/potential/workflows/R-CMD-check/badge.svg)](https://github.com/riatelab/potential/actions)

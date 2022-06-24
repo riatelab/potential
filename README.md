@@ -3,7 +3,7 @@
 
 [![](https://www.r-pkg.org/badges/version/potential)](https://cran.r-project.org/package=potential)
 [![R-CMD-check](https://github.com/riatelab/potential/workflows/R-CMD-check/badge.svg)](https://github.com/riatelab/potential/actions)
-<!-- [![codecov](https://codecov.io/gh/riatelab/potential/branch/master/graph/badge.svg?token=G8MZTHC9KQ)](https://codecov.io/gh/riatelab/potential) -->
+[![codecov](https://codecov.io/gh/riatelab/potential/branch/master/graph/badge.svg?token=G8MZTHC9KQ)](https://app.codecov.io/gh/riatelab/potential)
 
 This package provides functions to compute the potential model as
 defined by Stewart (1941). Several options are available to customize
@@ -56,12 +56,13 @@ pot <- mcpotential(
 # Define potential according to the maximum value
 y$pot <- pot / max(pot) * 100
 # create equipotential areas
-equipot <- equipotential(y, var = "pot", mask = n3_poly)
+bks <- seq(0, 100, length.out = 11)
+equipot <- equipotential(y, var = "pot", breaks = bks, mask = n3_poly)
 # map potentials
 mf_theme("default")
-mf_map(x = equipot, var = "center", type = "choro", 
-       breaks = seq(0,100,length.out = 11), 
-       pal = hcl.colors(10, 'teal'),
+mf_map(x = equipot, var = "min", type = "choro", 
+       breaks = bks, 
+       pal = hcl.colors(10, 'Teal'),
        border = "#121725", 
        leg_val_rnd = 0,
        lwd = .2, 

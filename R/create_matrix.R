@@ -25,7 +25,6 @@
 #' mat[1:5, 1:5]
 #' @importFrom sf st_centroid st_geometry st_geometry<- st_as_sf st_is_longlat
 #' st_distance st_transform st_is
-#' @importFrom methods is
 #' @export
 create_matrix <- function(x, y, checksize = TRUE, longlat = FALSE) {
   if (checksize) {

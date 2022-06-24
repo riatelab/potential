@@ -18,7 +18,7 @@ potential points."><meta property="og:image" content="/logo.png"><!-- mathjax --
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">potential</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
@@ -30,7 +30,7 @@ potential points."><meta property="og:image" content="/logo.png"><!-- mathjax --
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -74,31 +74,45 @@ potential points.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
-<dd><p>an sf object of regularly spaced points. It must contain "X", "Y"
-and "OUTPUT" fields.</p></dd>
+<dd><p>an sf object of regularly spaced points.</p></dd>
+
+
 <dt>var</dt>
-<dd><p>name of the OUTPUT field in <code>x</code>.</p></dd>
+<dd><p>name of the variable to use in <code>x</code>.</p></dd>
+
+
 <dt>nclass</dt>
 <dd><p>a number of class.</p></dd>
+
+
 <dt>breaks</dt>
 <dd><p>a vector of break values.</p></dd>
+
+
 <dt>mask</dt>
-<dd><p>an sf object of polygons or multipolygons. /codemask is  used
+<dd><p>an sf object of polygons or multipolygons. <code>mask</code> is  used
 to clip polygons of contours equipotential.</p></dd>
+
+
 <dt>buffer</dt>
-<dd><p>if set, a buffer is internaly added to the mask in order to 
+<dd><p>if set, a buffer is added to the mask in order to 
 reach more precisely the number of breaks. The buffer is defined in 
 <code>x</code> units.</p></dd>
+
+
 <dt>xcoords</dt>
-<dd><p>name of the X coordinates field in <code>x</code>, not needed 
-if <code>x</code> is constructed with create_grid.</p></dd>
+<dd><p>not used.</p></dd>
+
+
 <dt>ycoords</dt>
-<dd><p>name of the Y coordinates field in <code>x</code>, not needed 
-if <code>x</code> is constructed with create_grid.</p></dd>
+<dd><p>not used.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The output is an sf object (POLYGONS). The data frame contains four
+    
+
+<p>The output is an sf object (POLYGONS). The data frame contains four
 fields: id (id of each polygon), min and max (minimum and maximum breaks of
 the polygon) and center (central values of classes).</p>
     </div>
@@ -130,7 +144,7 @@ the polygon) and center (central values of classes).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

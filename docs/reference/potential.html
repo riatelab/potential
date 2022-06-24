@@ -18,7 +18,7 @@ by J.Q. Stewart (1941)."><meta property="og:image" content="/logo.png"><!-- math
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">potential</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
@@ -30,7 +30,7 @@ by J.Q. Stewart (1941)."><meta property="og:image" content="/logo.png"><!-- math
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -76,18 +76,26 @@ by J.Q. Stewart (1941).</p>
     <dl><dt>x</dt>
 <dd><p>an sf object (POINT), the set of known observations to
 estimate the potentials from.</p></dd>
+
+
 <dt>y</dt>
 <dd><p>an sf object (POINT), the set of unknown units for which
 the function computes the estimates.</p></dd>
+
+
 <dt>d</dt>
 <dd><p>a distance matrix between known observations and unknown
 units for which the function computes the estimates. Row names match the row
 names of <code>x</code> and column names match the row names of
 <code>y</code>. <code>d</code> can contain any distance metric (time
 distance or euclidean distance for example).</p></dd>
+
+
 <dt>var</dt>
 <dd><p>names of the variables in <code>x</code> from which potentials are
 computed. Quantitative variables with no negative values.</p></dd>
+
+
 <dt>fun</dt>
 <dd><p>spatial interaction function. Options are "p"
 (pareto, power law) or "e" (exponential).
@@ -96,22 +104,29 @@ For "exponential" the interaction is defined as:
 exp(- alpha * mDistance ^ beta).
 The alpha parameter is computed from parameters given by the user
 (<code>beta</code> and <code>span</code>).</p></dd>
+
+
 <dt>span</dt>
 <dd><p>distance where the density of probability of the spatial
 interaction function equals 0.5.</p></dd>
+
+
 <dt>beta</dt>
 <dd><p>impedance factor for the spatial interaction function.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>If only one variable is computed a vector is returned, if more than
+    
+
+<p>If only one variable is computed a vector is returned, if more than
 one variable is computed a matrix is returned.</p>
     </div>
     <div id="references">
     <h2>References</h2>
     <p>STEWART, JOHN Q. 1941. "An Inverse Distance Variation for Certain Social
 Influences." <em>Science</em> 93 (2404): 89–90.
-doi: <a href="https://doi.org/10.1126/science.93.2404.89" class="external-link">10.1126/science.93.2404.89</a>
+<a href="https://doi.org/10.1126/science.93.2404.89" class="external-link">doi:10.1126/science.93.2404.89</a>
 .</p>
     </div>
 
@@ -142,7 +157,7 @@ doi: <a href="https://doi.org/10.1126/science.93.2404.89" class="external-link">
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -18,7 +18,7 @@ spatial objects."><meta property="og:image" content="/logo.png"><!-- mathjax -->
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">potential</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
@@ -68,7 +68,7 @@ spatial objects.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">create_matrix</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, checksize <span class="op">=</span> <span class="cn">TRUE</span>, longlat <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_matrix</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, checksize <span class="op">=</span> <span class="cn">TRUE</span>, longlat <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -113,9 +113,9 @@ RAM mobilized.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">200000</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu">create_matrix</span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">g</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">mat</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">200000</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu">create_matrix</span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">g</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mat</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         1       2       3       4       5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 2674796 2482621 2291785 2102653 1915730</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 2622868 2430532 2239539 2050264 1863231</span>

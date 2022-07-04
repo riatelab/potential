@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">potential</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
@@ -250,11 +250,11 @@ extent of an existing layer (<code>x</code>) and a specific resolution
 (<code>res</code>). The resolution is set in units of <code>x</code>
 (here, meters).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/potential" class="external-link">potential</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/mapsf/" class="external-link">mapsf</a></span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">n3_poly</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span>
-<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">100000</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">y</span>, pch <span class="op">=</span> <span class="fl">23</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, bg <span class="op">=</span> <span class="st">"blue"</span>, cex <span class="op">=</span> <span class="fl">.5</span> <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/potential" class="external-link">potential</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/mapsf/" class="external-link">mapsf</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">n3_poly</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">100000</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">y</span>, pch <span class="op">=</span> <span class="fl">23</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, bg <span class="op">=</span> <span class="st">"blue"</span>, cex <span class="op">=</span> <span class="fl">.5</span> <span class="op">)</span></span></code></pre></div>
 <p><img src="potential_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
 </div>
 <div class="section level4">
@@ -263,14 +263,14 @@ extent of an existing layer (<code>x</code>) and a specific resolution
 <p><code><a href="../reference/create_matrix.html">create_matrix()</a></code> is used to compute distances between
 objects.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_matrix.html">create_matrix</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span>
-<span class="va">d</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>
-<span class="co">#&gt;         1       2       3       4       5</span>
-<span class="co">#&gt; 1 2674796 2578559 2482621 2387015 2291785</span>
-<span class="co">#&gt; 2 2622868 2526551 2430532 2334847 2239539</span>
-<span class="co">#&gt; 3 2682813 2587272 2492081 2397282 2302922</span>
-<span class="co">#&gt; 4 2643075 2547108 2451462 2356179 2261302</span>
-<span class="co">#&gt; 5 2638427 2542933 2447799 2353068 2258792</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_matrix.html">create_matrix</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span></span>
+<span><span class="va">d</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span>
+<span><span class="co">#&gt;         1       2       3       4       5</span></span>
+<span><span class="co">#&gt; 1 2674796 2578559 2482621 2387015 2291785</span></span>
+<span><span class="co">#&gt; 2 2622868 2526551 2430532 2334847 2239539</span></span>
+<span><span class="co">#&gt; 3 2682813 2587272 2492081 2397282 2302922</span></span>
+<span><span class="co">#&gt; 4 2643075 2547108 2451462 2356179 2261302</span></span>
+<span><span class="co">#&gt; 5 2638427 2542933 2447799 2353068 2258792</span></span></code></pre></div>
 <p>The distance is expressed in map units (meters).</p>
 </div>
 <div class="section level4">
@@ -278,45 +278,45 @@ objects.</p>
 </h4>
 <p>The <code><a href="../reference/potential.html">potential()</a></code> function computes potentials.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/potential.html">potential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span>, d <span class="op">=</span> <span class="va">d</span>,
-                   var <span class="op">=</span> <span class="st">"POP19"</span>, fun <span class="op">=</span> <span class="st">"e"</span>,
-                   span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">n3_poly</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot"</span>, type <span class="op">=</span> <span class="st">"prop"</span>, 
-       inches<span class="op">=</span> <span class="fl">.1</span>, 
-       lwd <span class="op">=</span> <span class="fl">.5</span>, 
-       leg_val_cex <span class="op">=</span> <span class="fl">.5</span>, 
-       leg_val_rnd <span class="op">=</span> <span class="op">-</span><span class="fl">3</span>,
-       leg_frame <span class="op">=</span> <span class="cn">TRUE</span>, 
-       leg_pos <span class="op">=</span> <span class="st">"topright"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/potential.html">potential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span>, d <span class="op">=</span> <span class="va">d</span>,</span>
+<span>                   var <span class="op">=</span> <span class="st">"POP19"</span>, fun <span class="op">=</span> <span class="st">"e"</span>,</span>
+<span>                   span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">n3_poly</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot"</span>, type <span class="op">=</span> <span class="st">"prop"</span>, </span>
+<span>       inches<span class="op">=</span> <span class="fl">.1</span>, </span>
+<span>       lwd <span class="op">=</span> <span class="fl">.5</span>, </span>
+<span>       leg_val_cex <span class="op">=</span> <span class="fl">.5</span>, </span>
+<span>       leg_val_rnd <span class="op">=</span> <span class="op">-</span><span class="fl">3</span>,</span>
+<span>       leg_frame <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>       leg_pos <span class="op">=</span> <span class="st">"topright"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="potential_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
 <p>It’s possible to express the potential relatively to its maximum in
 order to display more understandable values <span class="citation">(Rich
 1980)</span>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span><span class="op">$</span><span class="va">pot2</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">pot</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">n3_poly</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, type <span class="op">=</span> <span class="st">"prop"</span>, 
-       inches<span class="op">=</span> <span class="fl">.1</span>, 
-       lwd <span class="op">=</span> <span class="fl">.5</span>, 
-       leg_val_cex <span class="op">=</span> <span class="fl">.5</span>, 
-       leg_val_rnd <span class="op">=</span> <span class="fl">0</span>,
-       leg_frame <span class="op">=</span> <span class="cn">TRUE</span>, 
-       leg_pos <span class="op">=</span> <span class="st">"topright"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">y</span><span class="op">$</span><span class="va">pot2</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">pot</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">n3_poly</span>, col<span class="op">=</span> <span class="st">"grey80"</span>, border <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span><span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, type <span class="op">=</span> <span class="st">"prop"</span>, </span>
+<span>       inches<span class="op">=</span> <span class="fl">.1</span>, </span>
+<span>       lwd <span class="op">=</span> <span class="fl">.5</span>, </span>
+<span>       leg_val_cex <span class="op">=</span> <span class="fl">.5</span>, </span>
+<span>       leg_val_rnd <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>       leg_frame <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>       leg_pos <span class="op">=</span> <span class="st">"topright"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="potential_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
 <p>It’s also possible to compute areas of equipotential with
 <code><a href="../reference/equipotential.html">equipotential()</a></code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>
-<span class="va">iso</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equipotential.html">equipotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, breaks <span class="op">=</span> <span class="va">bks</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iso</span>, var <span class="op">=</span> <span class="st">"min"</span>, type <span class="op">=</span> <span class="st">"choro"</span>, 
-       breaks <span class="op">=</span> <span class="va">bks</span>, 
-       pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'Teal'</span><span class="op">)</span>,
-       lwd <span class="op">=</span> <span class="fl">.2</span>,
-       border <span class="op">=</span> <span class="st">"#121725"</span>, 
-       leg_pos <span class="op">=</span> <span class="st">"topright"</span>,
-       leg_val_rnd <span class="op">=</span> <span class="fl">0</span>,
-       leg_title <span class="op">=</span> <span class="st">"Potential of\nPopulation"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">iso</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equipotential.html">equipotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, breaks <span class="op">=</span> <span class="va">bks</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iso</span>, var <span class="op">=</span> <span class="st">"min"</span>, type <span class="op">=</span> <span class="st">"choro"</span>, </span>
+<span>       breaks <span class="op">=</span> <span class="va">bks</span>, </span>
+<span>       pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'Teal'</span><span class="op">)</span>,</span>
+<span>       lwd <span class="op">=</span> <span class="fl">.2</span>,</span>
+<span>       border <span class="op">=</span> <span class="st">"#121725"</span>, </span>
+<span>       leg_pos <span class="op">=</span> <span class="st">"topright"</span>,</span>
+<span>       leg_val_rnd <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>       leg_title <span class="op">=</span> <span class="st">"Potential of\nPopulation"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="potential_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
 </div>
 <div class="section level4">
@@ -332,25 +332,25 @@ matrices (<code>d</code>), and the fact that it only uses Cartesian
 distances (hence its use for global data is likely to be
 inappropriate).</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">20000</span><span class="op">)</span>
-<span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mcpotential.html">mcpotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span>, 
-                     var <span class="op">=</span> <span class="st">"POP19"</span>, fun <span class="op">=</span> <span class="st">"e"</span>,
-                     span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span>, 
-                     limit <span class="op">=</span> <span class="fl">200000</span>, ncl <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="va">y</span><span class="op">$</span><span class="va">pot2</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">pot</span><span class="op">)</span>
-<span class="va">bks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>
-<span class="va">iso</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equipotential.html">equipotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, breaks <span class="op">=</span> <span class="va">bks</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iso</span>, var <span class="op">=</span> <span class="st">"min"</span>, type <span class="op">=</span> <span class="st">"choro"</span>, 
-       breaks <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, 
-       pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'Teal'</span><span class="op">)</span>,
-       lwd <span class="op">=</span> <span class="fl">.2</span>,
-       border <span class="op">=</span> <span class="st">"#121725"</span>, 
-       leg_pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6084270</span>,<span class="fl">4253383</span><span class="op">)</span>,
-       leg_val_rnd <span class="op">=</span> <span class="fl">0</span>,
-       leg_title <span class="op">=</span> <span class="st">"Potential Intensity"</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_credits.html" class="external-link">mf_credits</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"© EuroGeographics for the administrative boundaries and © Eurostat for data"</span>,
-           pos <span class="op">=</span> <span class="st">"bottomright"</span>, cex <span class="op">=</span> <span class="fl">.7</span><span class="op">)</span>
-<span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_title.html" class="external-link">mf_title</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"Potential of population"</span>, bg <span class="op">=</span> <span class="st">"white"</span>, fg <span class="op">=</span> <span class="st">"black"</span>, inner <span class="op">=</span> <span class="cn">TRUE</span>, cex <span class="op">=</span> <span class="fl">1.1</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_grid.html">create_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_poly</span>, res <span class="op">=</span> <span class="fl">20000</span><span class="op">)</span></span>
+<span><span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mcpotential.html">mcpotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n3_pt</span>, y <span class="op">=</span> <span class="va">y</span>, </span>
+<span>                     var <span class="op">=</span> <span class="st">"POP19"</span>, fun <span class="op">=</span> <span class="st">"e"</span>,</span>
+<span>                     span <span class="op">=</span> <span class="fl">75000</span>, beta <span class="op">=</span> <span class="fl">2</span>, </span>
+<span>                     limit <span class="op">=</span> <span class="fl">200000</span>, ncl <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">y</span><span class="op">$</span><span class="va">pot2</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">y</span><span class="op">$</span><span class="va">pot</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">pot</span><span class="op">)</span></span>
+<span><span class="va">bks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">iso</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equipotential.html">equipotential</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span>, var <span class="op">=</span> <span class="st">"pot2"</span>, breaks <span class="op">=</span> <span class="va">bks</span>, mask <span class="op">=</span> <span class="va">n3_poly</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_map.html" class="external-link">mf_map</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">iso</span>, var <span class="op">=</span> <span class="st">"min"</span>, type <span class="op">=</span> <span class="st">"choro"</span>, </span>
+<span>       breaks <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>, </span>
+<span>       pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">'Teal'</span><span class="op">)</span>,</span>
+<span>       lwd <span class="op">=</span> <span class="fl">.2</span>,</span>
+<span>       border <span class="op">=</span> <span class="st">"#121725"</span>, </span>
+<span>       leg_pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6084270</span>,<span class="fl">4253383</span><span class="op">)</span>,</span>
+<span>       leg_val_rnd <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>       leg_title <span class="op">=</span> <span class="st">"Potential Intensity"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_credits.html" class="external-link">mf_credits</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"© EuroGeographics for the administrative boundaries and © Eurostat for data"</span>,</span>
+<span>           pos <span class="op">=</span> <span class="st">"bottomright"</span>, cex <span class="op">=</span> <span class="fl">.7</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://riatelab.github.io/mapsf/reference/mf_title.html" class="external-link">mf_title</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="st">"Potential of population"</span>, bg <span class="op">=</span> <span class="st">"white"</span>, fg <span class="op">=</span> <span class="st">"black"</span>, inner <span class="op">=</span> <span class="cn">TRUE</span>, cex <span class="op">=</span> <span class="fl">1.1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="smooth-1.png"></p>
 </div>
 </div>

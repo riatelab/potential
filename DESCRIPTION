@@ -1,6 +1,6 @@
 Package: potential
 Title: Implementation of the Potential Model
-Version: 0.3.0
+Version: 0.2.0
 Authors@R: c(
       person("Timothée", "Giraud", email = "timothee.giraud@cnrs.fr", role = c("cre","aut"),
              comment = c(ORCID = "0000-0002-1932-3323")),

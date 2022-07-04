@@ -4,6 +4,9 @@
 [![](https://www.r-pkg.org/badges/version/potential)](https://cran.r-project.org/package=potential)
 [![R-CMD-check](https://github.com/riatelab/potential/workflows/R-CMD-check/badge.svg)](https://github.com/riatelab/potential/actions)
 [![codecov](https://codecov.io/gh/riatelab/potential/branch/master/graph/badge.svg?token=G8MZTHC9KQ)](https://app.codecov.io/gh/riatelab/potential)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 This package provides functions to compute the potential model as
 defined by Stewart (1941). Several options are available to customize

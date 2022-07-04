@@ -71,15 +71,13 @@ nuts <- merge(nuts, gdp[,c("geo", "gdp")], by.x = "NUTS_ID", by.y = "geo", all.x
 ```
 
 
-
-
 ## Regional Map of the GDP per Capita
 
 ```{r regionalmap, fig.width=7, fig.height=9, fig.show='hold'}
 # Compute the GDP per capita
 nuts$gdp_hab <- nuts$gdp / nuts$pop
 # Set Breaks
-bv <- quantile(nuts$gdp_hab, seq(from = 0, to = 1, length.out = 9))
+bv <- quantile(nuts$gdp_hab, seq(from = 0, to = 1, length.out = 9), na.rm = T)
 # Set a color palette
 pal <- mf_get_pal(n = 9, palette = "Burg", rev = TRUE)
 # Set the credit text
@@ -99,6 +97,7 @@ mf_map(x = nuts, var = "gdp_hab", type = "choro",
        leg_frame = TRUE, 
        leg_title = "GDP per Capita\n(in euros, 2018)",
        leg_val_rnd = -2, 
+       col_na = "grey60",
        add = TRUE)
 mf_map(countries[countries$ISO3_CODE == "ITA", ], 
        col = NA, border = "#a9b3b4ff", add = TRUE)
@@ -121,7 +120,6 @@ according a specific spatial interaction and fully customizable function.
 nuts_pt <- nuts
 st_geometry(nuts_pt) <- st_centroid(st_geometry(nuts_pt))
 d <- create_matrix(nuts_pt, nuts_pt)
-
 # Compute the potentials of population and GDP per units
 # function = exponential, beta = 2, span = 100 km
 pot <- potential(x = nuts_pt, 
@@ -133,8 +131,12 @@ pot <- potential(x = nuts_pt,
                  span = 100000)
 # Compute the potential GDP per capita
 nuts$gdp_hab_pot <-  pot[, 2]  / pot[, 1]
+# Exclude regions with No Data
+nuts$gdp_hab_pot[is.na(nuts$gdp_hab)] <- NA
 # Set breaks
-bv2 <- c(min(nuts$gdp_hab_pot), bv[2:8], max(nuts$gdp_hab_pot))
+bv2 <- c(min(nuts$gdp_hab_pot, na.rm = TRUE), 
+         bv[2:8], 
+         max(nuts$gdp_hab_pot, na.rm = TRUE))
 
 # Draw the basemap
 mf_init(nuts)
@@ -147,7 +149,8 @@ mf_map(x = nuts, var = "gdp_hab_pot", type = "choro",
        border = NA, 
        leg_title = "Potential\nGDP per Capita\n(in euros, 2018)",
        leg_frame = TRUE,
-       leg_val_rnd = -2, 
+       leg_val_rnd = -2,
+       col_na = "grey60",
        add = TRUE)
 mf_map(countries[countries$ISO3_CODE == "ITA", ], 
        col = NA, border = "#a9b3b4ff", add = TRUE)
@@ -157,7 +160,7 @@ mf_title(txt = "GDP per Capita Inequalities in Italy")
 mf_scale(100)
 mf_credits(txt = cred, bg = "#ffffff80")
 # Set a text to explicit the function parameters
-text(x = 4873429, y = 2308495, xpd = TRUE,
+text(x = 4873429, y = 2258495, xpd = TRUE,
      labels = paste0("Distance function:\n",
                      "- type = exponential\n",
                      "- beta = 2\n", 
@@ -189,17 +192,18 @@ pot2 <- potential(x = nuts_pt,
 g$gdp_hab_pot <-  pot2[, 2] / pot2[, 1]
 
 # Create an isopleth layer
-equipot <- equipotential(x = g, var = "gdp_hab_pot", breaks = bv, mask = nuts)
+equipot <- equipotential(x = g, var = "gdp_hab_pot", breaks = bv, 
+                         mask = nuts[!is.na(nuts$gdp_hab),])
 # Get breaks values
-bv3 <- sort(c(unique(equipot$min), max(equipot$max)), decreasing = FALSE)
+bv3 <- c(equipot$min, max(equipot$max))
 
 # Draw the basemap
 mf_init(nuts)
 mf_map(countries, col = "#f5f5f3ff", border = "#a9b3b4ff", add = TRUE)
 # Map the regional GDP per capita
-mf_map(x = equipot, var = "center", type = "choro",
+mf_map(x = equipot, var = "min", type = "choro",
        leg_pos = "topright",
-       breaks = bv3, 
+       breaks = bv, 
        pal = pal, 
        border = NA, 
        leg_title = "Potential\nGDP per Capita\n(in euros, 2018)",

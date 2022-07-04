@@ -40,7 +40,6 @@
 #' STEWART, JOHN Q. 1941. "An Inverse Distance Variation for Certain Social
 #' Influences." \emph{Science} 93 (2404): 89–90.
 #' \doi{10.1126/science.93.2404.89}.
-#' @importFrom methods is as
 #' @importFrom sf st_as_sf
 #' @export
 potential <- function(x, y, d, var, fun, span, beta) {

@@ -13,7 +13,6 @@
 #' plot(st_geometry(g))
 #' plot(st_geometry(n3_poly), border = "red", add = TRUE)
 #' @importFrom sf st_as_sf st_crs st_bbox
-#' @importFrom methods is
 #' @export
 create_grid <- function(x, res) {
   bb <- st_bbox(x)

@@ -68,6 +68,7 @@ The stocks of population ($O_j$) are located on the centroids of the regions.
 
 ```{r setup, fig.cap="$O_j$ and $_i$", echo=FALSE}
 library(potential)
+library(sf)
 library(mapsf)
 mf_theme(mar=c(0,0,0,0), bg = "white") 
 x <- n3_pt[substr(n3_pt$ID,1,3) %in% c( "FRJ"), ]
@@ -239,10 +240,11 @@ mf_map(y, var = "pot2", type = "prop",
 It's also possible to compute areas of equipotential with `equipotential()`.
 
 ```{r, fig.width = 7, fig.height= 6}
-iso <- equipotential(x = y, var = "pot2", breaks = seq(0,100, 10), mask = n3_poly)
-mf_map(x = iso, var = "center", type = "choro", 
-       breaks =  seq(0,100, 10), 
-       pal = hcl.colors(10, 'teal'),
+bks <- seq(0, 100, 10)
+iso <- equipotential(x = y, var = "pot2", breaks = bks, mask = n3_poly)
+mf_map(x = iso, var = "min", type = "choro", 
+       breaks = bks, 
+       pal = hcl.colors(10, 'Teal'),
        lwd = .2,
        border = "#121725", 
        leg_pos = "topright",
@@ -267,13 +269,14 @@ y$pot <- mcpotential(x = n3_pt, y = y,
                      span = 75000, beta = 2, 
                      limit = 200000, ncl = 2)
 y$pot2 <- 100 * y$pot / max(y$pot)
-iso <- equipotential(x = y, var = "pot2", breaks = seq(0,100, 10), mask = n3_poly)
-mf_map(x = iso, var = "center", type = "choro", 
+bks <- seq(0, 100, 10)
+iso <- equipotential(x = y, var = "pot2", breaks = bks, mask = n3_poly)
+mf_map(x = iso, var = "min", type = "choro", 
        breaks =  seq(0,100, 10), 
-       pal = hcl.colors(10, 'teal'),
+       pal = hcl.colors(10, 'Teal'),
        lwd = .2,
        border = "#121725", 
-       leg_pos = c(6194790,3428230),
+       leg_pos = c(6084270,4253383),
        leg_val_rnd = 0,
        leg_title = "Potential Intensity")
 mf_credits(txt = "© EuroGeographics for the administrative boundaries and © Eurostat for data",

@@ -1,0 +1,267 @@
+# -----------------------------------------------------------
+# CITATION file created with {cffr} R package, v0.2.2
+# See also: https://docs.ropensci.org/cffr/
+# -----------------------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "potential" in publications use:'
+type: software
+license: GPL-3.0-only
+title: 'potential: Implementation of the Potential Model'
+version: 0.2.0
+abstract: Provides functions to compute the potential model as defined by Stewart
+  (1941) <doi:10.1126/science.93.2404.89>. Several options are available to customize
+  the model, such as the possibility to fine-tune the distance friction functions
+  or to use custom distance matrices. Some computations are parallelized to improve
+  their efficiency.
+authors:
+- family-names: Giraud
+  given-names: Timothée
+  email: timothee.giraud@cnrs.fr
+  orcid: https://orcid.org/0000-0002-1932-3323
+- family-names: Commenges
+  given-names: Hadrien
+  email: hadrien.commenges@univ-paris1.fr
+preferred-citation:
+  type: manual
+  title: 'potential: Implementation of the Potential Model'
+  authors:
+  - family-names: Giraud
+    given-names: Timothée
+    email: timothee.giraud@cnrs.fr
+    orcid: https://orcid.org/0000-0002-1932-3323
+  - family-names: Commenges
+    given-names: Hadrien
+    email: hadrien.commenges@univ-paris1.fr
+  version: 0.2.0
+  abstract: Provides functions to compute the potential model as defined by Stewart
+    (1941) <doi:10.1126/science.93.2404.89>. Several options are available to customize
+    the model, such as the possibility to fine-tune the distance friction functions
+    or to use custom distance matrices. Some computations are parallelized to improve
+    their efficiency.
+  repository: https://CRAN.R-project.org/package=potential
+  repository-code: https://github.com/riatelab/potential
+  url: https://github.com/riatelab/potential
+  contact:
+  - family-names: Giraud
+    given-names: Timothée
+    email: timothee.giraud@cnrs.fr
+    orcid: https://orcid.org/0000-0002-1932-3323
+  keywords:
+  - rspatial
+  - stewart
+  license: GPL-3.0-only
+  year: '2022'
+repository: https://CRAN.R-project.org/package=potential
+repository-code: https://github.com/riatelab/potential
+url: https://github.com/riatelab/potential
+contact:
+- family-names: Giraud
+  given-names: Timothée
+  email: timothee.giraud@cnrs.fr
+  orcid: https://orcid.org/0000-0002-1932-3323
+keywords:
+- rspatial
+- stewart
+references:
+- type: software
+  title: 'R: A Language and Environment for Statistical Computing'
+  notes: Depends
+  authors:
+  - name: R Core Team
+  location:
+    name: Vienna, Austria
+  year: '2022'
+  url: https://www.R-project.org/
+  institution:
+    name: R Foundation for Statistical Computing
+  version: '>= 3.5.0'
+- type: software
+  title: sf
+  abstract: 'sf: Simple Features for R'
+  notes: Imports
+  authors:
+  - family-names: Pebesma
+    given-names: Edzer
+    email: edzer.pebesma@uni-muenster.de
+    orcid: https://orcid.org/0000-0001-8049-7069
+  year: '2022'
+  url: https://CRAN.R-project.org/package=sf
+- type: software
+  title: graphics
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  location:
+    name: Vienna, Austria
+  year: '2022'
+  url: https://www.R-project.org/
+  institution:
+    name: R Foundation for Statistical Computing
+- type: software
+  title: mapiso
+  abstract: 'mapiso: Create Contour Polygons from Regular Grids'
+  notes: Imports
+  authors:
+  - family-names: Giraud
+    given-names: Timothée
+    email: timothee.giraud@cnrs.fr
+    orcid: https://orcid.org/0000-0002-1932-3323
+  year: '2022'
+  url: https://CRAN.R-project.org/package=mapiso
+- type: software
+  title: parallel
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  location:
+    name: Vienna, Austria
+  year: '2022'
+  url: https://www.R-project.org/
+  institution:
+    name: R Foundation for Statistical Computing
+- type: software
+  title: doParallel
+  abstract: 'doParallel: Foreach Parallel Adaptor for the ''parallel'' Package'
+  notes: Imports
+  authors:
+  - family-names: Corporation
+    given-names: Microsoft
+  - family-names: Weston
+    given-names: Steve
+  year: '2022'
+  url: https://CRAN.R-project.org/package=doParallel
+- type: software
+  title: foreach
+  abstract: 'foreach: Provides Foreach Looping Construct'
+  notes: Imports
+  authors:
+  - name: Microsoft
+  - family-names: Weston
+    given-names: Steve
+  year: '2022'
+  url: https://CRAN.R-project.org/package=foreach
+- type: software
+  title: covr
+  abstract: 'covr: Test Coverage for Packages'
+  notes: Suggests
+  authors:
+  - family-names: Hester
+    given-names: Jim
+    email: james.f.hester@gmail.com
+  year: '2022'
+  url: https://CRAN.R-project.org/package=covr
+- type: software
+  title: lwgeom
+  abstract: 'lwgeom: Bindings to Selected ''liblwgeom'' Functions for Simple Features'
+  notes: Suggests
+  authors:
+  - family-names: Pebesma
+    given-names: Edzer
+    email: edzer.pebesma@uni-muenster.de
+    orcid: https://orcid.org/0000-0001-8049-7069
+  year: '2022'
+  url: https://CRAN.R-project.org/package=lwgeom
+- type: software
+  title: eurostat
+  abstract: 'eurostat: Tools for Eurostat Open Data'
+  notes: Suggests
+  authors:
+  - family-names: Lahti
+    given-names: Leo
+    email: leo.lahti@iki.fi
+    orcid: https://orcid.org/0000-0001-5537-637X
+  - family-names: Huovari
+    given-names: Janne
+  - family-names: Kainu
+    given-names: Markus
+  - family-names: Biecek
+    given-names: Przemyslaw
+  year: '2022'
+  url: https://CRAN.R-project.org/package=eurostat
+- type: software
+  title: giscoR
+  abstract: 'giscoR: Download Map Data from GISCO API - Eurostat'
+  notes: Suggests
+  authors:
+  - family-names: Hernangómez
+    given-names: Diego
+    email: diego.hernangomezherrero@gmail.com
+    orcid: https://orcid.org/0000-0001-8457-4658
+    affiliation: rOpenGov
+  year: '2022'
+  url: https://CRAN.R-project.org/package=giscoR
+- type: software
+  title: mapsf
+  abstract: 'mapsf: Thematic Cartography'
+  notes: Suggests
+  authors:
+  - family-names: Giraud
+    given-names: Timothée
+    email: timothee.giraud@cnrs.fr
+    orcid: https://orcid.org/0000-0002-1932-3323
+  year: '2022'
+  url: https://CRAN.R-project.org/package=mapsf
+- type: software
+  title: knitr
+  abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  notes: Suggests
+  authors:
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  year: '2022'
+  url: https://CRAN.R-project.org/package=knitr
+- type: software
+  title: tinytest
+  abstract: 'tinytest: Lightweight and Feature Complete Unit Testing Framework'
+  notes: Suggests
+  authors:
+  - family-names: van der Loo
+    given-names: Mark
+    email: mark.vanderloo@gmail.com
+    orcid: https://orcid.org/0000-0002-9807-4686
+  year: '2022'
+  url: https://CRAN.R-project.org/package=tinytest
+- type: software
+  title: rmarkdown
+  abstract: 'rmarkdown: Dynamic Documents for R'
+  notes: Suggests
+  authors:
+  - family-names: Allaire
+    given-names: JJ
+    email: jj@rstudio.com
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  - family-names: McPherson
+    given-names: Jonathan
+    email: jonathan@rstudio.com
+  - family-names: Luraschi
+    given-names: Javier
+    email: javier@rstudio.com
+  - family-names: Ushey
+    given-names: Kevin
+    email: kevin@rstudio.com
+  - family-names: Atkins
+    given-names: Aron
+    email: aron@rstudio.com
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  - family-names: Cheng
+    given-names: Joe
+    email: joe@rstudio.com
+  - family-names: Chang
+    given-names: Winston
+    email: winston@rstudio.com
+  - family-names: Iannone
+    given-names: Richard
+    email: rich@rstudio.com
+    orcid: https://orcid.org/0000-0003-3925-190X
+  year: '2022'
+  url: https://CRAN.R-project.org/package=rmarkdown

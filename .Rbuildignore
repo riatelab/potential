@@ -11,3 +11,6 @@ README_files
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^codemeta\.json$
+^CITATION\.cff$
+^\.github$

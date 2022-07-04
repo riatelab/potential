@@ -1,0 +1,218 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "identifier": "potential",
+  "description": "Provides functions to compute the potential model as defined by Stewart (1941) <doi:10.1126/science.93.2404.89>. Several options are available to customize the model, such as the possibility to fine-tune the distance friction functions or to use custom distance matrices. Some computations are parallelized to improve their efficiency.",
+  "name": "potential: Implementation of the Potential Model",
+  "codeRepository": "https://github.com/riatelab/potential",
+  "issueTracker": "https://github.com/riatelab/potential/issues",
+  "license": "https://spdx.org/licenses/GPL-3.0",
+  "version": "0.2.0",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Timothée",
+      "familyName": "Giraud",
+      "email": "timothee.giraud@cnrs.fr",
+      "@id": "https://orcid.org/0000-0002-1932-3323"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Hadrien",
+      "familyName": "Commenges",
+      "email": "hadrien.commenges@univ-paris1.fr"
+    }
+  ],
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Timothée",
+      "familyName": "Giraud",
+      "email": "timothee.giraud@cnrs.fr",
+      "@id": "https://orcid.org/0000-0002-1932-3323"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "covr",
+      "name": "covr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=covr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "lwgeom",
+      "name": "lwgeom",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lwgeom"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "eurostat",
+      "name": "eurostat",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=eurostat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "giscoR",
+      "name": "giscoR",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=giscoR"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "mapsf",
+      "name": "mapsf",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=mapsf"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tinytest",
+      "name": "tinytest",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tinytest"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    }
+  ],
+  "softwareRequirements": {
+    "1": {
+      "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": ">= 3.5.0"
+    },
+    "2": {
+      "@type": "SoftwareApplication",
+      "identifier": "sf",
+      "name": "sf",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=sf"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
+      "identifier": "graphics",
+      "name": "graphics"
+    },
+    "4": {
+      "@type": "SoftwareApplication",
+      "identifier": "mapiso",
+      "name": "mapiso",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=mapiso"
+    },
+    "5": {
+      "@type": "SoftwareApplication",
+      "identifier": "parallel",
+      "name": "parallel"
+    },
+    "6": {
+      "@type": "SoftwareApplication",
+      "identifier": "doParallel",
+      "name": "doParallel",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=doParallel"
+    },
+    "7": {
+      "@type": "SoftwareApplication",
+      "identifier": "foreach",
+      "name": "foreach",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=foreach"
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "1732.97KB",
+  "releaseNotes": "https://github.com/riatelab/potential/blob/master/NEWS.md",
+  "readme": "https://github.com/riatelab/potential/blob/master/README.md",
+  "contIntegration": ["https://github.com/riatelab/potential/actions", "https://app.codecov.io/gh/riatelab/potential"],
+  "developmentStatus": "https://www.repostatus.org/#active",
+  "keywords": ["stewart", "rspatial"]
+}

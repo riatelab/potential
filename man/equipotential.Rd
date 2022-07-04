@@ -7,27 +7,24 @@
 equipotential(x, var, nclass = 8, breaks, mask, buffer, xcoords, ycoords)
 }
 \arguments{
-\item{x}{an sf object of regularly spaced points. It must contain "X", "Y"
-and "OUTPUT" fields.}
+\item{x}{an sf object of regularly spaced points.}
 
-\item{var}{name of the OUTPUT field in \code{x}.}
+\item{var}{name of the variable to use in \code{x}.}
 
 \item{nclass}{a number of class.}
 
 \item{breaks}{a vector of break values.}
 
-\item{mask}{an sf object of polygons or multipolygons. /code{mask} is  used
+\item{mask}{an sf object of polygons or multipolygons. \code{mask} is  used
 to clip polygons of contours equipotential.}
 
-\item{buffer}{if set, a buffer is internaly added to the mask in order to 
+\item{buffer}{if set, a buffer is added to the mask in order to 
 reach more precisely the number of breaks. The buffer is defined in 
 \code{x} units.}
 
-\item{xcoords}{name of the X coordinates field in \code{x}, not needed 
-if \code{x} is constructed with create_grid.}
+\item{xcoords}{not used.}
 
-\item{ycoords}{name of the Y coordinates field in \code{x}, not needed 
-if \code{x} is constructed with create_grid.}
+\item{ycoords}{not used.}
 }
 \value{
 The output is an sf object (POLYGONS). The data frame contains four

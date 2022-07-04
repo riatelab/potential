@@ -13,3 +13,4 @@ README_files
 ^pkgdown$
 ^codemeta\.json$
 ^CITATION\.cff$
+^\.github$

@@ -41,6 +41,11 @@ equipotential <- function(x,
                           xcoords,
                           ycoords) {
   
+  if (!inherits(x = x, what = "sf")) {
+    stop("x is not an sf object.", 
+         call. = FALSE)
+  }
+  
   if (!missing(buffer)){
     mask_b <- sf::st_buffer(mask, buffer)
     inter <- st_intersects(x = x, y = mask_b)

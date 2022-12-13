@@ -7,7 +7,7 @@
 create_grid(x, res)
 }
 \arguments{
-\item{x}{an sf object, the spatial extent of this object is used to
+\item{x}{an sf or sfc object, the spatial extent of this object is used to
 create the regular grid.}
 
 \item{res}{resolution of the grid (in map units).}

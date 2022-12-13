@@ -43,6 +43,8 @@
 #' @importFrom sf st_as_sf
 #' @export
 potential <- function(x, y, d, var, fun, span, beta) {
+  test_point(x, "x")
+  test_point(y, "y")
   result <- prepare_data(x = x, y = y, d = d)
   matdens <- interact_density(
     d = result$d,

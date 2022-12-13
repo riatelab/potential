@@ -3,11 +3,9 @@
 #' @description This function creates a distance matrix between two
 #' spatial objects.
 #' @param x an sf object (POINT), rows of the distance matrix, row names are 
-#' used as
-#' row names of the matrix.
+#' used as row names of the matrix.
 #' @param y an sf object (POINT), columns of the distance matrix, row names 
-#' are used
-#' as column names of the matrix.
+#' are used as column names of the matrix.
 #' @param checksize if FALSE, bypass the distance matrix size control
 #' (see Details).
 #' @param longlat if FALSE, the Euclidean distance is used, if TRUE Great Circle
@@ -27,6 +25,11 @@
 #' st_distance st_transform st_is
 #' @export
 create_matrix <- function(x, y, checksize = TRUE, longlat = FALSE) {
+  
+  test_point(x, "x")
+  test_point(y, "y")
+
+  
   if (checksize) {
     nk <- nrow(x)
     nu <- nrow(y)
@@ -39,7 +42,7 @@ create_matrix <- function(x, y, checksize = TRUE, longlat = FALSE) {
       )
     }
   }
-
+  
   if (!st_is_longlat(x)) {
     if (longlat) {
       x <- st_transform(x, 4326)

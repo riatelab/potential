@@ -191,11 +191,14 @@ pot2 <- potential(x = nuts_pt,
 # Create the ratio variable
 g$gdp_hab_pot <-  pot2[, 2] / pot2[, 1]
 
+# Set breaks
+bv3 <- c(min(g$gdp_hab_pot, na.rm = TRUE), 
+         bv[2:8], 
+         max(g$gdp_hab_pot, na.rm = TRUE))
+
 # Create an isopleth layer
-equipot <- equipotential(x = g, var = "gdp_hab_pot", breaks = bv, 
+equipot <- equipotential(x = g, var = "gdp_hab_pot", breaks = bv3, 
                          mask = nuts[!is.na(nuts$gdp_hab),])
-# Get breaks values
-bv3 <- c(equipot$min, max(equipot$max))
 
 # Draw the basemap
 mf_init(nuts)
@@ -203,7 +206,7 @@ mf_map(countries, col = "#f5f5f3ff", border = "#a9b3b4ff", add = TRUE)
 # Map the regional GDP per capita
 mf_map(x = equipot, var = "min", type = "choro",
        leg_pos = "topright",
-       breaks = bv, 
+       breaks = bv3, 
        pal = pal, 
        border = NA, 
        leg_title = "Potential\nGDP per Capita\n(in euros, 2018)",

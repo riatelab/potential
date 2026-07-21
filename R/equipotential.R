@@ -18,7 +18,8 @@
 #' fields: id (id of each polygon), min and max (minimum and maximum breaks of
 #' the polygon) and center (central values of classes).
 #' @importFrom sf st_as_sf st_crs st_bbox st_cast st_sf st_sfc st_intersection
-#' st_union st_agr<- st_collection_extract st_make_valid st_buffer st_coordinates
+#' @importFrom sf st_union st_agr<- st_collection_extract st_make_valid 
+#' @importFrom sf st_buffer st_coordinates
 #' @importFrom mapiso mapiso
 #' @examples
 #' library(sf)
@@ -30,7 +31,7 @@
 #' )
 #' y$OUTPUT <- pot
 #' equipot <- equipotential(y, var = "OUTPUT", mask = n3_poly)
-#' plot(equipot["center"], pal = hcl.colors(nrow(equipot), "cividis"))
+#' plot(equipot["center"])
 #' @export
 equipotential <- function(x,
                           var,

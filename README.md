@@ -2,8 +2,9 @@
 # potential <img src="man/figures/logo.png" align="right" width="140"/>
 
 [![](https://www.r-pkg.org/badges/version/potential)](https://cran.r-project.org/package=potential)
-[![R-CMD-check](https://github.com/riatelab/potential/workflows/R-CMD-check/badge.svg)](https://github.com/riatelab/potential/actions)
-[![codecov](https://codecov.io/gh/riatelab/potential/branch/master/graph/badge.svg?token=G8MZTHC9KQ)](https://app.codecov.io/gh/riatelab/potential)
+[![R-CMD-check](https://github.com/riatelab/potential/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/riatelab/potential/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/riatelab/potential/graph/badge.svg)](https://app.codecov.io/gh/riatelab/potential)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -14,9 +15,9 @@ the model, for example it is possible to fine-tune the distance friction
 functions or to use custom distance matrices. Some computations are
 parallelized to improve their efficiency.
 
--   [**Website**](https://riatelab.github.io/potential/)  
--   [**Vignette**](https://riatelab.github.io/potential/articles/potential.html)  
--   [**Blog post**](https://rgeomatic.hypotheses.org/2023)
+- [**Website**](https://riatelab.github.io/potential/)  
+- [**Vignette**](https://riatelab.github.io/potential/articles/potential.html)  
+- [**Blog post**](https://rgeomatic.hypotheses.org/2023)
 
 ## Installation
 
@@ -62,7 +63,6 @@ y$pot <- pot / max(pot) * 100
 bks <- seq(0, 100, length.out = 11)
 equipot <- equipotential(y, var = "pot", breaks = bks, mask = n3_poly)
 # map potentials
-mf_theme("default")
 mf_map(x = equipot, var = "min", type = "choro", 
        breaks = bks, 
        pal = hcl.colors(10, 'Teal'),

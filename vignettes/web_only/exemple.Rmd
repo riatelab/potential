@@ -8,16 +8,14 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
-
 knitr::opts_chunk$set(
-  message = FALSE, 
-  warning = FALSE,
-  collapse = TRUE,
-  comment = "#>", 
-  fig.width = 7,
-  fig.height = 9
+message = FALSE, 
+warning = FALSE,
+collapse = TRUE,
+comment = "#>", 
+fig.width = 7,
+fig.height = 9
 )
-
 ```
 
 
@@ -48,22 +46,23 @@ pop_raw <- get_eurostat('nama_10r_3popgdp')
 
 # Selection of the relevant rows and columns
 pop <- pop_raw[nchar(pop_raw$geo)==5 & 
-                 pop_raw$time == "2018-01-01", ]
-names(pop)[4] <- "pop"
+                 pop_raw$TIME_PERIOD == "2018-01-01", ]
+names(pop)[5] <- "pop"
 pop$pop <- pop$pop * 1000
 gdp <- gdp_raw[nchar(gdp_raw$geo)==5 & 
-                 gdp_raw$time == "2018-01-01" &
+                 gdp_raw$TIME_PERIOD == "2018-01-01" &
                  gdp_raw$unit == "MIO_EUR", ]
-names(gdp)[4] <- "gdp"
+names(gdp)[5] <- "gdp"
 gdp$gdp <- gdp$gdp * 1000000
 
 # Base maps download from GISCO  
 countries <- gisco_get_countries()
-nuts_raw <- gisco_nuts
+nuts_raw <- gisco_nuts_2024
 nuts <- nuts_raw[nuts_raw$LEVL_CODE == 3 & 
                    nuts_raw$CNTR_CODE == "IT", ]
 nuts <- st_transform(nuts, 3035)
 countries <- st_transform(countries, 3035)
+country <- countries[countries$ISO3_CODE == "ITA", ]
 
 # Join between base map and dataset
 nuts <- merge(nuts, pop[,c("geo", "pop")], by.x = "NUTS_ID", by.y = "geo", all.x = T)
@@ -82,12 +81,13 @@ bv <- quantile(nuts$gdp_hab, seq(from = 0, to = 1, length.out = 9), na.rm = T)
 pal <- mf_get_pal(n = 9, palette = "Burg", rev = TRUE)
 # Set the credit text
 cred <- paste0("© EuroGeographics for the administrative boundaries\n",
-               "© Eurostat, 2021 (nama_10r_3gdp and nama_10r_3popgdp tables)\n",
-               "T. Giraud, 2022")
+               "© Eurostat, 2026 (nama_10r_3gdp and nama_10r_3popgdp tables)\n",
+               "T. Giraud, 2026")
+# Set a theme
+mf_theme(title_banner = TRUE)
 # Draw the basemap
-mf_theme(bg = "#cdd2d4", mar = c(0,0,1.2,0), tab = FALSE)
-mf_init(nuts)
-mf_map(countries, col = "#f5f5f3ff", border = "#a9b3b4ff", add = TRUE)
+mf_map(x = countries, extent = country, 
+       col = "#f5f5f3ff", border = "#a9b3b4ff", bg = "#cdd2d4") 
 # Map the regional GDP per capita
 mf_map(x = nuts, var = "gdp_hab", type = "choro",
        leg_pos = "topright",
@@ -99,8 +99,7 @@ mf_map(x = nuts, var = "gdp_hab", type = "choro",
        leg_val_rnd = -2, 
        col_na = "grey60",
        add = TRUE)
-mf_map(countries[countries$ISO3_CODE == "ITA", ], 
-       col = NA, border = "#a9b3b4ff", add = TRUE)
+mf_map(country, col = NA, border = "#a9b3b4ff", add = TRUE)
 # Set a layout
 mf_arrow("topleft")
 mf_title(txt = "GDP per Capita Inequalities in Italy")
@@ -139,8 +138,8 @@ bv2 <- c(min(nuts$gdp_hab_pot, na.rm = TRUE),
          max(nuts$gdp_hab_pot, na.rm = TRUE))
 
 # Draw the basemap
-mf_init(nuts)
-mf_map(countries, col = "#f5f5f3ff", border = "#a9b3b4ff", add = TRUE)
+mf_map(x = countries, extent = country, 
+       col = "#f5f5f3ff", border = "#a9b3b4ff", bg = "#cdd2d4") 
 # Map the regional GDP per capita
 mf_map(x = nuts, var = "gdp_hab_pot", type = "choro",
        leg_pos = "topright",
@@ -152,20 +151,21 @@ mf_map(x = nuts, var = "gdp_hab_pot", type = "choro",
        leg_val_rnd = -2,
        col_na = "grey60",
        add = TRUE)
-mf_map(countries[countries$ISO3_CODE == "ITA", ], 
-       col = NA, border = "#a9b3b4ff", add = TRUE)
+mf_map(country, col = NA, border = "#a9b3b4ff", add = TRUE)
 # Set a layout
 mf_arrow("topleft")
 mf_title(txt = "GDP per Capita Inequalities in Italy")
 mf_scale(100)
 mf_credits(txt = cred, bg = "#ffffff80")
 # Set a text to explicit the function parameters
-text(x = 4873429, y = 2258495, xpd = TRUE,
-     labels = paste0("Distance function:\n",
+mf_text(x = c(5118878, 2455547), align = "left",
+        cex = 0.8, font = 3, pos = "bottomleft",
+        txt = paste0("Distance function:\n",
                      "- type = exponential\n",
                      "- beta = 2\n", 
-                     "- span = 100 km"),
-     cex = 0.8, adj = 0, font = 3)
+                     "- span = 100 km")
+)
+
 ```
 
 This map gives a smoothed picture of the spatial patterns of GDP per capita in Italy while keeping the original spatial units as interpretive framework.
@@ -201,8 +201,8 @@ equipot <- equipotential(x = g, var = "gdp_hab_pot", breaks = bv3,
                          mask = nuts[!is.na(nuts$gdp_hab),])
 
 # Draw the basemap
-mf_init(nuts)
-mf_map(countries, col = "#f5f5f3ff", border = "#a9b3b4ff", add = TRUE)
+mf_map(x = countries, extent = country, 
+       col = "#f5f5f3ff", border = "#a9b3b4ff", bg = "#cdd2d4") 
 # Map the regional GDP per capita
 mf_map(x = equipot, var = "min", type = "choro",
        leg_pos = "topright",
@@ -213,20 +213,20 @@ mf_map(x = equipot, var = "min", type = "choro",
        leg_frame = TRUE,
        leg_val_rnd = -2, 
        add = TRUE)
-mf_map(countries[countries$ISO3_CODE == "ITA", ], 
-       col = NA, border = "#a9b3b4ff", add = TRUE)
+mf_map(country, col = NA, border = "#a9b3b4ff", add = TRUE)
 # Set a layout
 mf_arrow("topleft")
 mf_title(txt = "GDP per Capita Inequalities in Italy")
 mf_scale(100)
 mf_credits(txt = cred, bg = "#ffffff80")
 # Set a text to explicit the function parameters
-text(x = 4873429, y = 2308495, xpd = TRUE,
-     labels = paste0("Distance function:\n",
+mf_text(x = c(5118878, 2455547), align = "left",
+        cex = 0.8, font = 3, pos = "bottomleft",
+        txt = paste0("Distance function:\n",
                      "- type = exponential\n",
                      "- beta = 2\n", 
-                     "- span = 100 km"),
-     cex = 0.8, adj = 0, font = 3)
+                     "- span = 100 km")
+)
 ```
 
 Unlike the previous maps, this one doesn't keep the initial territorial division to give a smoothed picture of the spatial patterns of GDP per capita in Italy. 

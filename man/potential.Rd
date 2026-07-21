@@ -53,7 +53,7 @@ pot <- potential(
 )
 y$OUTPUT <- pot
 equipot <- equipotential(y, var = "OUTPUT", mask = n3_poly)
-plot(equipot["center"], pal = hcl.colors(nrow(equipot), "cividis"))
+plot(equipot["center"])
 }
 \references{
 STEWART, JOHN Q. 1941. "An Inverse Distance Variation for Certain Social

@@ -59,6 +59,6 @@ pot <- mcpotential(
 )
 g$OUTPUT <- pot
 equipot <- equipotential(g, var = "OUTPUT", mask = n3_poly)
-plot(equipot["center"], pal = hcl.colors(nrow(equipot), "cividis"))
+plot(equipot["center"])
 }
 }

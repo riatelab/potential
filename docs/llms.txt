@@ -1,0 +1,124 @@
+# potential
+
+[![](https://www.r-pkg.org/badges/version/potential)](https://cran.r-project.org/package=potential)
+[![R-CMD-check](https://github.com/riatelab/potential/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/riatelab/potential/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/riatelab/potential/graph/badge.svg)](https://app.codecov.io/gh/riatelab/potential)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
+This package provides functions to compute the potential model as
+defined by Stewart (1941). Several options are available to customize
+the model, for example it is possible to fine-tune the distance friction
+functions or to use custom distance matrices. Some computations are
+parallelized to improve their efficiency.
+
+- [**Website**](https://riatelab.github.io/potential/)  
+- [**Vignette**](https://riatelab.github.io/potential/articles/potential.html)  
+- [**Blog post**](https://rgeomatic.hypotheses.org/2023)
+
+## Installation
+
+You can install the released version of `potential` from
+[CRAN](https://CRAN.R-project.org/package=potential) with:
+
+``` r
+
+install.packages("potential")
+```
+
+You can install the development version of `potential` from GitHub with:
+
+``` r
+
+# install.packages("remotes")
+remotes::install_github("riatelab/potential")
+```
+
+## Demo
+
+``` r
+
+library(mapsf)
+library(potential)
+# Display the spatial interaction function
+plot_inter(fun = "e", span = 75000, beta = 2, limit = 250000)
+```
+
+![](reference/figures/demox-1.png)
+
+``` r
+
+# create a regular grid
+y <- create_grid(x = n3_poly, res = 20000)
+# compute potentials
+pot <- mcpotential(
+  x = n3_pt, y = y,
+  var = "POP19",
+  fun = "e", span = 75000,
+  beta = 2, limit = 250000, 
+  ncl = 2
+)
+# Define potential according to the maximum value
+y$pot <- pot / max(pot) * 100
+# create equipotential areas
+bks <- seq(0, 100, length.out = 11)
+equipot <- equipotential(y, var = "pot", breaks = bks, mask = n3_poly)
+# map potentials
+mf_map(x = equipot, var = "min", type = "choro", 
+       breaks = bks, 
+       pal = hcl.colors(10, 'Teal'),
+       border = "#121725", 
+       leg_val_rnd = 0,
+       lwd = .2, 
+       leg_pos = "topright", 
+       leg_title = "Potential Intensity")
+mf_title(txt = "Potentials of Population")
+mf_credits(txt = "© EuroGeographics for the administrative boundaries and © Eurostat for data")
+```
+
+![](reference/figures/demo-1.png)
+
+## Note
+
+This package provides access to the revamped potential-related functions
+initially offered by
+[`SpatialPosition`](https://CRAN.R-project.org/package=SpatialPosition).
+
+## References
+
+Stewart, John Q. 1941. “An Inverse Distance Variation for Certain Social
+Influences.” *Science* 93 (2404): 89–90.
+<https://doi.org/10.1126/science.93.2404.89>.
+
+# Package index
+
+## All functions
+
+- [`create_grid()`](https://riatelab.github.io/potential/reference/create_grid.md)
+  : Create a Regularly Spaced Points Grid
+- [`create_matrix()`](https://riatelab.github.io/potential/reference/create_matrix.md)
+  : Create a Distance Matrix Between Two Spatial Objects
+- [`equipotential()`](https://riatelab.github.io/potential/reference/equipotential.md)
+  : Create Polygons of Equipotential
+- [`mcpotential()`](https://riatelab.github.io/potential/reference/mcpotential.md)
+  : Compute the Potential Model using Parallelization
+- [`nuts3`](https://riatelab.github.io/potential/reference/n3_poly.md) :
+  Points and Polygons Layers of European Statistical Units (NUTS3)
+- [`nuts3`](https://riatelab.github.io/potential/reference/n3_pt.md) :
+  Points and Polygons Layers of European Statistical Units (NUTS3)
+- [`plot_inter()`](https://riatelab.github.io/potential/reference/plot_inter.md)
+  : Display a Spatial Interaction Function
+- [`potential-package`](https://riatelab.github.io/potential/reference/potential-package.md)
+  : Implementation of the Potential Model
+- [`potential()`](https://riatelab.github.io/potential/reference/potential.md)
+  : Compute the Potential Model
+
+# Articles
+
+### All vignettes
+
+- [Stewart Potentials: a Use
+  Case](https://riatelab.github.io/potential/articles/web_only/exemple.md):
+- [potential](https://riatelab.github.io/potential/articles/potential.md):

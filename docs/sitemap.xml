@@ -1,54 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/potential.html</loc>
-  </url>
-  <url>
-    <loc>/articles/web_only/exemple.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/create_grid.html</loc>
-  </url>
-  <url>
-    <loc>/reference/create_matrix.html</loc>
-  </url>
-  <url>
-    <loc>/reference/equipotential.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mcpotential.html</loc>
-  </url>
-  <url>
-    <loc>/reference/n3_poly.html</loc>
-  </url>
-  <url>
-    <loc>/reference/n3_pt.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_inter.html</loc>
-  </url>
-  <url>
-    <loc>/reference/potential-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/potential.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://riatelab.github.io/potential/404.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/articles/index.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/articles/potential.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/articles/web_only/exemple.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/authors.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/index.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/news/index.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/reference/create_grid.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/reference/create_matrix.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/reference/equipotential.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/reference/index.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/reference/mcpotential.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/reference/n3_poly.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/reference/n3_pt.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/reference/plot_inter.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/reference/potential-package.html</loc></url>
+<url><loc>https://riatelab.github.io/potential/reference/potential.html</loc></url>
 </urlset>
+

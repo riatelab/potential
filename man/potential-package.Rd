@@ -11,3 +11,22 @@ are available to customize the model, such as the possibility to fine-tune
 the distance friction functions or to use custom distance matrices. Some
 computations are parallelized to improve their efficiency.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/riatelab/potential}
+  \item \url{https://riatelab.github.io/potential}
+  \item Report bugs at \url{https://github.com/riatelab/potential/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Timothée Giraud \email{timothee.giraud@cnrs.fr} (\href{https://orcid.org/0000-0002-1932-3323}{ORCID})
+
+Authors:
+\itemize{
+  \item Timothée Giraud \email{timothee.giraud@cnrs.fr} (\href{https://orcid.org/0000-0002-1932-3323}{ORCID})
+  \item Hadrien Commenges \email{hadrien.commenges@univ-paris1.fr}
+}
+
+}

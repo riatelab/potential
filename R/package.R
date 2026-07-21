@@ -7,7 +7,7 @@
 #' the distance friction functions or to use custom distance matrices. Some
 #' computations are parallelized to improve their efficiency.
 #' @docType package
-NULL
+"_PACKAGE"
 
 
 

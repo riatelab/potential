@@ -73,3 +73,7 @@ expect_error(potential:::test_point(3, "E"))
 
 expect_silent(potential:::test_point(g, "E"))
 
+expect_error(equipotential("toto", "toto"))
+
+expect_error(potential:::test_point(n3_poly, "popo"))
+

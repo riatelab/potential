@@ -29,8 +29,8 @@ Suggests:
     knitr,
     tinytest,
     rmarkdown
-URL: https://github.com/riatelab/potential, https://riatelab.github.io/potential
-BugReports: https://github.com/riatelab/potential/issues
+URL: https://github.com/riatelab/potential/, https://riatelab.github.io/potential/
+BugReports: https://github.com/riatelab/potential/issues/
 Encoding: UTF-8
 VignetteBuilder: knitr
 Config/roxygen2/version: 8.0.0

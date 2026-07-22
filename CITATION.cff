@@ -1,19 +1,23 @@
-# -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.2.2
+# ------------------------------------------------
+# CITATION.cff file created with {cffr} R package
 # See also: https://docs.ropensci.org/cffr/
-# -----------------------------------------------------------
+# ------------------------------------------------
  
 cff-version: 1.2.0
 message: 'To cite package "potential" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'potential: Implementation of the Potential Model'
-version: 0.2.0
+version: 0.3.0
+doi: 10.32614/CRAN.package.potential
+identifiers:
+- type: url
+  value: https://riatelab.github.io/potential/
 abstract: Provides functions to compute the potential model as defined by Stewart
-  (1941) <doi:10.1126/science.93.2404.89>. Several options are available to customize
-  the model, such as the possibility to fine-tune the distance friction functions
-  or to use custom distance matrices. Some computations are parallelized to improve
-  their efficiency.
+  (1941) <https://doi.org/10.1126/science.93.2404.89>. Several options are available
+  to customize the model, such as the possibility to fine-tune the distance friction
+  functions or to use custom distance matrices. Some computations are parallelized
+  to improve their efficiency.
 authors:
 - family-names: Giraud
   given-names: Timothée
@@ -22,152 +26,124 @@ authors:
 - family-names: Commenges
   given-names: Hadrien
   email: hadrien.commenges@univ-paris1.fr
-preferred-citation:
-  type: manual
-  title: 'potential: Implementation of the Potential Model'
-  authors:
-  - family-names: Giraud
-    given-names: Timothée
-    email: timothee.giraud@cnrs.fr
-    orcid: https://orcid.org/0000-0002-1932-3323
-  - family-names: Commenges
-    given-names: Hadrien
-    email: hadrien.commenges@univ-paris1.fr
-  version: 0.2.0
-  abstract: Provides functions to compute the potential model as defined by Stewart
-    (1941) <doi:10.1126/science.93.2404.89>. Several options are available to customize
-    the model, such as the possibility to fine-tune the distance friction functions
-    or to use custom distance matrices. Some computations are parallelized to improve
-    their efficiency.
-  repository: https://CRAN.R-project.org/package=potential
-  repository-code: https://github.com/riatelab/potential
-  url: https://github.com/riatelab/potential
-  contact:
-  - family-names: Giraud
-    given-names: Timothée
-    email: timothee.giraud@cnrs.fr
-    orcid: https://orcid.org/0000-0002-1932-3323
-  keywords:
-  - rspatial
-  - stewart
-  license: GPL-3.0-only
-  year: '2022'
 repository: https://CRAN.R-project.org/package=potential
-repository-code: https://github.com/riatelab/potential
-url: https://github.com/riatelab/potential
+repository-code: https://github.com/riatelab/potential/issues/
+url: https://github.com/riatelab/potential/
 contact:
 - family-names: Giraud
   given-names: Timothée
   email: timothee.giraud@cnrs.fr
   orcid: https://orcid.org/0000-0002-1932-3323
-keywords:
-- rspatial
-- stewart
 references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'
   notes: Depends
+  url: https://www.R-project.org/
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2022'
-  url: https://www.R-project.org/
+    website: https://ror.org/02zz1nj61
   institution:
     name: R Foundation for Statistical Computing
+    website: https://ror.org/05qewa988
+    address: Vienna, Austria
+  year: '2026'
+  doi: 10.32614/R.manuals
   version: '>= 3.5.0'
 - type: software
   title: sf
   abstract: 'sf: Simple Features for R'
   notes: Imports
+  url: https://r-spatial.github.io/sf/
+  repository: https://CRAN.R-project.org/package=sf
   authors:
   - family-names: Pebesma
     given-names: Edzer
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
-  year: '2022'
-  url: https://CRAN.R-project.org/package=sf
+  year: '2026'
+  doi: 10.32614/CRAN.package.sf
 - type: software
   title: graphics
   abstract: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2022'
-  url: https://www.R-project.org/
+    website: https://ror.org/02zz1nj61
   institution:
     name: R Foundation for Statistical Computing
+    website: https://ror.org/05qewa988
+    address: Vienna, Austria
+  year: '2026'
+  doi: 10.32614/R.manuals
 - type: software
   title: mapiso
   abstract: 'mapiso: Create Contour Polygons from Regular Grids'
   notes: Imports
+  url: https://github.com/riatelab/mapiso
+  repository: https://CRAN.R-project.org/package=mapiso
   authors:
   - family-names: Giraud
     given-names: Timothée
     email: timothee.giraud@cnrs.fr
     orcid: https://orcid.org/0000-0002-1932-3323
-  year: '2022'
-  url: https://CRAN.R-project.org/package=mapiso
+  year: '2026'
+  doi: 10.32614/CRAN.package.mapiso
 - type: software
   title: parallel
   abstract: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2022'
-  url: https://www.R-project.org/
+    website: https://ror.org/02zz1nj61
   institution:
     name: R Foundation for Statistical Computing
+    website: https://ror.org/05qewa988
+    address: Vienna, Austria
+  year: '2026'
+  doi: 10.32614/R.manuals
 - type: software
   title: doParallel
   abstract: 'doParallel: Foreach Parallel Adaptor for the ''parallel'' Package'
   notes: Imports
+  url: https://github.com/RevolutionAnalytics/doparallel
+  repository: https://CRAN.R-project.org/package=doParallel
   authors:
   - family-names: Corporation
     given-names: Microsoft
   - family-names: Weston
     given-names: Steve
-  year: '2022'
-  url: https://CRAN.R-project.org/package=doParallel
+  year: '2026'
+  doi: 10.32614/CRAN.package.doParallel
 - type: software
   title: foreach
   abstract: 'foreach: Provides Foreach Looping Construct'
   notes: Imports
+  url: https://github.com/RevolutionAnalytics/foreach
+  repository: https://CRAN.R-project.org/package=foreach
   authors:
   - name: Microsoft
   - family-names: Weston
     given-names: Steve
-  year: '2022'
-  url: https://CRAN.R-project.org/package=foreach
+  year: '2026'
+  doi: 10.32614/CRAN.package.foreach
 - type: software
   title: covr
   abstract: 'covr: Test Coverage for Packages'
   notes: Suggests
+  url: https://covr.r-lib.org
+  repository: https://CRAN.R-project.org/package=covr
   authors:
   - family-names: Hester
     given-names: Jim
     email: james.f.hester@gmail.com
-  year: '2022'
-  url: https://CRAN.R-project.org/package=covr
-- type: software
-  title: lwgeom
-  abstract: 'lwgeom: Bindings to Selected ''liblwgeom'' Functions for Simple Features'
-  notes: Suggests
-  authors:
-  - family-names: Pebesma
-    given-names: Edzer
-    email: edzer.pebesma@uni-muenster.de
-    orcid: https://orcid.org/0000-0001-8049-7069
-  year: '2022'
-  url: https://CRAN.R-project.org/package=lwgeom
+  year: '2026'
+  doi: 10.32614/CRAN.package.covr
 - type: software
   title: eurostat
   abstract: 'eurostat: Tools for Eurostat Open Data'
   notes: Suggests
+  url: https://ropengov.github.io/eurostat/
+  repository: https://CRAN.R-project.org/package=eurostat
   authors:
   - family-names: Lahti
     given-names: Leo
@@ -179,89 +155,103 @@ references:
     given-names: Markus
   - family-names: Biecek
     given-names: Przemyslaw
-  year: '2022'
-  url: https://CRAN.R-project.org/package=eurostat
+  year: '2026'
+  doi: 10.32614/CRAN.package.eurostat
 - type: software
   title: giscoR
-  abstract: 'giscoR: Download Map Data from GISCO API - Eurostat'
+  abstract: 'giscoR: Download ''Eurostat'' ''GISCO'' Spatial Data'
   notes: Suggests
+  url: https://ropengov.github.io/giscoR/
+  repository: https://CRAN.R-project.org/package=giscoR
   authors:
   - family-names: Hernangómez
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
-    affiliation: rOpenGov
-  year: '2022'
-  url: https://CRAN.R-project.org/package=giscoR
+  year: '2026'
+  doi: 10.32614/CRAN.package.giscoR
 - type: software
   title: mapsf
   abstract: 'mapsf: Thematic Cartography'
   notes: Suggests
+  url: https://riatelab.github.io/mapsf/
+  repository: https://CRAN.R-project.org/package=mapsf
   authors:
   - family-names: Giraud
     given-names: Timothée
     email: timothee.giraud@cnrs.fr
     orcid: https://orcid.org/0000-0002-1932-3323
-  year: '2022'
-  url: https://CRAN.R-project.org/package=mapsf
+  year: '2026'
+  doi: 10.32614/CRAN.package.mapsf
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
   notes: Suggests
+  url: https://yihui.org/knitr/
+  repository: https://CRAN.R-project.org/package=knitr
   authors:
   - family-names: Xie
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  year: '2022'
-  url: https://CRAN.R-project.org/package=knitr
+  year: '2026'
+  doi: 10.32614/CRAN.package.knitr
 - type: software
   title: tinytest
   abstract: 'tinytest: Lightweight and Feature Complete Unit Testing Framework'
   notes: Suggests
+  url: https://github.com/markvanderloo/tinytest
+  repository: https://CRAN.R-project.org/package=tinytest
   authors:
-  - family-names: van der Loo
+  - family-names: Loo
     given-names: Mark
+    name-particle: van der
     email: mark.vanderloo@gmail.com
     orcid: https://orcid.org/0000-0002-9807-4686
-  year: '2022'
-  url: https://CRAN.R-project.org/package=tinytest
+  year: '2026'
+  doi: 10.32614/CRAN.package.tinytest
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
   notes: Suggests
+  url: https://pkgs.rstudio.com/rmarkdown/
+  repository: https://CRAN.R-project.org/package=rmarkdown
   authors:
   - family-names: Allaire
     given-names: JJ
-    email: jj@rstudio.com
+    email: jj@posit.co
   - family-names: Xie
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
+  - family-names: Dervieux
+    given-names: Christophe
+    email: cderv@posit.co
+    orcid: https://orcid.org/0000-0003-4474-2498
   - family-names: McPherson
     given-names: Jonathan
-    email: jonathan@rstudio.com
+    email: jonathan@posit.co
   - family-names: Luraschi
     given-names: Javier
-    email: javier@rstudio.com
   - family-names: Ushey
     given-names: Kevin
-    email: kevin@rstudio.com
+    email: kevin@posit.co
   - family-names: Atkins
     given-names: Aron
-    email: aron@rstudio.com
+    email: aron@posit.co
   - family-names: Wickham
     given-names: Hadley
-    email: hadley@rstudio.com
+    email: hadley@posit.co
   - family-names: Cheng
     given-names: Joe
-    email: joe@rstudio.com
+    email: joe@posit.co
   - family-names: Chang
     given-names: Winston
-    email: winston@rstudio.com
+    email: winston@posit.co
   - family-names: Iannone
     given-names: Richard
-    email: rich@rstudio.com
+    email: rich@posit.co
     orcid: https://orcid.org/0000-0003-3925-190X
-  year: '2022'
-  url: https://CRAN.R-project.org/package=rmarkdown
+  year: '2026'
+  doi: 10.32614/CRAN.package.rmarkdown
+

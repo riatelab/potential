@@ -4,16 +4,17 @@
   "identifier": "potential",
   "description": "Provides functions to compute the potential model as defined by Stewart (1941) <doi:10.1126/science.93.2404.89>. Several options are available to customize the model, such as the possibility to fine-tune the distance friction functions or to use custom distance matrices. Some computations are parallelized to improve their efficiency.",
   "name": "potential: Implementation of the Potential Model",
-  "codeRepository": "https://github.com/riatelab/potential",
-  "issueTracker": "https://github.com/riatelab/potential/issues",
+  "relatedLink": "https://riatelab.github.io/potential/",
+  "codeRepository": "https://github.com/riatelab/potential/",
+  "issueTracker": "https://github.com/riatelab/potential/issues/",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
+  "runtimePlatform": "R version 4.6.1 (2026-06-24)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -56,18 +57,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=covr"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "lwgeom",
-      "name": "lwgeom",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=lwgeom"
     },
     {
       "@type": "SoftwareApplication",
@@ -209,10 +198,5 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1732.97KB",
-  "releaseNotes": "https://github.com/riatelab/potential/blob/master/NEWS.md",
-  "readme": "https://github.com/riatelab/potential/blob/master/README.md",
-  "contIntegration": ["https://github.com/riatelab/potential/actions", "https://app.codecov.io/gh/riatelab/potential"],
-  "developmentStatus": "https://www.repostatus.org/#active",
-  "keywords": ["stewart", "rspatial"]
+  "fileSize": "1586.037KB"
 }

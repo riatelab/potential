@@ -14,9 +14,9 @@ computations are parallelized to improve their efficiency.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/riatelab/potential}
-  \item \url{https://riatelab.github.io/potential}
-  \item Report bugs at \url{https://github.com/riatelab/potential/issues}
+  \item \url{https://github.com/riatelab/potential/}
+  \item \url{https://riatelab.github.io/potential/}
+  \item Report bugs at \url{https://github.com/riatelab/potential/issues/}
 }
 
 }

@@ -14,3 +14,4 @@ README_files
 ^codemeta\.json$
 ^CITATION\.cff$
 ^\.github$
+^codecov\.yml$

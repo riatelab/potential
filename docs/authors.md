@@ -13,13 +13,13 @@ Source:
 [`DESCRIPTION`](https://github.com/riatelab/potential/blob/HEAD/DESCRIPTION)
 
 Giraud T, Commenges H (2026). *potential: Implementation of the
-Potential Model*. R package version 0.3.0.0,
-<https://github.com/riatelab/potential>.
+Potential Model*. R package version 0.3.0,
+<https://github.com/riatelab/potential/>.
 
     @Manual{,
       title = {potential: Implementation of the Potential Model},
       author = {Timothée Giraud and Hadrien Commenges},
       year = {2026},
-      note = {R package version 0.3.0.0},
-      url = {https://github.com/riatelab/potential},
+      note = {R package version 0.3.0},
+      url = {https://github.com/riatelab/potential/},
     }

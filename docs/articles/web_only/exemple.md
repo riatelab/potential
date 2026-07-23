@@ -29,9 +29,9 @@ library(mapsf)
 library(sf)
 # Data download from Eurostat
 gdp_raw <- get_eurostat('nama_10r_3gdp')
-#> indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 103.88TB/s                                                                              
+#> indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 101.64TB/s                                                                              
 pop_raw <- get_eurostat('nama_10r_3popgdp')
-#> indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 230.85TB/s                                                                              
+#> indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 306.38TB/s                                                                              
 
 # Selection of the relevant rows and columns
 pop <- pop_raw[nchar(pop_raw$geo)==5 & 

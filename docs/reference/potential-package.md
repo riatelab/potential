@@ -11,11 +11,11 @@ efficiency.
 
 Useful links:
 
-- <https://github.com/riatelab/potential>
+- <https://github.com/riatelab/potential/>
 
-- <https://riatelab.github.io/potential>
+- <https://riatelab.github.io/potential/>
 
-- Report bugs at <https://github.com/riatelab/potential/issues>
+- Report bugs at <https://github.com/riatelab/potential/issues/>
 
 ## Author
 
